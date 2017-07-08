@@ -5,6 +5,6 @@
  *
  * @return string
  */
-if (!defined('DATAOBJECTPAGE_DIR')) {
-    define('DATAOBJECTPAGE_DIR', ltrim(Director::makeRelative(realpath(__DIR__)), DIRECTORY_SEPARATOR));
+if (!defined('DATAOBJECT_MANAGER_DIR')) {
+    define('DATAOBJECT_MANAGER_DIR', ltrim(Director::makeRelative(realpath(__DIR__)), DIRECTORY_SEPARATOR));
 }

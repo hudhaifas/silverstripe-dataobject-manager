@@ -55,12 +55,12 @@ class DataObjectPage_Controller
     public function init() {
         parent::init();
 
-        Requirements::css("dataobjectpage/css/dataobject.css");
+        Requirements::css(DATAOBJECT_MANAGER_DIR . "/css/dataobject.css");
         if ($this->isRTL()) {
-            Requirements::css("dataobjectpage/css/dataobject-rtl.css");
+            Requirements::css(DATAOBJECT_MANAGER_DIR . "/css/dataobject-rtl.css");
         }
 
-        Requirements::javascript("dataobjectpage/js/jquery.imgzoom.js");
+        Requirements::javascript(DATAOBJECT_MANAGER_DIR . "/js/jquery.imgzoom.js");
     }
 
     public function index(SS_HTTPRequest $request) {

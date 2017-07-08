@@ -1,0 +1,208 @@
+// Transformation
+.transition(@transition) {
+    -webkit-transition: @transition;  
+    -moz-transition:    @transition;
+    -ms-transition:     @transition; 
+    -o-transition:      @transition;  
+    transition:         @transition;  
+}
+
+.transform(@string){
+    -webkit-transform: @string;
+    -moz-transform:    @string;
+    -ms-transform:     @string;
+    -o-transform:      @string;
+    transform:         @string;
+}
+
+.transform2(@rotate: 90deg, @scale: 1, @skew: 1deg, @translate: 0) {
+    -webkit-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+    -moz-transform:    rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+    -ms-transform:     rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+    -o-transform:      rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+    transform:         rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+}
+
+.rotateTranslate(@rotate: 90deg, @x, @y:0) {
+    -webkit-transform: rotate(@rotate) translate(@x, @y);
+    -moz-transform:    rotate(@rotate) translate(@x, @y);
+    -ms-transform:     rotate(@rotate) translate(@x, @y);
+    -o-transform:      rotate(@rotate) translate(@x, @y);
+    transform:         rotate(@rotate) translate(@x, @y);
+}
+
+.transition-property(@string){
+    -webkit-transition-property: -webkit-transform, @string;
+    -moz-transition-property:    -moz-transform,    @string;
+    transition-property:         transform,         @string;
+}
+
+.scale(@x, @y) {
+    -webkit-transform: scale(@x, @y);
+    -moz-transform:    scale(@x, @y);
+    -ms-transform:     scale(@x, @y);
+    -o-transform:      scale(@x, @y);
+    transform:         scale(@x, @y);
+}
+
+.scale(@factor) {
+    -webkit-transform: scale(@factor);
+    -moz-transform:    scale(@factor);
+    -ms-transform:     scale(@factor);
+    -o-transform:      scale(@factor);
+    transform:         scale(@factor);
+}
+
+.rotate(@deg) {
+    -webkit-transform: rotate(@deg);
+    -moz-transform:    rotate(@deg);
+    -ms-transform:     rotate(@deg);
+    -o-transform:      rotate(@deg);
+    transform:         rotate(@deg);
+}
+
+.rotateX(@deg) {
+    -webkit-transform: rotateX(@deg);
+    -moz-transform:    rotateX(@deg);
+    -ms-transform:     rotateX(@deg);
+    -o-transform:      rotateX(@deg);
+    transform:         rotateX(@deg);
+}
+
+.rotateY(@deg) {
+    -webkit-transform: rotateY(@deg);
+    -moz-transform:    rotateY(@deg);
+    -ms-transform:     rotateY(@deg);
+    -o-transform:      rotateY(@deg);
+    transform:         rotateY(@deg);
+}
+
+.rotateZ(@deg) {
+    -webkit-transform: rotateZ(@deg);
+    -moz-transform:    rotateZ(@deg);
+    -ms-transform:     rotateZ(@deg);
+    -o-transform:      rotateZ(@deg);
+    transform:         rotateZ(@deg);
+}
+
+.skew(@deg, @deg2) {
+    -webkit-transform: skew(@deg, @deg2);
+    -moz-transform:    skew(@deg, @deg2);
+    -ms-transform:     skew(@deg, @deg2);
+    -o-transform:      skew(@deg, @deg2);
+    transform:         skew(@deg, @deg2);
+}
+
+.translate(@x, @y:0) {
+    -webkit-transform: translate(@x, @y);
+    -moz-transform:    translate(@x, @y);
+    -ms-transform:     translate(@x, @y);
+    -o-transform:      translate(@x, @y);
+    transform:         translate(@x, @y);
+}
+
+.translateX(@x) {
+    -webkit-transform: translateX(@x);
+    -moz-transform:    translateX(@x);
+    -ms-transform:     translateX(@x);
+    -o-transform:      translateX(@x);
+    transform:         translateX(@x);
+}
+
+.translateY(@y) {
+    -webkit-transform: translateY(@y);
+    -moz-transform:    translateY(@y);
+    -ms-transform:     translateY(@y);
+    -o-transform:      translateY(@y);
+    transform:         translateY(@y);
+}
+
+.translateZ(@z) {
+    -webkit-transform: translateZ(@z);
+    -moz-transform:    translateZ(@z);
+    -ms-transform:     translateZ(@z);
+    -o-transform:      translateZ(@z);
+    transform:         translateZ(@z);
+}
+
+.translate3d(@x, @y: 0, @z: 0) {
+    -webkit-transform: translate3d(@x, @y, @z);
+    -moz-transform:    translate3d(@x, @y, @z);
+    -ms-transform:     translate3d(@x, @y, @z);
+    -o-transform:      translate3d(@x, @y, @z);
+    transform:         translate3d(@x, @y, @z);
+}
+
+.perspective(@value: 1000) {
+    -webkit-perspective: @value;
+    -moz-perspective:    @value;
+    -ms-perspective: 	 @value;
+    perspective:         @value;
+}
+
+.transform-origin(@x:center, @y:center) {
+    -webkit-transform-origin: @x @y;
+    -moz-transform-origin:    @x @y;
+    -ms-transform-origin:     @x @y;
+    transform-origin:         @x @y;
+}
+
+.flipX() {
+    -webkit-transform: scaleX(-1);
+    -moz-transform:    scaleX(-1);
+    -ms-transform:     scaleX(-1);
+    -o-transform:      scaleX(-1);
+    transform:         scaleX(-1);
+
+    filter:     FlipH;
+    -ms-filter: "FlipH";
+}
+
+.flipY() {
+    -webkit-transform: scaleY(-1);
+    -moz-transform:    scaleY(-1);
+    -ms-transform:     scaleY(-1);
+    -o-transform:      scaleY(-1);
+    transform:         scaleY(-1);
+
+    filter:     FlipV;
+    -ms-filter: "FlipV";
+}
+
+.reflect (@length: 50%, @opacity: 0.2){
+    box-reflect:         below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(@length, transparent), to(rgba(255,255,255,@opacity)));
+    -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(@length, transparent), to(rgba(255,255,255,@opacity)));
+}
+
+// Toggle font smoothing mode in Webkit & FF
+.font-smoothing() {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.user-select(@value: none) {
+    -webkit-user-select: @value;   /* prevent copy paste, to allow, change 'none' to 'text' */
+    -khtml-user-select: @value; 
+    -moz-user-select: @value;      /* Firefox all */
+    -o-user-select: @value;        /* IE 10+ */
+    user-select: @value;           /* Likely future */
+}
+
+.user-drag(@value: none) {
+    -webkit-user-drag: @value; 
+    -moz-user-drag: @value; 
+    user-drag: @value; 
+}
+
+.selectNone() {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+
+    .user-select();
+    .user-drag();
+} 
+
+.image-size(@width) {
+    width: @width;
+    /*height: @width * 1.463768115942029;*/
+}

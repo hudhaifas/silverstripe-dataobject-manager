@@ -1,0 +1,38 @@
+@import "mixins/transform.less";
+@import "ellipsis-rtl.less";
+
+@line-height: 25px;
+@line-count: 2;
+@line-margin: 5px;
+
+.ellipsis {
+    &:before {
+        float: right;
+    }
+
+     > *:first-child {
+        float: left;
+        margin-left: auto;
+        margin-right: -(@line-margin);
+    }
+    
+    &:after {
+        float: left;
+        left: auto;
+        right: 100%;
+        
+        padding-left: @line-margin;
+        padding-right: 0;
+        
+        margin-left: 0;
+        margin-right: -3em;
+        
+        text-align: left;
+        
+        background: -webkit-gradient(linear, right top, left top, from(rgba(255, 255, 255, 0)), to(white), color-stop(50%, white));
+        background: -moz-linear-gradient(to left, rgba(255, 255, 255, 0), white 50%, white);
+        background: -o-linear-gradient(to left, rgba(255, 255, 255, 0), white 50%, white);
+        background: -ms-linear-gradient(to left, rgba(255, 255, 255, 0), white 50%, white);
+        background: linear-gradient(to left, rgba(255, 255, 255, 0), white 50%, white);
+    }
+}

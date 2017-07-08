@@ -1,0 +1,51 @@
+@import "mixins/transform.less";
+
+@line-height: 25px;
+@line-count: 2;
+@line-margin: 5px;
+
+.ellipsis {
+    overflow: hidden;
+    height: (@line-height * @line-count);
+    line-height: @line-height;
+
+    &:before {
+        content:"";
+        float: left;
+        width: @line-margin;
+        height: (@line-height * @line-count);
+    }
+
+    > *:first-child {
+        float: right;
+        width: 100%;
+        margin-left: -(@line-margin);
+        margin-bottom: 0;
+    }
+
+    &:after {
+        content:"\02026";
+
+        float: right;
+        position: relative;
+        top: -(@line-height);
+        left: 100%;
+        width: 3em;
+
+        padding-right: @line-margin;
+        
+        margin-left: -3em;
+
+        box-sizing: content-box;
+
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        text-align: right;
+
+        background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(white), color-stop(50%, white));
+        background: -moz-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+        background: -o-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+        background: -ms-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+    }
+}

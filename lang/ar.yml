@@ -1,0 +1,11 @@
+ar:
+  DataObjectPage:
+    KEYWORDS: 'الكلمات الدلالية'
+    MORE_ABOUT: 'المزيد'
+    ALSO_SEE: 'انظر أيضا'
+    SEARCH_NO_RESULTS: 'عذرا، لا يوجد أي نتائج للاستعلام الذي قمت به'
+    SEARCH_RESULTS_COUNT: 'حوالي {value} نتيجة'
+
+  DataObjectExtension:
+    CREATED_BY: 'أنشأ بواسطة'
+    EDITED_BY: 'آخر تغديل بواسطة'

@@ -1,0 +1,37 @@
+.ellipsis {
+  overflow: hidden;
+  height: 50px;
+  line-height: 25px;
+}
+.ellipsis:before {
+  content: "";
+  float: left;
+  width: 5px;
+  height: 50px;
+}
+.ellipsis > *:first-child {
+  float: right;
+  width: 100%;
+  margin-left: -5px;
+  margin-bottom: 0;
+}
+.ellipsis:after {
+  content: "\02026";
+  float: right;
+  position: relative;
+  top: -25px;
+  left: 100%;
+  width: 3em;
+  padding-right: 5px;
+  margin-left: -3em;
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  text-align: right;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(white), color-stop(50%, white));
+  background: -moz-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+  background: -o-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+  background: -ms-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+}
+/*# sourceMappingURL=ellipsis.css.map */

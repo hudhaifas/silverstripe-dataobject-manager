@@ -1,0 +1,49 @@
+/* Right to Left */
+.ellipsis:before {
+  float: right;
+}
+.ellipsis > *:first-child {
+  float: left;
+  margin-left: auto;
+  margin-right: -5px;
+}
+.ellipsis:after {
+  float: left;
+  left: auto;
+  right: 100%;
+  padding-left: 5px;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: -3em;
+  text-align: left;
+  background: -webkit-gradient(linear, right top, left top, from(rgba(255, 255, 255, 0)), to(white), color-stop(50%, white));
+  background: -moz-linear-gradient(to left, rgba(255, 255, 255, 0), white 50%, white);
+  background: -o-linear-gradient(to left, rgba(255, 255, 255, 0), white 50%, white);
+  background: -ms-linear-gradient(to left, rgba(255, 255, 255, 0), white 50%, white);
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), white 50%, white);
+}
+.dataobject-page .thumbnail .caption {
+  left: auto;
+  right: 0;
+}
+.dataobject-page .right-tabs .nav {
+  float: left;
+}
+.dataobject-page .right-tabs .nav li {
+  float: right;
+}
+.dataobject-page .right-tabs .tab-content {
+  float: right;
+}
+.dataobject-page .dataobject-grid .dataobject-item .thumbnail .mask {
+  left: 15%;
+  right: 0;
+}
+/* Navbar aSide */
+/* Small (Landscape phone to portrait tablet) */
+@media (max-width: 767px) {
+  .dataobject-page .dataobject-grid .dataobject-item .thumbnail .mask {
+    left: 0;
+  }
+}
+/*# sourceMappingURL=dataobject-rtl.css.map */

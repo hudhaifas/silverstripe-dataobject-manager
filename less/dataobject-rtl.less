@@ -1,0 +1,58 @@
+/* Right to Left */
+
+@import "mixins/transform.less";
+@import "ellipsis-rtl.less";
+
+@hover-color: #f84545;
+
+.dataobject-page {
+
+    .thumbnail {
+        .caption {
+            left: auto;
+            right: 0;
+        }
+    }
+
+    .right-tabs {
+        .nav {
+            float: left;
+
+            li {
+                float: right;
+            }
+        }
+
+        .tab-content {
+            float: right;
+        }
+    }
+
+    .dataobject-grid {
+
+        .dataobject-item {
+            .thumbnail {
+                .mask {
+                    left: 15%;
+                    right: 0;
+                }
+            }
+        }
+    }
+}
+
+/* Navbar aSide */
+/* Small (Landscape phone to portrait tablet) */
+@media (max-width: 767px) {
+    .dataobject-page {
+        .dataobject-grid {
+            .dataobject-item {
+                .thumbnail {
+                    .mask {
+                        left: 0;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -29,7 +29,7 @@
  * @author Hudhaifa Shatnawi <hudhaifa.shatnawi@gmail.com>
  * @version 1.0, Jan 23, 2017 - 7:56:34 AM
  */
-interface ManagedDataObject {
+interface ManageableDataObject {
 
     public function getObjectItem();
 

@@ -1,5 +1,5 @@
 <% if $ObjectImage && not $isObjectDisabled %>
-    <img src="$ObjectImage.PaddedImage(300,300).Watermark.URL" alt="image" class="img-responsive zoom-img" />
+    <img src="$ObjectImage.PaddedImage(256,256).Watermark.URL" alt="image" class="img-responsive zoom-img" />
 <% else %>
     <% if ObjectDefaultImage %>
         <img src= "$ObjectDefaultImage" alt="" class="img-responsive zoom-img" />

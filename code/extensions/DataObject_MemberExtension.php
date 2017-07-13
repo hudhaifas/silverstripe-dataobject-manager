@@ -56,11 +56,13 @@ class DataObject_MemberExtension
     }
 
     public function onBeforeWrite() {
-        if (!$this->owner->CreatedByID) {
-            $this->owner->CreatedByID = Member::currentUserID();
-        }
+        if (Member::currentUserID()) {
+            if (!$this->owner->CreatedByID) {
+                $this->owner->CreatedByID = Member::currentUserID();
+            }
 
-        $this->owner->EditedByID = Member::currentUserID();
+            $this->owner->EditedByID = Member::currentUserID();
+        }
     }
 
 }

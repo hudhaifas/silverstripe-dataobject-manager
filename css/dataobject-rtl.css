@@ -39,11 +39,49 @@
   left: 15%;
   right: 0;
 }
+.dataobject-page .object-label:before {
+  left: 0;
+  right: auto;
+  transform: skewY(26deg);
+}
+.dataobject-page .object-label.object-label-top-left {
+  left: auto;
+  right: 0px;
+}
+.dataobject-page .object-label.object-label-top-right {
+  left: 0px;
+  right: auto;
+}
+.dataobject-page .object-label.object-label-bottom-left {
+  left: auto;
+  right: 0px;
+}
+.dataobject-page .object-label.object-label-bottom-right {
+  left: 0px;
+  right: auto;
+}
 /* Navbar aSide */
 /* Small (Landscape phone to portrait tablet) */
 @media (max-width: 767px) {
   .dataobject-page .dataobject-grid .dataobject-item .thumbnail .mask {
     left: 0;
+  }
+}
+/* X-Small (Landscape phones and down) */
+@media (max-width: 480px) {
+  .dataobject-page .object-label.object-label-top-left {
+    top: auto;
+    bottom: 10px;
+  }
+  .dataobject-page .object-label.object-label-top-right {
+    top: auto;
+    bottom: 10px;
+  }
+  .dataobject-page .object-label.object-label-bottom-left {
+    bottom: 10px;
+  }
+  .dataobject-page .object-label.object-label-bottom-right {
+    bottom: 10px;
   }
 }
 /*# sourceMappingURL=dataobject-rtl.css.map */

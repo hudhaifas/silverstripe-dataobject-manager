@@ -16,6 +16,33 @@
         height: (@line-height * @line-count);
     }
 
+    &.ellipsis-1 {
+        height: (@line-height * 1);
+        line-height: @line-height;
+
+        &:before {
+            height: (@line-height * 1);
+        }
+    }
+
+    &.ellipsis-2 {
+        height: (@line-height * 2);
+        line-height: @line-height;
+
+        &:before {
+            height: (@line-height * 2);
+        }
+    }
+
+    &.ellipsis-3 {
+        height: (@line-height * 3);
+        line-height: @line-height;
+
+        &:before {
+            height: (@line-height * 3);
+        }
+    }
+
     > *:first-child {
         float: right;
         width: 100%;
@@ -33,7 +60,7 @@
         width: 3em;
 
         padding-right: @line-margin;
-        
+
         margin-left: -3em;
 
         box-sizing: content-box;

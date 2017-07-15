@@ -9,6 +9,27 @@
   width: 5px;
   height: 50px;
 }
+.ellipsis.ellipsis-1 {
+  height: 25px;
+  line-height: 25px;
+}
+.ellipsis.ellipsis-1:before {
+  height: 25px;
+}
+.ellipsis.ellipsis-2 {
+  height: 50px;
+  line-height: 25px;
+}
+.ellipsis.ellipsis-2:before {
+  height: 50px;
+}
+.ellipsis.ellipsis-3 {
+  height: 75px;
+  line-height: 25px;
+}
+.ellipsis.ellipsis-3:before {
+  height: 75px;
+}
 .ellipsis > *:first-child {
   float: right;
   width: 100%;

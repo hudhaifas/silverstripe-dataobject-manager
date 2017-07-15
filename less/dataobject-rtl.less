@@ -39,6 +39,34 @@
             }
         }
     }
+
+    .object-label {
+        &:before {
+            left: 0;
+            right: auto;
+            transform: skewY(26deg);
+        }
+
+        &.object-label-top-left {
+            left: auto;
+            right: 0px;
+        }
+
+        &.object-label-top-right {
+            left: 0px;
+            right: auto;
+        }
+
+        &.object-label-bottom-left {
+            left: auto;
+            right: 0px;
+        }
+
+        &.object-label-bottom-right {
+            left: 0px;
+            right: auto;
+        }
+    }
 }
 
 /* Navbar aSide */
@@ -52,6 +80,31 @@
                         left: 0;
                     }
                 }
+            }
+        }
+    }
+}
+
+/* X-Small (Landscape phones and down) */
+@media (max-width: 480px) {
+    .dataobject-page {
+        .object-label {
+            &.object-label-top-left {
+                top: auto;
+                bottom: 10px;
+            }
+
+            &.object-label-top-right {
+                top: auto;
+                bottom: 10px;
+            }
+
+            &.object-label-bottom-left {
+                bottom: 10px;
+            }
+
+            &.object-label-bottom-right {
+                bottom: 10px;
             }
         }
     }

@@ -55,4 +55,121 @@
   background: -ms-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
   background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
 }
+/* Meduim (Portrait tablet to landscape and desktop) */
+@media (min-width: 768px) and (max-width: 979px) {
+  .ellipsis {
+    height: 40px;
+    line-height: 20px;
+  }
+  .ellipsis:before {
+    width: 4px;
+    height: 40px;
+  }
+  .ellipsis.ellipsis-1 {
+    height: 20px;
+    line-height: 20px;
+  }
+  .ellipsis.ellipsis-1:before {
+    height: 20px;
+  }
+  .ellipsis.ellipsis-2 {
+    height: 40px;
+    line-height: 20px;
+  }
+  .ellipsis.ellipsis-2:before {
+    height: 40px;
+  }
+  .ellipsis.ellipsis-3 {
+    height: 60px;
+    line-height: 20px;
+  }
+  .ellipsis.ellipsis-3:before {
+    height: 60px;
+  }
+  .ellipsis > *:first-child {
+    margin-left: -4px;
+  }
+  .ellipsis:after {
+    top: -20px;
+    padding-right: 4px;
+  }
+}
+/* Small (Landscape phone to portrait tablet) */
+@media (max-width: 767px) {
+  .ellipsis {
+    height: 36px;
+    line-height: 18px;
+  }
+  .ellipsis:before {
+    width: 3px;
+    height: 36px;
+  }
+  .ellipsis.ellipsis-1 {
+    height: 18px;
+    line-height: 18px;
+  }
+  .ellipsis.ellipsis-1:before {
+    height: 18px;
+  }
+  .ellipsis.ellipsis-2 {
+    height: 36px;
+    line-height: 18px;
+  }
+  .ellipsis.ellipsis-2:before {
+    height: 36px;
+  }
+  .ellipsis.ellipsis-3 {
+    height: 54px;
+    line-height: 18px;
+  }
+  .ellipsis.ellipsis-3:before {
+    height: 54px;
+  }
+  .ellipsis > *:first-child {
+    margin-left: -3px;
+  }
+  .ellipsis:after {
+    top: -18px;
+    padding-right: 3px;
+  }
+}
+/* X-Small (Landscape phones and down) */
+@media (max-width: 480px) {
+  .ellipsis {
+    height: 35.2px;
+    line-height: 16px;
+  }
+  .ellipsis:before {
+    width: 3px;
+    height: 35.2px;
+  }
+  .ellipsis.ellipsis-1 {
+    height: 16px;
+    line-height: 16px;
+  }
+  .ellipsis.ellipsis-1:before {
+    height: 16px;
+  }
+  .ellipsis.ellipsis-2 {
+    height: 32px;
+    line-height: 16px;
+  }
+  .ellipsis.ellipsis-2:before {
+    height: 32px;
+  }
+  .ellipsis.ellipsis-3 {
+    height: 52.8px;
+    line-height: 16px;
+  }
+  .ellipsis.ellipsis-3:before {
+    height: 52.8px;
+  }
+  .ellipsis > *:first-child {
+    margin-left: -3px;
+  }
+  .ellipsis:after {
+    top: -16px;
+    padding-right: 3px;
+  }
+}
 /*# sourceMappingURL=ellipsis.css.map */

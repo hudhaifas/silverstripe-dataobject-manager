@@ -1,8 +1,16 @@
 @import "mixins/transform.less";
 
-@line-height: 25px;
 @line-count: 2;
+
+@line-height: 25px;
+@line-height-md: 20px;
+@line-height-sm: 18px;
+@line-height-xs: 16px;
+
 @line-margin: 5px;
+@line-margin-md: 4px;
+@line-margin-sm: 3px;
+@line-margin-xs: 3px;
 
 .ellipsis {
     overflow: hidden;
@@ -74,5 +82,152 @@
         background: -o-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
         background: -ms-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
         background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+    }
+}
+
+/* Meduim (Portrait tablet to landscape and desktop) */
+@media (min-width: 768px) and (max-width: 979px) {
+    .ellipsis {
+        height: (@line-height-md * @line-count);
+        line-height: @line-height-md;
+
+        &:before {
+            width: @line-margin-md;
+            height: (@line-height-md * @line-count);
+        }
+
+        &.ellipsis-1 {
+            height: (@line-height-md * 1);
+            line-height: @line-height-md;
+
+            &:before {
+                height: (@line-height-md * 1);
+            }
+        }
+
+        &.ellipsis-2 {
+            height: (@line-height-md * 2);
+            line-height: @line-height-md;
+
+            &:before {
+                height: (@line-height-md * 2);
+            }
+        }
+
+        &.ellipsis-3 {
+            height: (@line-height-md * 3);
+            line-height: @line-height-md;
+
+            &:before {
+                height: (@line-height-md * 3);
+            }
+        }
+
+        > *:first-child {
+            margin-left: -(@line-margin-md);
+        }
+
+        &:after {
+            top: -(@line-height-md);
+            padding-right: @line-margin-md;
+        }
+    }
+}
+
+/* Small (Landscape phone to portrait tablet) */
+@media (max-width: 767px) {
+    .ellipsis {
+        height: (@line-height-sm * @line-count);
+        line-height: @line-height-sm;
+
+        &:before {
+            width: @line-margin-sm;
+            height: (@line-height-sm * @line-count);
+        }
+
+        &.ellipsis-1 {
+            height: (@line-height-sm * 1);
+            line-height: @line-height-sm;
+
+            &:before {
+                height: (@line-height-sm * 1);
+            }
+        }
+
+        &.ellipsis-2 {
+            height: (@line-height-sm * 2);
+            line-height: @line-height-sm;
+
+            &:before {
+                height: (@line-height-sm * 2);
+            }
+        }
+
+        &.ellipsis-3 {
+            height: (@line-height-sm * 3);
+            line-height: @line-height-sm;
+
+            &:before {
+                height: (@line-height-sm * 3);
+            }
+        }
+
+        > *:first-child {
+            margin-left: -(@line-margin-sm);
+        }
+
+        &:after {
+            top: -(@line-height-sm);
+            padding-right: @line-margin-sm;
+        }
+    }
+}
+
+/* X-Small (Landscape phones and down) */
+@media (max-width: 480px) {
+    .ellipsis {
+        height: (@line-height-xs * @line-count * 1.1);
+        line-height: @line-height-xs;
+
+        &:before {
+            width: @line-margin-xs;
+            height: (@line-height-xs * @line-count * 1.1);
+        }
+
+        &.ellipsis-1 {
+            height: (@line-height-xs * 1);
+            line-height: @line-height-xs;
+
+            &:before {
+                height: (@line-height-xs * 1);
+            }
+        }
+
+        &.ellipsis-2 {
+            height: (@line-height-xs * 2);
+            line-height: @line-height-xs;
+
+            &:before {
+                height: (@line-height-xs * 2);
+            }
+        }
+
+        &.ellipsis-3 {
+            height: (@line-height-xs * 3 * 1.1);
+            line-height: @line-height-xs;
+
+            &:before {
+                height: (@line-height-xs * 3 * 1.1);
+            }
+        }
+
+        > *:first-child {
+            margin-left: -(@line-margin-xs);
+        }
+
+        &:after {
+            top: -(@line-height-xs);
+            padding-right: @line-margin-xs;
+        }
     }
 }

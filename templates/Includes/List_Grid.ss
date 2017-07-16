@@ -1,5 +1,11 @@
 <div class="<% if FiltersList %>col-md-8<% else %>col-md-12<% end_if %>">
     <% if Results  %>
+        <% if GridTitle  %>
+            <div class="row">
+                $GridTitle
+            </div>
+        <% end_if %>
+
         <div class="row dataobject-grid">
             <% loop $Results %>
                 <% if not $isObjectDisabled %>

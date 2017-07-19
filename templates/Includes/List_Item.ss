@@ -1,12 +1,10 @@
 <div>
     <a <% if ObjectLink %>href="$ObjectLink"<% end_if %> title="$ObjectTitle">
-        <div class="thumbnail text-center col-sm-12 col-xs-4 dataobject-image">
+        <div class="thumbnail text-center col-sm-12 col-xs-4">
             <% include List_Image %>
 
             <% if ObjectLink %>
-                <div class="mask">
-                    <div class="info"><%t DataObjectPage.MORE_ABOUT 'More' %></div>
-                </div>
+                <div class="mask"></div>
             <% end_if %>
         </div>
 

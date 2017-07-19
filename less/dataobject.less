@@ -2,53 +2,11 @@
     Created on : Jan 21, 2017, 10:25:41 PM
     Author     : hudhaifa
 */
-@import "mixins/transform.less";
+@import "mixins/all-mixins";
+@import "variables.less";
 @import "ellipsis.less";
 
-@hover-color: #f84545;
-
 .dataobject-page {
-
-    .thumbnail {
-        position: relative;
-        /* background: #b3b3b3; */
-        margin-bottom: auto;
-        padding: 0;
-        border: 0;
-
-        overflow: hidden;
-
-        img.zoom-img {
-            .scale(1);
-            .transition(all 250ms ease-out);
-
-            &:hover {
-                .scale(1.15);
-                .transition(all 750ms ease-out);
-                overflow: hidden;
-            }
-        }
-
-        .caption {
-            position: absolute;
-            width: 100%;
-            top: 20%;
-            left: 0;
-            bottom: 0rem;
-
-            color: #fff;
-            background: #000;
-            background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-            background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-            background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-
-            h4, .h4 {
-                text-shadow: 0 0 2px #000;
-                font-size: 18px;
-            }
-        }
-    }
 
     .right-tabs {
         .nav {
@@ -68,90 +26,204 @@
         }
     }
 
-    .dataobject-grid {
-        .dataobject-item {
-            padding: 8px 8px;
+    .dataobject-item {
+        padding: @object-padding-ver @object-padding-hor;
+
+        > div {
+            /*position: relative;*/
+            padding: 5px;
+            height: auto;
+            overflow: hidden;
+
+            border: 1px solid @border-color;
+            .border-radius(3px);
+            .box-sizing(border-box);
+
+            .box-shadow(0 0 10px rgba(0,0,0,0.2));
+
+            background-color: @color-background;
+
+            .transition(all 0.4s ease);
 
             &:hover {
-                .thumbnail {
-                    .mask {
-                        opacity: 1;
-                    }
-
-                    .caption {
-                        h4, .h4 {
-                            text-shadow: 0 0 2px #f00;
-                            font-size: 18px;
-                        }
-                    }
-                }
-
+                background-color: @color-background-hover;
+                border: 1px solid @border-color-hover;
             }
 
-            > div {
-                padding: 5px;
-                height: 36rem;
-                border: 1px solid #bbb;
-                overflow: hidden;
-
+            a {
                 &:hover {
-                    border: 1px solid @hover-color;
-                }
-
-                a {
-                    &:hover {
-                        text-decoration: none;
-                    }
-                }
-
-                .content {
-                    padding: 0;
+                    text-decoration: none;
                 }
             }
 
-            .title {
-                /*font-size: 1.1em;*/
-                /*padding: 4px 8px 0;*/
-                /*font-weight: bold;*/
-                /*white-space: nowrap;*/
+            .content {
+                padding: 0;
+            }
+        }
+
+        .title {
+            a {
+                pointer-events: none;
+                cursor: default;
+            }
+            margin-bottom: 5px;
+        }
+
+        .details {
+            color: #555;
+            font-size: 90%;
+            padding: 0 6px;
+            margin-bottom: 2px;
+        }
+
+        .mask {
+            &:before, &:after {
+                content: '';
+                position: absolute;
+                background: @mask-color;
+
+                opacity: 0;
+                .transition(all 0.4s ease);
             }
 
-            .details {
-                color: #555;
-                font-size: 0.85em;
-                padding: 0 8px;
-                margin-bottom: 2px;
+            &:before {
+                top: 0;
+                left: 0;
+                right: 100%;
+                bottom: 100%;
+            }
 
-                /* Clip long text and show dots */
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
+            &:after {
+                top: 100%;
+                left: 100%;
+                right: 0;
+                bottom: 0;
+            }
+        }
+
+        .thumbnail {
+            position: relative;
+            margin-bottom: auto;
+            padding: 0;
+            border: 0;
+
+            overflow: hidden;
+
+            .caption {
+                position: absolute;
+                width: 100%;
+                top: 20%;
+                left: 0;
+                bottom: 0rem;
+
+                color: #fff;
+                background: @default-color;
+                background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+                background:    -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+                background:      -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+                background:         linear-gradient(to top, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+
+                h4, .h4 {
+                    .transition(all 0.4s ease);
+
+                    text-shadow: 0 0 2px @default-color;
+                    font-size: 18px;
+                }
+            }
+
+            img.zoom-img {
+                .scale(1);
+                .transition(all 250ms ease);
+            }
+        }
+
+        &:hover {
+            .mask {
+                &:before, &:after {
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    opacity: 0.1;
+                    background: @mask-color-hover;
+                }
             }
 
             .thumbnail {
-                .mask {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 15%;
-                    bottom: 15%;
-
-                    opacity: 0;
-                    .transition(all 0.4s ease-in-out);
-
-                    .info {
-                        /*display: inline-block;*/
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        right: 0;
-
-                        padding: 7px;
-                        background: @hover-color;
-                        color: #fff;
-                        text-transform: uppercase;
-                        /*margin-top: 8em;*/
+                .caption {
+                    h4, .h4 {
+                        text-shadow: 0 0 2px @default-color-hover;
+                        font-size: 18px;
                     }
+                }
+
+                img.zoom-img {
+                    .scale(1.15);
+                    .transition(all 500ms ease-out);
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+
+    .dataobject-related {
+        &.dataobject-item {
+            padding: 8px 8px;
+
+            > div {
+                padding: 5px;
+                height: auto;
+                border: 1px solid #bbb;
+
+                border: 1px solid @border-color;
+                .border-radius(3px);
+
+                .box-shadow(0 0 1px rgba(0,0,0,0.2));
+
+                .content {
+                    padding-left: 6px;
+                }
+            }
+
+            .thumbnail {
+                .caption {
+                    top: 6%;
+                    padding: 6px;
+
+                    h4, .h4 {
+                        font-size: 9px;
+                    }
+                }
+            }
+
+            &:hover {
+                .thumbnail {
+                    .caption {
+                        h4, .h4 {
+                            font-size: 9px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .dataobject-list {
+        width: 100%;
+        white-space: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+
+        .dataobject-item {
+            position: relative;
+            display: inline-block;
+            white-space: initial;
+            width: 240px;
+            vertical-align: bottom;
+            font-size: 12px;
+
+            > div {
+                .content {
                 }
             }
         }
@@ -187,7 +259,7 @@
 
                     &:hover {
                         text-decoration: none;
-                        color: @hover-color;
+                        color: @border-color-hover;
                     }
                 }
             }
@@ -195,143 +267,93 @@
     }
 
     .dataobject-details {
-        .dataobject-summary {
-            .title {
-                font-size: 24px;
-
-                a {
-                    pointer-events: none;
-                    cursor: default;
-                }
-            }
-        }
-
-        .details {
-            color: #555;
-            font-size: 1em;
-            margin-bottom: 2px;
-        }
-
-        .thumbnail {
-            overflow: hidden;
-        }
-    }
-
-    .dataobject-related {
         margin-bottom: 10px;
 
-        .dataobject-image {
-            padding: 0;
-        }
-
-        .title {
-            font-size: 13px;
-            /*line-height: 13px;*/
-            margin-bottom: 5px;
-            /* Clip long text and show dots */
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .details {
-            color: #555;
-            font-size: 10px;
-            margin-bottom: 2px;
-
-            /* Clip long text and show dots */
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
         .thumbnail {
             overflow: hidden;
-
-            .caption {
-                top: 6%;
-                padding: 6px;
-
-                h4 {
-                    font-size: 9px;
-                }
-            }
         }
-
     }
 
     .object-label {
         position: absolute;
-        width: 72px;
-        height: 26px;
-        color: #fff;
+        width: @object-label-width;
+        height: @object-label-height;
+        line-height: @object-label-height;
+        margin-bottom: 8px;
+
+        color: @color-white;
+
         text-align: center;
         vertical-align: middle;
-        line-height: 25px;
+        cursor: default;
+        text-transform: none;
+        z-index: 10;
+
+        .border-radius(2px 2px 2px 0);
+        .box-shadow(1px 2px 1px rgba(0,0,0,0.32));
 
         &:before {
-            content: ' ';
+            content: '';
             position: absolute;
-            top: 2px;
             right: 0;
-            width: 8px;
-            height: 26px;
-            transform: skewY(-26deg);
-
-            color: #fff;
-            text-align: center;
-            vertical-align: middle;
+            bottom: -(@object-label-margin);
+            width: 0;
+            height: 0;
+            .triangle-right(#e21111);
+            /*z-index: 0;*/
+            white-space: normal;
         }
 
         &.object-label-red {
-            background: #e42e2e;
+            background: @color-red;
 
             &:before {
-                background: #e42e2e;
+                .triangle-right(@color-red);
             }
         }
 
         &.object-label-blue {
-            background: #2323c0;;
+            background: @color-blue;;
 
             &:before {
-                background: #2323c0;;
+                .triangle-right(@color-blue);
             }
         }
 
         &.object-label-black {
-            background: #000;
+            background: @color-black;
 
             &:before {
-                background: #000;
+                .triangle-right(@color-black);
             }
         }
 
         &.object-label-green {
-            background: #11a111;
+            background: @color-green;
 
             &:before {
-                background: #11a111;
+                .triangle-right(@color-green);
             }
         }
 
         &.object-label-top-left {
             top: 24px;
-            left: 0px;
+            left: (@object-padding-hor - @object-label-margin);
         }
 
         &.object-label-top-right {
             top: 24px;
-            right: 0px;
+            right: (@object-padding-hor - @object-label-margin);
         }
 
         &.object-label-bottom-left {
             bottom: 24px;
-            left: 0px;
+            left: (@object-padding-hor - @object-label-margin);
         }
 
         &.object-label-bottom-right {
             bottom: 24px;
-            right: 0px;
+            right: (@object-padding-hor - @object-label-margin);
         }
     }
 }
@@ -339,15 +361,50 @@
 /* Meduim (Portrait tablet to landscape and desktop) */
 @media (min-width: 768px) and (max-width: 979px) {
     .dataobject-page {
-        .dataobject-grid {
+        .dataobject-item {
+            padding: @object-padding-ver-md @object-padding-hor-md;
 
-            .dataobject-item {
-                padding: 8px 8px;
+            > div {
+                padding: 5px;
+                height: auto;
+            }
 
-                > div {
-                    padding: 5px;
-                    height: 29rem;
+            .thumbnail {
+                .caption {
+                    top: 10%;
+
+                    h4, .h4 {
+                        font-size: 16px;
+                    }
                 }
+            }
+
+            &:hover {
+                .thumbnail {
+                    .caption {
+                        h4, .h4 {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .object-label {
+            &.object-label-top-left {
+                left: (@object-padding-hor-md - @object-label-margin);
+            }
+
+            &.object-label-top-right {
+                right: (@object-padding-hor-md - @object-label-margin);
+            }
+
+            &.object-label-bottom-left {
+                left: (@object-padding-hor-md - @object-label-margin);
+            }
+
+            &.object-label-bottom-right {
+                right: (@object-padding-hor-md - @object-label-margin);
             }
         }
     }
@@ -360,71 +417,92 @@
             margin-bottom:0;
         }
 
-        .thumbnail {
-            .caption {
-                h4, .h4 {
-                    font-size: 14px;
+        .dataobject-item {
+            padding: @object-padding-ver-sm @object-padding-hor-sm;
+
+            > div {
+                padding: 5px;
+                height: auto;
+
+                .content {
+                    padding-left: 6px;
                 }
             }
-        }
 
-        .dataobject-grid {
-            .dataobject-item {
-                padding: 5px 15px;
+            .thumbnail {
+                .caption {
+                    top: 6%;
+                    padding: 6px;
 
-                .thumbnail {
-                    .mask {
-                        right: 0;
-
-                        .info {
-                            padding: 2px;
-                        }
+                    h4, .h4 {
+                        font-size: 13px;
                     }
                 }
+            }
 
-                > div {
-                    padding: 5px;
-                    height: auto;
-
-                }
-
-                .title {
-                    font-size: 16px;
-                    /*                    line-height: 17px;*/
-                    margin-bottom: 5px;
-                }
-
-                .details {
-                    font-size: 12px;
-                    /*                    line-height: 12px;*/
-                    margin-bottom: 3px;
+            &:hover {
+                .thumbnail {
+                    .caption {
+                        h4, .h4 {
+                            font-size: 13px;
+                        }
+                    }
                 }
             }
         }
 
         .dataobject-related {
+            &.dataobject-item {
+                padding: 8px 8px;
 
-            .title {
-                font-size: 15px;
-                /*                line-height: 15px;*/
-                margin-bottom: 5px;
-                /* Clip long text and show dots */
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
+                > div {
+                    padding: 5px;
+                    height: auto;
+                    border: 1px solid #bbb;
 
-            .details {
-                font-size: 11px;
-                /*                line-height: 11px;*/
-                margin-bottom: 3px;
+                    border: 1px solid @border-color;
+                    border-radius: 3px;
+
+                    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+                    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+                    .content {
+                        padding-left: 6px;
+                    }
+                }
             }
         }
-    }
 
-    .object-label {
-        width: 66px;
-        line-height: 22px;
-        font-size: 10px;
+        .dataobject-list {
+            .dataobject-item {
+                width: 176px;
+                font-size: 11px;
+            }
+        }
+
+        .object-label {
+            width: @object-label-width-sm;
+            line-height: @object-label-height-sm;
+            font-size: 10px;
+
+            .object-label {
+                &.object-label-top-left {
+                    left: (@object-padding-hor-sm - @object-label-margin);
+                }
+
+                &.object-label-top-right {
+                    right: (@object-padding-hor-sm - @object-label-margin);
+                }
+
+                &.object-label-bottom-left {
+                    left: (@object-padding-hor-sm - @object-label-margin);
+                }
+
+                &.object-label-bottom-right {
+                    right: (@object-padding-hor-sm - @object-label-margin);
+                }
+            }
+        }
     }
 }
 
@@ -435,83 +513,166 @@
             margin-bottom:0;
         }
 
-        .thumbnail {
-            .caption {
-                top: 10%;
-
-                h4, .h4 {
-                    font-size: 10px;
-                    padding: 0 2px;
-                }
-            }
+        .dataobject-grid {
+            margin-right: -6px;
+            margin-left: -6px;
         }
 
-        .dataobject-grid {
-            .dataobject-item {
-                padding: 5px 7px;
+        .dataobject-item {
+            padding: @object-padding-ver-xs @object-padding-hor-xs;
 
-                .title {
-                    font-size: 13px;
-                    font-weight: normal;
-                    padding: 4px 8px 0;
-                    /*                    line-height: 16px;*/
-                    margin-bottom: 4px;
+            > div {
+                padding: 5px;
+                height: auto;
+                border: 1px solid #bbb;
+
+                border: 1px solid @border-color;
+                border-radius: 3px;
+
+                -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+                box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+                .content {
+                    padding-left: 6px;
                 }
+            }
 
-                .details {
-                    font-size: 11px;
-                    /*line-height: 11px;*/
-                    margin-bottom: 3px;
+            .thumbnail {
+                .caption {
+                    top: 3%;
+                    padding: 5px;
+
+                    h4, .h4 {
+                        font-size: 11px;
+                    }
+                }
+            }
+
+            &:hover {
+                .thumbnail {
+                    .caption {
+                        h4, .h4 {
+                            font-size: 11px;
+                        }
+                    }
                 }
             }
         }
 
         .dataobject-related {
+            &.dataobject-item {
+                padding: 8px 8px;
 
-            .title {
-                font-size: 12px;
-                font-weight: normal;
-                /*line-height: 14px;*/
-                margin-bottom: 4px;
-                /* Clip long text and show dots */
-                overflow: hidden;
-                text-overflow: ellipsis;
+                > div {
+                    padding: 5px;
+                    height: auto;
+                    border: 1px solid #bbb;
+
+                    border: 1px solid @border-color;
+                    border-radius: 3px;
+
+                    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+                    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+                    .content {
+                        padding-left: 6px;
+                    }
+                }
+
+                .thumbnail {
+                    .caption {
+                        top: 6%;
+                        padding: 6px;
+
+                        h4, .h4 {
+                            font-size: 9px;
+                        }
+                    }
+                }
+
+                &:hover {
+                    .thumbnail {
+                        .caption {
+                            h4, .h4 {
+                                font-size: 9px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .dataobject-list {
+            .dataobject-item {
+                width: 160px;
+                font-size: 10px;
             }
 
-            .details {
-                font-size: 10px;
-                /*                line-height: 10px;*/
-                margin-bottom: 3px;
+            .object-label {
+            }
+        }
+
+        .dataobject-side {
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+                margin-bottom: 3em;
+
+                max-height: 60vh;
+                overflow-y: auto;
+
+                li {
+                    padding: 5px 0;
+                    border-bottom: 1px solid #eee;
+                    margin-bottom: 5px;
+                    text-transform: uppercase;
+
+                    a {
+                        font-size: 14px;
+                        .transition(background 350ms ease-in-out);
+                        .transition(border-color 350ms ease-in-out);
+                        .transition(color 150ms ease-in-out);
+                        color: #999;
+
+                        &:hover {
+                            text-decoration: none;
+                            color: @border-color-hover;
+                        }
+                    }
+                }
+            }
+        }
+
+        .dataobject-details {
+            .thumbnail {
+                overflow: hidden;
             }
         }
 
         .object-label {
-            width: 60px;
-            height: 22px;
-            line-height: 20px;
-
-            &:before {
-                top: 2px;
-                width: 8px;
-                height: 22px;
-            }
+            width: @object-label-width-xs;
+            height: @object-label-height-xs;
+            line-height: @object-label-height-xs;
 
             &.object-label-top-left {
-                top: auto;
-                bottom: 10px;
+                top: 14px;
+                left: (@object-padding-hor-xs - @object-label-margin);
             }
 
             &.object-label-top-right {
-                top: auto;
-                bottom: 10px;
+                top: 14px;
+                right: (@object-padding-hor-xs - @object-label-margin);
             }
 
             &.object-label-bottom-left {
-                bottom: 10px;
+                bottom: 14px;
+                left: (@object-padding-hor-xs - @object-label-margin);
             }
 
             &.object-label-bottom-right {
-                bottom: 10px;
+                bottom: 14px;
+                right: (@object-padding-hor-xs - @object-label-margin);
             }
         }
     }

@@ -1,0 +1,31 @@
+// Shadow
+.box-shadow(@shadow: 1px 1px 2px rgba(0,0,0,0.25)) {
+    -webkit-box-shadow: @shadow;
+    -moz-box-shadow:    @shadow;
+    -o-box-shadow:      @shadow;
+    box-shadow:         @shadow;
+}
+
+.text-shadow(@string: 0 1px 3px rgba(0, 0, 0, 0.25)) {
+    text-shadow: @string;
+}
+
+.drop-shadow(@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+    -webkit-box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+    -moz-box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+    box-shadow:		@x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+
+.inner-shadow(@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+    -webkit-box-shadow: inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+    -moz-box-shadow:    inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+    box-shadow:         inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+
+// Box sizing
+.box-sizing(@type: border-box) {
+    -webkit-box-sizing: @type;
+    -moz-box-sizing:    @type;
+    -ms-box-sizing:     @type;
+    box-sizing:         @type;
+}

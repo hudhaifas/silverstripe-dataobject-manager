@@ -2,20 +2,26 @@
 
 @line-count: 2;
 
-@line-height: 25px;
-@line-height-md: 20px;
-@line-height-sm: 18px;
-@line-height-xs: 16px;
+@line-height: 21px;
+@line-height-md: 18px;
+@line-height-sm: 16px;
+@line-height-xs: 23px;
 
 @line-margin: 5px;
 @line-margin-md: 4px;
 @line-margin-sm: 3px;
 @line-margin-xs: 3px;
 
+@line-font-size: 14px;
+@line-font-size-md: 12px;
+@line-font-size-sm: 12px;
+@line-font-size-xs: 14px;
+
 .ellipsis {
     overflow: hidden;
     height: (@line-height * @line-count);
     line-height: @line-height;
+    font-size: @line-font-size;
 
     &:before {
         content:"";
@@ -51,6 +57,33 @@
         }
     }
 
+    &.ellipsis-4 {
+        height: (@line-height * 4);
+        line-height: @line-height;
+
+        &:before {
+            height: (@line-height * 4);
+        }
+    }
+
+    &.ellipsis-5 {
+        height: (@line-height * 5);
+        line-height: @line-height;
+
+        &:before {
+            height: (@line-height * 5);
+        }
+    }
+
+    &.ellipsis-small {
+        height: 80%;
+        line-height: 80%;
+
+        &:before {
+            height: 80%;
+        }
+    }
+
     > *:first-child {
         float: right;
         width: 100%;
@@ -59,7 +92,7 @@
     }
 
     &:after {
-        content:"\02026";
+        /*content:"\02026";*/
 
         float: right;
         position: relative;
@@ -90,6 +123,7 @@
     .ellipsis {
         height: (@line-height-md * @line-count);
         line-height: @line-height-md;
+        font-size: @line-font-size-md;
 
         &:before {
             width: @line-margin-md;
@@ -139,6 +173,7 @@
     .ellipsis {
         height: (@line-height-sm * @line-count);
         line-height: @line-height-sm;
+        font-size: @line-font-size-sm;
 
         &:before {
             width: @line-margin-sm;
@@ -172,6 +207,24 @@
             }
         }
 
+        &.ellipsis-4 {
+            height: (@line-height-sm * 4);
+            line-height: @line-height-sm;
+
+            &:before {
+                height: (@line-height-sm * 4);
+            }
+        }
+
+        &.ellipsis-5 {
+            height: (@line-height-sm * 5);
+            line-height: @line-height-sm;
+
+            &:before {
+                height: (@line-height-sm * 5);
+            }
+        }
+
         > *:first-child {
             margin-left: -(@line-margin-sm);
         }
@@ -188,6 +241,7 @@
     .ellipsis {
         height: (@line-height-xs * @line-count * 1.1);
         line-height: @line-height-xs;
+        font-size: @line-font-size-xs;
 
         &:before {
             width: @line-margin-xs;
@@ -218,6 +272,24 @@
 
             &:before {
                 height: (@line-height-xs * 3 * 1.1);
+            }
+        }
+
+        &.ellipsis-4 {
+            height: (@line-height-xs * 4 * 1.1);
+            line-height: @line-height-xs;
+
+            &:before {
+                height: (@line-height-xs * 4 * 1.1);
+            }
+        }
+
+        &.ellipsis-5 {
+            height: (@line-height-xs * 5 * 1.1);
+            line-height: @line-height-xs;
+
+            &:before {
+                height: (@line-height-xs * 5 * 1.1);
             }
         }
 

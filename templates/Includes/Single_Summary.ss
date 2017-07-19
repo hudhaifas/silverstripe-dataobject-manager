@@ -1,5 +1,5 @@
 <% if $ObjectSummary.Count >= 0 %>
-    <% if $Title %><p class="title"><a <% if ObjectLink %>href="$ObjectLink"<% end_if %> title="$Title">$Title.LimitCharacters(50)</a></p><% end_if %>
+    <% if $Title %><p class="title"><a <% if ObjectLink %>href="$ObjectLink"<% end_if %> title="$Title">$Title</a></p><% end_if %>
     
     <% loop $ObjectSummary %>
         <p class="details">

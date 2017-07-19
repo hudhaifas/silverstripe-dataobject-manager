@@ -206,3 +206,15 @@
     width: @width;
     /*height: @width * 1.463768115942029;*/
 }
+
+.triangle-left(@color) {
+    border: 4px solid darken(@color, 15%);
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+}
+
+.triangle-right(@color) {
+    border: 4px solid @color;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+}

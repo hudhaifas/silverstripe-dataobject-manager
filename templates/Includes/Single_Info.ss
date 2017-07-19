@@ -1,6 +1,6 @@
 <div class="col-md-9">
     <div class="row dataobject-details">
-        <div class="col-sm-4 dataobject-image">
+        <div class="col-sm-4">
             <a title="$Title">
                 <div class="thumbnail text-center imgBox">
                     <% include Single_Image %>

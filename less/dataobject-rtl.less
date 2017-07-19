@@ -1,18 +1,10 @@
 /* Right to Left */
 
-@import "mixins/transform.less";
+@import "mixins/all-mixins";
+@import "variables.less";
 @import "ellipsis-rtl.less";
 
-@hover-color: #f84545;
-
 .dataobject-page {
-
-    .thumbnail {
-        .caption {
-            left: auto;
-            right: 0;
-        }
-    }
 
     .right-tabs {
         .nav {
@@ -28,13 +20,21 @@
         }
     }
 
-    .dataobject-grid {
+    .dataobject-item {
+        .thumbnail {
+            .caption {
+                left: auto;
+                right: 0;
+            }
+        }
+    }
 
-        .dataobject-item {
-            .thumbnail {
-                .mask {
-                    left: 15%;
-                    right: 0;
+    .dataobject-related {
+        &.dataobject-item {
+            > div {
+                .content {
+                    padding-left: 0;
+                    padding-right: 6px;
                 }
             }
         }
@@ -44,42 +44,86 @@
         &:before {
             left: 0;
             right: auto;
-            transform: skewY(26deg);
+            .triangle-left(#e21111);
+        }
+
+        &.object-label-red {
+            &:before {
+                .triangle-left(@color-red);
+            }
+        }
+
+        &.object-label-blue {
+            &:before {
+                .triangle-left(@color-blue);
+            }
+        }
+
+        &.object-label-black {
+            &:before {
+                .triangle-left(@color-black);
+            }
+        }
+
+        &.object-label-green {
+            &:before {
+                .triangle-left(@color-green);
+            }
         }
 
         &.object-label-top-left {
             left: auto;
-            right: 0px;
+            right: (@object-padding-hor - @object-label-margin);
         }
 
         &.object-label-top-right {
-            left: 0px;
+            left: (@object-padding-hor - @object-label-margin);
             right: auto;
         }
 
         &.object-label-bottom-left {
             left: auto;
-            right: 0px;
+            right: (@object-padding-hor - @object-label-margin);
         }
 
         &.object-label-bottom-right {
-            left: 0px;
+            left: (@object-padding-hor - @object-label-margin);
             right: auto;
         }
     }
 }
 
-/* Navbar aSide */
 /* Small (Landscape phone to portrait tablet) */
 @media (max-width: 767px) {
     .dataobject-page {
-        .dataobject-grid {
-            .dataobject-item {
-                .thumbnail {
-                    .mask {
-                        left: 0;
-                    }
+        .dataobject-item {
+            > div {
+                .content {
+                    padding-left: 0;
+                    padding-right: 6px;
                 }
+            }
+        }
+
+        .object-label {
+            &.object-label-top-left {
+                left: auto;
+                right: (@object-padding-hor-sm - @object-label-margin);
+            }
+
+            &.object-label-top-right {
+                left: (@object-padding-hor-sm - @object-label-margin);
+                right: auto;
+            }
+
+            &.object-label-bottom-left {
+                left: auto;
+                right: (@object-padding-hor-sm - @object-label-margin);
+            }
+
+            &.object-label-bottom-right {
+                left: (@object-padding-hor-sm - @object-label-margin);
+                right: auto;
             }
         }
     }
@@ -88,23 +132,34 @@
 /* X-Small (Landscape phones and down) */
 @media (max-width: 480px) {
     .dataobject-page {
+        .dataobject-item {
+            > div {
+                .content {
+                    padding-left: 0;
+                    padding-right: 6px;
+                }
+            }
+        }
+
         .object-label {
             &.object-label-top-left {
-                top: auto;
-                bottom: 10px;
+                left: auto;
+                right: (@object-padding-hor-xs - @object-label-margin);
             }
 
             &.object-label-top-right {
-                top: auto;
-                bottom: 10px;
+                left: (@object-padding-hor-xs - @object-label-margin);
+                right: auto;
             }
 
             &.object-label-bottom-left {
-                bottom: 10px;
+                left: auto;
+                right: (@object-padding-hor-xs - @object-label-margin);
             }
 
             &.object-label-bottom-right {
-                bottom: 10px;
+                left: (@object-padding-hor-xs - @object-label-margin);
+                right: auto;
             }
         }
     }

@@ -326,7 +326,7 @@
 .dataobject-page .dataobject-item .thumbnail .caption {
   position: absolute;
   width: 100%;
-  top: 20%;
+  top: 15%;
   left: 0;
   bottom: 0rem;
   color: #fff;
@@ -344,7 +344,7 @@
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
   text-shadow: 0 0 2px #000;
-  font-size: 18px;
+  font-size: 16px;
 }
 .dataobject-page .dataobject-item .thumbnail img.zoom-img {
   -webkit-transform: scale(1);
@@ -370,7 +370,7 @@
 .dataobject-page .dataobject-item:hover .thumbnail .caption h4,
 .dataobject-page .dataobject-item:hover .thumbnail .caption .h4 {
   text-shadow: 0 0 2px #f84545;
-  font-size: 18px;
+  font-size: 16px;
 }
 .dataobject-page .dataobject-item:hover .thumbnail img.zoom-img {
   -webkit-transform: scale(1.15);

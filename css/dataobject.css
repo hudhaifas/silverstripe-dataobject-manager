@@ -722,6 +722,13 @@
     width: 160px;
     font-size: 10px;
   }
+  .dataobject-page .dataobject-list .dataobject-item > div .content {
+    padding: 0;
+  }
+  .dataobject-page .dataobject-list .dataobject-item .title {
+    font-size: 12px;
+    line-height: 18px;
+  }
   .dataobject-page .dataobject-side ul {
     margin: 0;
     padding: 0;

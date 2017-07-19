@@ -2,7 +2,9 @@
     <% if Results  %>
         <% if GridTitle  %>
             <div class="row">
-                $GridTitle
+                <div class="col-md-12">
+                    $GridTitle
+                </div>
             </div>
         <% end_if %>
 

@@ -229,9 +229,6 @@
     padding-right: 3px;
   }
 }
-body {
-  /*overflow-x: hidden;*/
-}
 .dataobject-page .dataobject-tabs .nav {
   float: right;
   border-bottom: 0px;
@@ -549,7 +546,7 @@ body {
   font-size: 22px;
 }
 .dataobject-page .dataobject-header .dataobject-card .dataobject-brief .dataobject-info {
-  font-size: 16px;
+  font-size: 15px;
   margin-bottom: 2px;
 }
 .dataobject-page .object-label {

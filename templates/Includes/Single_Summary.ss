@@ -2,7 +2,7 @@
     <% if $Title %><p class="dataobject-title"><a <% if ObjectLink %>href="$ObjectLink"<% end_if %> title="$Title">$Title</a></p><% end_if %>
     
     <% loop $ObjectSummary %>
-        <p class="dataobject-details">
+        <p class="dataobject-info">
             <% if $Title %>$Title:<% if BR %><br /><% end_if %><% end_if %> $Value</p>
     <% end_loop %>
 <% else %>

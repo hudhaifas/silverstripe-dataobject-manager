@@ -32,10 +32,10 @@
 }
 .dataobject-page .dataobject-tabs .nav li:first-child {
   margin-left: auto;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 .dataobject-page .dataobject-tabs .nav li:last-child {
-  margin-left: 10px;
+  margin-left: 15px;
   margin-right: auto;
 }
 .dataobject-page .dataobject-tabs .tab-content {

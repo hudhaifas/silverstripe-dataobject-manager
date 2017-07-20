@@ -229,6 +229,9 @@
     padding-right: 3px;
   }
 }
+body {
+  overflow-x: hidden;
+}
 .dataobject-page .full-width {
   width: 100vw;
   position: relative;
@@ -236,6 +239,36 @@
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+}
+.dataobject-page .dataobject-tabs.dataobject-tabs-fluid .nav {
+  /*height: 100%;*/
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  margin-left: -50vw;
+  background: #eee;
+  border-bottom: 1px solid #ececec;
+  margin-bottom: 0;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+.dataobject-page .dataobject-tabs.dataobject-tabs-fluid .nav > li > a {
+  color: #534d46;
+  border-radius: 4px;
+}
+.dataobject-page .dataobject-tabs.dataobject-tabs-fluid .nav-tabs > li.active a,
+.dataobject-page .dataobject-tabs.dataobject-tabs-fluid .nav-tabs > li.active a:hover,
+.dataobject-page .dataobject-tabs.dataobject-tabs-fluid .nav-tabs > li.active a:focus {
+  color: #534d46;
+  cursor: default;
+  background-color: transparent;
+  border: 1px solid #534d46;
+}
+.dataobject-page .dataobject-tabs.dataobject-tabs-fluid .nav-tabs > li a:hover,
+.dataobject-page .dataobject-tabs.dataobject-tabs-fluid .nav-tabs > li a:focus {
+  color: #534d46;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid transparent;
 }
 .dataobject-page .dataobject-tabs .nav {
   float: right;
@@ -254,10 +287,10 @@
   white-space: initial;
 }
 .dataobject-page .dataobject-tabs .nav li:first-child {
-  margin-left: 10px;
+  margin-left: 15px;
 }
 .dataobject-page .dataobject-tabs .nav li:last-child {
-  margin-right: 10px;
+  margin-right: 15px;
 }
 .dataobject-page .dataobject-tabs .tab-content {
   width: 100%;

@@ -6,6 +6,10 @@
 @import "variables.less";
 @import "ellipsis.less";
 
+body {
+    overflow-x: hidden;
+}
+
 .dataobject-page {
 
     .full-width {
@@ -18,6 +22,51 @@
     }
 
     .dataobject-tabs {
+
+        &.dataobject-tabs-fluid {
+            .nav {
+                /*height: 100%;*/
+                position: relative;
+                width: 100vw;
+                left: 50%;
+
+                margin-left: -50vw;
+                background: #eee;
+                border-bottom: 1px solid #ececec;
+                margin-bottom: 0;
+                padding-bottom: 5px;
+                padding-top: 5px;
+
+                > li > a {
+                    color: #534d46;
+                    border-radius: 4px;
+                }
+            }
+
+            .nav-tabs {
+                > li.active {
+                    a {
+                        &, &:hover, &:focus  {
+                            color: #534d46;
+                            cursor: default;
+                            background-color: transparent;
+                            border: 1px solid #534d46;
+                        }
+                    }
+                }
+
+                > li {
+                    a {
+                        &:hover, &:focus  {
+                            color: #534d46;
+                            background-color: rgba(0,0,0,.1);
+                            border: 1px solid transparent;
+                        }
+                    }
+                }
+            }
+        }
+
         .nav {
             float: right;
             border-bottom: 0px;
@@ -38,11 +87,11 @@
                 white-space: initial;
 
                 &:first-child {
-                    margin-left: 10px; 
+                    margin-left: 15px; 
                 }
 
                 &:last-child {
-                    margin-right: 10px; 
+                    margin-right: 15px; 
                 }
             }
         }

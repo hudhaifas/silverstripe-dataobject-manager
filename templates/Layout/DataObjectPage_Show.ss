@@ -21,5 +21,7 @@
         <div class="dataobject-tabs">
             <% include Single_Tabs %>
         </div>
+
+        <% include Single_Down %>
     <% end_with %>
 </div>

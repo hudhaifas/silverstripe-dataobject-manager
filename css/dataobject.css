@@ -229,14 +229,37 @@
     padding-right: 3px;
   }
 }
-.dataobject-page .right-tabs .nav {
+.dataobject-page .full-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+.dataobject-page .dataobject-tabs .nav {
   float: right;
   border-bottom: 0px;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: right;
 }
-.dataobject-page .right-tabs .nav li {
-  float: left;
+.dataobject-page .dataobject-tabs .nav li {
+  /*float: left;*/
+  float: none;
+  position: relative;
+  display: inline-block;
+  white-space: initial;
 }
-.dataobject-page .right-tabs .tab-content {
+.dataobject-page .dataobject-tabs .nav li:first-child {
+  margin-left: 10px;
+}
+.dataobject-page .dataobject-tabs .nav li:last-child {
+  margin-right: 10px;
+}
+.dataobject-page .dataobject-tabs .tab-content {
   width: 100%;
   float: left;
   border-top: 1px solid #ddd;
@@ -281,10 +304,6 @@
 }
 .dataobject-page .dataobject-item .title {
   margin-bottom: 5px;
-}
-.dataobject-page .dataobject-item .title a {
-  pointer-events: none;
-  cursor: default;
 }
 .dataobject-page .dataobject-item .details {
   color: #555;

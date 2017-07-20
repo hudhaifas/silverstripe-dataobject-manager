@@ -22,13 +22,23 @@
   background: -ms-linear-gradient(to left, rgba(255, 255, 255, 0), white 50%, white);
   background: linear-gradient(to left, rgba(255, 255, 255, 0), white 50%, white);
 }
-.dataobject-page .right-tabs .nav {
+.dataobject-page .dataobject-tabs .nav {
   float: left;
+  text-align: left;
+  text-align: center;
 }
-.dataobject-page .right-tabs .nav li {
-  float: right;
+.dataobject-page .dataobject-tabs .nav li {
+  /*float: right;*/
 }
-.dataobject-page .right-tabs .tab-content {
+.dataobject-page .dataobject-tabs .nav li:first-child {
+  margin-left: auto;
+  margin-right: 10px;
+}
+.dataobject-page .dataobject-tabs .nav li:last-child {
+  margin-left: 10px;
+  margin-right: auto;
+}
+.dataobject-page .dataobject-tabs .tab-content {
   float: right;
 }
 .dataobject-page .dataobject-item .thumbnail .caption {

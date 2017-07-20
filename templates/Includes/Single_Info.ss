@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row dataobject-tabs">
         <% include Single_Tabs %>
     </div>
 </div>

@@ -6,12 +6,24 @@
 
 .dataobject-page {
 
-    .right-tabs {
+    .dataobject-tabs {
         .nav {
             float: left;
+            text-align: left;
+            text-align: center;
 
             li {
-                float: right;
+                /*float: right;*/
+                &:first-child {
+                    margin-left: auto; 
+                    margin-right: 10px; 
+                }
+
+                &:last-child {
+                    margin-left: 10px; 
+                    margin-right: auto; 
+                }
+
             }
         }
 

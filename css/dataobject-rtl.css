@@ -24,8 +24,6 @@
 }
 .dataobject-page .dataobject-tabs .nav {
   float: left;
-  text-align: left;
-  text-align: center;
 }
 .dataobject-page .dataobject-tabs .nav li {
   /*float: right;*/
@@ -48,6 +46,13 @@
 .dataobject-page .dataobject-related.dataobject-item > div .content {
   padding-left: 0;
   padding-right: 6px;
+}
+.dataobject-page .dataobject-header .dataobject-card .dataobject-brief {
+  text-align: right;
+  /*margin-left: auto;*/
+  /*margin-right: (@dataobject-picture-size + 8px);*/
+  padding-left: 0;
+  padding-right: 168px;
 }
 .dataobject-page .object-label:before {
   left: 0;
@@ -97,6 +102,15 @@
   .dataobject-page .dataobject-item > div .content {
     padding-left: 0;
     padding-right: 6px;
+  }
+  .dataobject-page .dataobject-header .dataobject-card .dataobject-brief {
+    display: block;
+    /*margin: 12px auto;*/
+    padding: 12px 0;
+    text-align: center;
+  }
+  .dataobject-page .dataobject-header .dataobject-card .dataobject-brief .dataobject-info {
+    text-align: right;
   }
   .dataobject-page .object-label.object-label-top-left {
     left: auto;

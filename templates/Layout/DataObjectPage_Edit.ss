@@ -1,4 +1,4 @@
-<div class="dataobject-page">
+<div class="container dataobject-page">
     <div class="row" style="margin-bottom: 1.5em;">
         <div class="col-md-12">
             $ObjectSearchForm

@@ -1,5 +1,5 @@
 <% if ObjectTabs %>
-    <div class="col-md-12 right-tabs clearfix">
+    <div class="clearfix">
         <ul class="nav nav-tabs">
             <% loop ObjectTabs %>
                <li class="<% if First %>active<% end_if %>"><a href="#tab{$Pos}" data-toggle="tab">$Title</a></li>
@@ -8,8 +8,8 @@
 
         <div class="tab-content">
             <% loop ObjectTabs %>
-                <div id="tab{$Pos}" class="tab-pane fade <% if First %>in active<% end_if %>">
-                    <p>$Content</p>
+                <div id="tab{$Pos}" class="container tab-pane fade <% if First %>in active<% end_if %>">
+                    $Content
                 </div>
             <% end_loop %>
         </div>

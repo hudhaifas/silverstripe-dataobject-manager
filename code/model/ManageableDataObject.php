@@ -43,6 +43,8 @@ interface ManageableDataObject {
 
     public function getObjectSummary();
 
+    public function getObjectNav();
+
     public function getObjectRelated();
 
     public function getObjectTabs();

@@ -9,7 +9,7 @@
 
             <div class="col-md-4">
                 <% with Single %>
-                    <% include Single_Nav %>
+                    $ObjectNav
                 <% end_with %>
             </div>
         </div>

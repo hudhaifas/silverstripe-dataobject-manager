@@ -178,54 +178,54 @@
 /* X-Small (Landscape phones and down) */
 @media (max-width: 480px) {
   .ellipsis {
-    height: 50.6px;
-    line-height: 23px;
-    font-size: 14px;
+    height: 35.2px;
+    line-height: 16px;
+    font-size: 11px;
   }
   .ellipsis:before {
     width: 3px;
-    height: 50.6px;
+    height: 35.2px;
   }
   .ellipsis.ellipsis-1 {
-    height: 23px;
-    line-height: 23px;
+    height: 16px;
+    line-height: 16px;
   }
   .ellipsis.ellipsis-1:before {
-    height: 23px;
+    height: 16px;
   }
   .ellipsis.ellipsis-2 {
-    height: 46px;
-    line-height: 23px;
+    height: 32px;
+    line-height: 16px;
   }
   .ellipsis.ellipsis-2:before {
-    height: 46px;
+    height: 32px;
   }
   .ellipsis.ellipsis-3 {
-    height: 75.9px;
-    line-height: 23px;
+    height: 52.8px;
+    line-height: 16px;
   }
   .ellipsis.ellipsis-3:before {
-    height: 75.9px;
+    height: 52.8px;
   }
   .ellipsis.ellipsis-4 {
-    height: 101.2px;
-    line-height: 23px;
+    height: 70.4px;
+    line-height: 16px;
   }
   .ellipsis.ellipsis-4:before {
-    height: 101.2px;
+    height: 70.4px;
   }
   .ellipsis.ellipsis-5 {
-    height: 126.5px;
-    line-height: 23px;
+    height: 88px;
+    line-height: 16px;
   }
   .ellipsis.ellipsis-5:before {
-    height: 126.5px;
+    height: 88px;
   }
   .ellipsis > *:first-child {
     margin-left: -3px;
   }
   .ellipsis:after {
-    top: -23px;
+    top: -16px;
     padding-right: 3px;
   }
 }

@@ -6,12 +6,16 @@
             <% end_loop %>
         </ul>
 
-        <div class="tab-content">
-            <% loop ObjectTabs %>
-                <div id="tab{$Pos}" class="container tab-pane fade <% if First %>in active<% end_if %>">
-                    $Content
-                </div>
-            <% end_loop %>
+        <div class="container">
+            <div class="tab-content">
+                <% loop ObjectTabs %>
+                    <div id="tab{$Pos}" class="row tab-pane fade <% if First %>in active<% end_if %>">
+                        <div class="col-md-12">
+                            $Content
+                        </div>
+                    </div>
+                <% end_loop %>
+            </div>
         </div>
     </div>
 <% end_if %>

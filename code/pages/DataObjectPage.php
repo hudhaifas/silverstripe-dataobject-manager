@@ -32,10 +32,26 @@
 class DataObjectPage
         extends Page {
 
+    private static $db = array(
+        'PageLength' => 'Int',
+    );
+    private static $defaults = array(
+        'PageLength' => 36,
+    );
     private static $icon = "dataobjectpage/images/wrap.png";
 
     public function canCreate($member = false) {
         return false;
+    }
+
+    public function getCMSFields() {
+        $fields = parent::getCMSFields();
+
+        $fields->removeFieldFromTab("Root.Main", "Content");
+
+        $fields->addFieldToTab('Root.Main', new NumericField('PageLength', _t('DataObjectPage.PAGE_LENGTH', 'Page Length'), $this->PageLength));
+
+        return $fields;
     }
 
 }
@@ -80,7 +96,7 @@ class DataObjectPage_Controller
 
         $paginated = PaginatedList::create(
                         $results, $request
-                )->setPageLength($this->getPageLength())
+                )->setPageLength($this->PageLength)
                 ->setPaginationGetVar('s');
 
         $end = microtime(true); // time in Microseconds
@@ -104,37 +120,7 @@ class DataObjectPage_Controller
                     'ID' => $id
                 ))->first();
 
-        $align = $this->isRTL() == 'rtl' ? 'right' : 'left';
-
-        Requirements::customScript(<<<JS
-            $(document).ready(function () {
-                $('.imgBox').imgZoom({
-                    boxWidth: 500,
-                    boxHeight: 400,
-                    marginLeft: 5,
-                    align: '{$align}',
-                    origin: 'data-origin'
-                });
-            });
-JS
-        );
-
-        if ($single) {
-            if (!$single || !$single->canView()) {
-                return $this->httpError(404, 'That object could not be found!');
-            }
-
-            $this->preRenderSingle();
-
-            return $this
-                            ->customise(array(
-                                'Single' => $single,
-                                'Title' => $single->Title
-                            ))
-                            ->renderWith(array('DataObjectPage_Show', 'Page'));
-        } else {
-            return $this->httpError(404, 'That object could not be found!');
-        }
+        return $this->showSingle($single);
     }
 
     public function edit() {
@@ -143,22 +129,7 @@ JS
                     'ID' => $id
                 ))->first();
 
-        if ($single) {
-            if (!$single || !$single->canEdit()) {
-                return $this->httpError(404, 'That object could not be found!');
-            }
-
-            $this->preRenderSingle();
-
-            return $this
-                            ->customise(array(
-                                'Single' => $single,
-                                'Title' => $single->Title
-                            ))
-                            ->renderWith(array('DataObjectPage_Edit', 'Page'));
-        } else {
-            return $this->httpError(404, 'That object could not be found!');
-        }
+        return $this->editSingle($single);
     }
 
     public function ObjectSearchForm() {
@@ -182,12 +153,8 @@ JS
         return $form;
     }
 
-    public function ObjectEditForm() {
-        $id = $this->getRequest()->param('ID');
-
-        $single = $this->getObjectsList()->filter(array(
-                    'ID' => $id
-                ))->first();
+    public function ObjectEditForm($class, $id) {
+        $single = DataObject::get_by_id($class, $id);
 
         // Create fields          
         $fields = new FieldList();
@@ -195,8 +162,8 @@ JS
 
         if ($single) {
             $dbFields = $single->db();
-//            $dbFields = DataObject::custom_database_fields($single->ClassName); // $single->db();
-            // add database fields
+
+            // iterate database fields
             foreach ($dbFields as $fieldName => $fieldType) {
                 if ($this->restrictFields() && !in_array($fieldName, $this->restrictFields())) {
                     continue;
@@ -239,6 +206,36 @@ JS
         return $this->owner->redirectBack();
     }
 
+    protected function showSingle($single) {
+        if ($single && $single->canView()) {
+            $this->preRenderSingle($single);
+
+            return $this
+                            ->customise(array(
+                                'Single' => $single,
+                                'Title' => $single->Title
+                            ))
+                            ->renderWith(array('DataObjectPage_Show', 'Page'));
+        } else {
+            return $this->httpError(404, 'That object could not be found!');
+        }
+    }
+
+    protected function editSingle($single) {
+        if ($single && $single->canEdit()) {
+            $this->preRenderSingle($single);
+
+            return $this
+                            ->customise(array(
+                                'Single' => $single,
+                                'Title' => $single->Title
+                            ))
+                            ->renderWith(array('DataObjectPage_Edit', 'Page'));
+        } else {
+            return $this->httpError(404, 'That object could not be found!');
+        }
+    }
+
     protected function getObjectsList() {
         return DataObject::get('Page');
     }
@@ -247,10 +244,6 @@ JS
         return $list->filter(array(
                     'Title:PartialMatch' => $keywords
         ));
-    }
-
-    protected function getPageLength() {
-        return 12;
     }
 
     /**
@@ -303,8 +296,21 @@ JS
         
     }
 
-    protected function preRenderSingle() {
-        
+    protected function preRenderSingle($single) {
+        $align = $this->isRTL() == 'rtl' ? 'right' : 'left';
+
+        Requirements::customScript(<<<JS
+                $(document).ready(function () {
+                    $('.imgBox').imgZoom({
+                        boxWidth: 500,
+                        boxHeight: 400,
+                        marginLeft: 5,
+                        align: '{$align}',
+                        origin: 'data-origin'
+                    });
+                });
+JS
+        );
     }
 
     public function isRTL() {

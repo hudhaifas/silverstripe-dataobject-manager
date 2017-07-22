@@ -5,6 +5,7 @@ en:
     ALSO_SEE: 'Also See'
     SEARCH_NO_RESULTS: 'Sorry, your search query did not return any results.'
     SEARCH_RESULTS_COUNT: 'About {value} results'
+    PAGE_LENGTH: 'Page Length'
     SAVE: 'Save'
     SHOW: 'Show'
     EDIT: 'Edit'

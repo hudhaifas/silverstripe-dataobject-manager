@@ -27,7 +27,7 @@
 /**
  *
  * @author Hudhaifa Shatnawi <hudhaifa.shatnawi@gmail.com>
- * @version 1.0, Jan 22, 2017 - 6:20:48 PM
+ * @version 1.5, Jan 22, 2017 - 6:20:48 PM
  */
 class DataObjectPage
         extends Page {
@@ -46,6 +46,8 @@ class DataObjectPage_Controller
     private static $allowed_actions = array(
         'show',
         'edit',
+        'ObjectEditForm',
+        'doObjectEdit',
     );
     private static $url_handlers = array(
         'show/$ID' => 'show',
@@ -180,6 +182,63 @@ JS
         return $form;
     }
 
+    public function ObjectEditForm() {
+        $id = $this->getRequest()->param('ID');
+
+        $single = $this->getObjectsList()->filter(array(
+                    'ID' => $id
+                ))->first();
+
+        // Create fields          
+        $fields = new FieldList();
+        $fields->push(HiddenField::create('ObjectID', 'ObjectID', $id));
+
+        if ($single) {
+            $dbFields = $single->db();
+//            $dbFields = DataObject::custom_database_fields($single->ClassName); // $single->db();
+            // add database fields
+            foreach ($dbFields as $fieldName => $fieldType) {
+                if ($this->restrictFields() && !in_array($fieldName, $this->restrictFields())) {
+                    continue;
+                }
+
+                $fieldObject = $single->dbObject($fieldName)->scaffoldFormField(null);
+
+                $fieldObject->setTitle($single->fieldLabel($fieldName));
+                $fieldObject->setValue($single->$fieldName);
+                $fields->push($fieldObject);
+            }
+        }
+
+        // Create action
+        $actions = new FieldList(
+                FormAction::create('doObjectEdit', _t('DataObjectPage.SAVE', 'Save'))
+        );
+
+        // Create Validators
+        $validator = new RequiredFields();
+
+        $form = Form::create($this, 'ObjectEditForm', $fields, $actions, $validator);
+
+        return $form;
+    }
+
+    public function doObjectEdit($data, $form) {
+        $objectID = $data['ObjectID'];
+
+        $single = $this->getObjectsList()->filter(array(
+                    'ID' => $objectID
+                ))->first();
+
+
+        foreach ($data as $key => $value) {
+            $single->$key = $value;
+        }
+
+        $single->write();
+        return $this->owner->redirectBack();
+    }
+
     protected function getObjectsList() {
         return DataObject::get('Page');
     }
@@ -212,6 +271,10 @@ JS
      */
     protected function getFiltersList() {
         return null;
+    }
+
+    public function restrictFields() {
+        return array();
     }
 
     /**

@@ -5,6 +5,9 @@ ar:
     ALSO_SEE: 'انظر أيضا'
     SEARCH_NO_RESULTS: 'عذرا، لا يوجد أي نتائج للاستعلام الذي قمت به'
     SEARCH_RESULTS_COUNT: 'حوالي {value} نتيجة'
+    SAVE: 'حفظ'
+    SHOW: 'عرض'
+    EDIT: 'تعديل'
 
   DataObjectExtension:
     CREATED_BY: 'أنشأ بواسطة'

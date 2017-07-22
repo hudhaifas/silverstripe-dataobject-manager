@@ -9,7 +9,11 @@
 
             <div class="col-md-4">
                 <% with Single %>
-                    $ObjectNav
+                    <% if ObjectNav %>
+                        $ObjectNav
+                    <% else %>
+                        <% include Single_Nav %>
+                    <% end_if %>
                 <% end_with %>
             </div>
         </div>

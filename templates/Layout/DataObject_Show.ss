@@ -8,21 +8,24 @@
             <div class="col-md-4"></div>
 
             <div class="col-md-4">
-                <% with Single %>
-                    <div class="pull-right">
-                        <a href="{$ObjectLink}" class="btn btn-default" title="<%t DataObjectPage.SHOW 'Show' %>"><%t DataObjectPage.SHOW 'Show' %></a>
-                    </div>
+                <% with Record %>
+                    <% if ObjectNav %>
+                        $ObjectNav
+                    <% else %>
+                        <% include Single_Nav %>
+                    <% end_if %>
                 <% end_with %>
             </div>
         </div>
     </div>
 
-    <% with Single %>
+    <% with Record %>
         <% include Single_Info %>
+
+        <div class="dataobject-tabs">
+            <% include Single_Tabs %>
+        </div>
+
+        <% include Single_Down %>
     <% end_with %>
-
-    <div class="container">
-        $ObjectEditForm($Single.ClassName, $Single.ID)
-    </div>
-
 </div>

@@ -8,7 +8,7 @@
             <div class="col-md-4"></div>
 
             <div class="col-md-4">
-                <% with Single %>
+                <% with Record %>
                     <div class="pull-right">
                         <a href="{$ObjectLink}" class="btn btn-default" title="<%t DataObjectPage.SHOW 'Show' %>"><%t DataObjectPage.SHOW 'Show' %></a>
                     </div>
@@ -17,12 +17,12 @@
         </div>
     </div>
 
-    <% with Single %>
+    <% with Record %>
         <% include Single_Info %>
     <% end_with %>
 
     <div class="container">
-        $ObjectEditForm($Single.ClassName, $Single.ID)
+        $ObjectForm
     </div>
 
 </div>

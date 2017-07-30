@@ -1,3 +1,6 @@
 ---
 Name: dataobjectpage
 ---
+
+DataObject_EditController:
+  tinymce_key: 'o5it9440hknvt5tzsviq7515lx2siuhkn5jy4oy8cjzkm9jg'

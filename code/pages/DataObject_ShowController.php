@@ -30,29 +30,14 @@
  * @author hudha
  */
 class DataObject_ShowController
-        extends Page_Controller {
+        extends DataObject_ListController {
 
     private static $allowed_actions = array(
         'show',
     );
     private static $url_handlers = array(
-        'show/$ID/$Map' => 'show',
+        '$Map/show/$ID' => 'show',
     );
-    private static $dataobjects_map = array();
-    protected $isRTL = false;
-
-    public function init() {
-        parent::init();
-
-        $this->isRTL = i18n::get_script_direction(i18n::get_locale()) == 'rtl';
-
-        Requirements::css(DATAOBJECT_MANAGER_DIR . "/css/dataobject.css");
-        if ($this->isRTL) {
-            Requirements::css(DATAOBJECT_MANAGER_DIR . "/css/dataobject-rtl.css");
-        }
-
-        Requirements::javascript(DATAOBJECT_MANAGER_DIR . "/js/jquery.imgzoom.js");
-    }
 
     public function show() {
         $record = $this->getViewableRecord();
@@ -62,52 +47,6 @@ class DataObject_ShowController
                             'Title' => $record->Title
                         ))
                         ->renderWith(array('DataObject_Show', 'Page'));
-    }
-
-    protected final function getRecord($id, $className) {
-        if (is_numeric($id)) {
-            $record = DataObject::get_by_id($className, $id);
-        } else {
-            if (!singleton($className)->canCreate()) {
-                Security::permissionFailure($this);
-            }
-
-            $record = new $className();
-        }
-        return $record;
-    }
-
-    protected final function getViewableRecord() {
-        $className = $this->getRecordClass();
-        if (!$className) {
-            return null;
-        }
-
-        $id = $this->getRecordID();
-
-        $record = $this->getRecord($id, $className);
-
-        if (!$record) {
-            $this->httpError(403, 'That object could not be found!');
-        }
-
-        if ($record && !$record->canView()) {
-            Security::permissionFailure($this);
-        }
-
-        return $record;
-    }
-
-    protected final function getRecordClass() {
-        $map = $this->getRequest()->param('Map');
-
-        $dataobjects = $this->config()->dataobjects_map;
-        if (!$dataobjects || !$map || !isset($dataobjects[$map]) || !$dataobjects[$map]) {
-//            $this->httpError(403, 'That object could not be found!');
-            return null;
-        }
-
-        return $dataobjects[$map];
     }
 
     protected final function getRecordID() {
@@ -120,6 +59,7 @@ class DataObject_ShowController
                     FormAction::create('doSave', _t('DataObjectPage.SAVE', 'Save'))
             );
         }
+        
         if ($record->ID && $record->hasMethod('canDelete') && $record->canDelete()) {
             $actions->push(
                     FormAction::create('doDelete', _t('DataObjectPage.DELETE', 'Delete'))

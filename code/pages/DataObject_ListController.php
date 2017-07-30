@@ -32,6 +32,26 @@
 class DataObject_ListController
         extends Page_Controller {
 
+    private static $url_handlers = array(
+        '$Map' => 'index'
+    );
+    private static $dataobjects_map = array();
+    protected $isRTL = false;
+    protected $record;
+
+    public function init() {
+        parent::init();
+
+        $this->isRTL = i18n::get_script_direction(i18n::get_locale()) == 'rtl';
+
+        Requirements::css(DATAOBJECT_MANAGER_DIR . "/css/dataobject.css");
+        if ($this->isRTL) {
+            Requirements::css(DATAOBJECT_MANAGER_DIR . "/css/dataobject-rtl.css");
+        }
+
+        Requirements::javascript(DATAOBJECT_MANAGER_DIR . "/js/jquery.imgzoom.js");
+    }
+
     public function index(SS_HTTPRequest $request) {
         $start = microtime(true); // time in Microseconds
 
@@ -47,7 +67,9 @@ class DataObject_ListController
 
         $paginated = PaginatedList::create(
                         $results, $request
-                )->setPageLength($this->PageLength)
+                )
+//                ->setPageLength($this->PageLength)
+                ->setPageLength(36)
                 ->setPaginationGetVar('s');
 
         $end = microtime(true); // time in Microseconds
@@ -62,11 +84,24 @@ class DataObject_ListController
                             ->renderWith('ObjectsList');
         }
 
-        return $data;
+//        return $data;
+        return $this
+                        ->customise($data)
+                        ->renderWith(array('DataObject_List', 'Page'));
+    }
+
+    public function handleAction($request, $action) {
+        $this->record = $this->getViewableRecord();
+        $id = (int) $this->request->param('ID');
+        if ($id && !$this->record) {
+            return Security::permissionFailure($this, "You do not have permission to that");
+        }
+        return parent::handleAction($request, $action);
     }
 
     public function ObjectSearchForm() {
         $data = $this->request->getVars();
+        $map = $this->getRequest()->param('Map');
 
         $form = Form::create(
                         $this, 'ObjectSearchForm', FieldList::create(
@@ -79,7 +114,7 @@ class DataObject_ListController
         $form
                 ->disableSecurityToken()
                 ->setFormMethod('GET')
-                ->setFormAction($this->Link())
+                ->setFormAction($this->Link($map))
                 ->setTemplate('Form_ObjectSearch')
                 ->loadDataFrom($data);
 
@@ -87,13 +122,23 @@ class DataObject_ListController
     }
 
     protected function getObjectsList() {
-        return DataObject::get('Page');
+        $className = $this->mapped_class();
+        if (!$className) {
+            return null;
+        }
+        return DataObject::get($className);
     }
 
     protected function searchObjects($list, $keywords) {
-        return $list->filter(array(
-                    'Title:PartialMatch' => $keywords
-        ));
+        $search_filters = Config::inst()->forClass($this->mapped_class())->search_filters;
+
+        $filters = array();
+        foreach ($search_filters as $field => $filter) {
+            $filter = "{$field}:{$filter}";
+            $filters[$filter] = $keywords;
+        }
+
+        return $list->filterAny($filters);
     }
 
     /**
@@ -114,6 +159,57 @@ class DataObject_ListController
      */
     protected function getFiltersList() {
         return null;
+    }
+
+    protected final function mapped_class() {
+        $map = $this->getRequest()->param('Map');
+
+        $dataobjects = $this->config()->dataobjects_map;
+        if (!$dataobjects || !$map || !isset($dataobjects[$map]) || !$dataobjects[$map]) {
+//            $this->httpError(403, 'That object could not be found!');
+            return null;
+        }
+
+        return $dataobjects[$map];
+    }
+
+    protected final function mapped_config() {
+        return Config::inst()->forClass($this->mapped_class());
+    }
+
+    protected final function getRecord($id, $className) {
+        if (is_numeric($id)) {
+            $record = DataList::create($className)->byID($id);
+//            $record = DataObject::get_by_id($className, $id);
+        } else {
+            if (!singleton($className)->canCreate()) {
+                Security::permissionFailure($this);
+            }
+
+            $record = new $className();
+        }
+        return $record;
+    }
+
+    protected final function getViewableRecord() {
+        $className = $this->mapped_class();
+        if (!$className) {
+            return null;
+        }
+
+        $id = $this->getRecordID();
+
+        $record = $this->getRecord($id, $className);
+
+        if (!$record) {
+            $this->httpError(403, 'That object could not be found!');
+        }
+
+        if ($record && !$record->canView()) {
+            Security::permissionFailure($this);
+        }
+
+        return $record;
     }
 
 }

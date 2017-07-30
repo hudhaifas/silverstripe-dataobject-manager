@@ -39,10 +39,10 @@ class DataObject_EditController
         'doDelete',
     );
     private static $url_handlers = array(
-        'edit/$ID/$Map' => 'edit'
+        '$Map/edit/$ID' => 'edit'
     );
     // TinyMCE Cloud API Key
-    private static $tinymce_key = array();
+    private static $tinymce_key = '';
 
     public function init() {
         parent::init();
@@ -73,7 +73,7 @@ JS
     }
 
     public function ObjectEditForm() {
-        $className = $this->getRecordClass();
+        $className = $this->mapped_class();
         if (!$className) {
             return $this->getEmptyForm();
         }
@@ -181,6 +181,12 @@ JS
 
                 $fieldObject->setTitle($record->fieldLabel($fieldName));
                 $fieldObject->setValue($record->$fieldName);
+
+                if ($fieldObject instanceof DateField) {
+                    $fieldObject->setConfig('showcalendar', true);
+//                    $fieldObject->setConfig('showdropdown', true);
+//                    $fieldObject->setConfig('dateformat', 'dd-MM-yyyy');
+                }
                 $fields->push($fieldObject);
             }
         }

@@ -34,13 +34,29 @@ class DataObject_ShowController
 
     private static $allowed_actions = array(
         'show',
+        'handleAction',
     );
     private static $url_handlers = array(
-        '$Map/show/$ID' => 'show',
+//        '$Map/show/$ID' => 'show',
+        '$Action//$ID/$Map' => 'handleAction',
+//        '$Action//$ID/$OtherID' => 'handleAction',
     );
+    protected $currentID;
+    protected $currentRecord;
+
+    public function handleAction($request, $action) {
+        $this->currentID = (int) $this->request->param('ID');
+        $this->currentClass = $this->mapped_class();
+        $this->currentRecord = $this->getViewableRecord();
+
+        if ($this->currentID && !$this->currentRecord) {
+            return Security::permissionFailure($this, "You do not have permission to that");
+        }
+        return parent::handleAction($request, $action);
+    }
 
     public function show() {
-        $record = $this->getViewableRecord();
+        $record = $this->currentRecord;
         return $this
                         ->customise(array(
                             'Record' => $record,
@@ -59,7 +75,7 @@ class DataObject_ShowController
                     FormAction::create('doSave', _t('DataObjectPage.SAVE', 'Save'))
             );
         }
-        
+
         if ($record->ID && $record->hasMethod('canDelete') && $record->canDelete()) {
             $actions->push(
                     FormAction::create('doDelete', _t('DataObjectPage.DELETE', 'Delete'))
@@ -77,6 +93,41 @@ class DataObject_ShowController
         }
 
         return $this->Link("{$action}/{$id}/{$map}");
+    }
+
+    protected final function getRecord() {
+        if ($this->currentRecord) {
+            return $this->currentRecord;
+        }
+
+        $id = $this->currentID;
+        $className = $this->currentClass;
+
+        if (is_numeric($id)) {
+            $record = DataList::create($className)->byID($id);
+//            $record = DataObject::get_by_id($className, $id);
+        } else {
+            if (!singleton($className)->canCreate()) {
+                Security::permissionFailure($this);
+            }
+
+            $record = new $className();
+        }
+        return $record;
+    }
+
+    protected final function getViewableRecord() {
+        $record = $this->getRecord();
+
+        if (!$record) {
+            $this->httpError(403, 'That object could not be found!');
+        }
+
+        if ($record && !$record->canView()) {
+            Security::permissionFailure($this);
+        }
+
+        return $record;
     }
 
 }

@@ -80,7 +80,7 @@ JS
 
         $id = $this->getRecordID();
 
-        $record = $this->getRecord($id, $className);
+        $record = $this->getRecord();
 
         if (!$record) {
             $this->httpError(403, 'That object could not be found!');

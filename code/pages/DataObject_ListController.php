@@ -32,12 +32,16 @@
 class DataObject_ListController
         extends Page_Controller {
 
+    private static $allowed_actions = array(
+        'handleAction',
+    );
     private static $url_handlers = array(
-        '$Map' => 'index'
+        '$Map' => 'index',
+        '$Action//$ID/$OtherID' => 'handleAction',
     );
     private static $dataobjects_map = array();
+    protected $currentClass = false;
     protected $isRTL = false;
-    protected $record;
 
     public function init() {
         parent::init();
@@ -91,11 +95,12 @@ class DataObject_ListController
     }
 
     public function handleAction($request, $action) {
-        $this->record = $this->getViewableRecord();
-        $id = (int) $this->request->param('ID');
-        if ($id && !$this->record) {
-            return Security::permissionFailure($this, "You do not have permission to that");
+        $this->currentClass = $this->mapped_class();
+
+        if (!$this->currentClass) {
+            return $this->httpError(404, 'That object could not be found!');
         }
+
         return parent::handleAction($request, $action);
     }
 
@@ -175,41 +180,6 @@ class DataObject_ListController
 
     protected final function mapped_config() {
         return Config::inst()->forClass($this->mapped_class());
-    }
-
-    protected final function getRecord($id, $className) {
-        if (is_numeric($id)) {
-            $record = DataList::create($className)->byID($id);
-//            $record = DataObject::get_by_id($className, $id);
-        } else {
-            if (!singleton($className)->canCreate()) {
-                Security::permissionFailure($this);
-            }
-
-            $record = new $className();
-        }
-        return $record;
-    }
-
-    protected final function getViewableRecord() {
-        $className = $this->mapped_class();
-        if (!$className) {
-            return null;
-        }
-
-        $id = $this->getRecordID();
-
-        $record = $this->getRecord($id, $className);
-
-        if (!$record) {
-            $this->httpError(403, 'That object could not be found!');
-        }
-
-        if ($record && !$record->canView()) {
-            Security::permissionFailure($this);
-        }
-
-        return $record;
     }
 
 }

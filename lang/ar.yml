@@ -13,3 +13,17 @@ ar:
   DataObjectExtension:
     CREATED_BY: 'أنشأ بواسطة'
     EDITED_BY: 'آخر تغديل بواسطة'
+
+    # Privacy
+    PRIVACY: 'الخصوصية'
+    CAN_VIEW_TYPE: 'من يستطيع الاتطلاع هذا المكان؟'
+    VIEWER_GROUPS: 'مجموعات الزوار'
+    VIEWER_MEMBERS: 'الأعضاء الزوار'
+    CAN_EDIT_TYPE: 'من يستطيع تعديل هذا المكان؟'
+    EDITOR_GROUPS: 'مجموعات المحررين'
+    EDITOR_MEMBERS: 'الأعضاء المحررين'
+    GROUP_PLACEHOLDER: 'انقر لاختيار المجموعات'
+    MEMBER_PLACEHOLDER: 'انقر لاختيار الأعضاء'
+    ACCESSANYONE: 'الجميع'
+    ACCESSLOGGEDIN: 'كل الأعضاء المسجلين'
+    ACCESSONLYTHESE: ' فقط هؤلاء الأشخاص ( اختر من القائمة)'

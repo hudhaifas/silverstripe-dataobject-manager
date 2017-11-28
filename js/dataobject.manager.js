@@ -3,12 +3,12 @@
  */
 
 jQuery(document).ready(function () {
-    var $tabsHolder = $('.dataobject-tabs.preload');
+    var $tabsHolder = $('.dataobject-tabs.place-holder');
     var url = $tabsHolder.data('url');
     $tabsHolder.attr('data-url', '');
     
     $tabsHolder.load(url, function () {
-        $tabsHolder.removeClass('preload');
+        $tabsHolder.removeClass('place-holder');
     });
 
 });

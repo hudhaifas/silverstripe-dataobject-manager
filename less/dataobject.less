@@ -7,6 +7,8 @@
 @import "ellipsis.less";
 
 .dataobject-page {
+    min-height: 70vh;
+    
     .dataobject-tabs {
         .nav {
             float: right;
@@ -78,7 +80,7 @@
             margin-top: 15px;
         }
 
-        &.preload {
+        &.place-holder {
             .nav {
                 animation-duration: 1.5s;
                 animation-fill-mode: forwards;
@@ -829,10 +831,11 @@
 }
 
 @keyframes placeHolderShimmer {
-    0%{
+    0% {
         background-position: -868px 0
     }
-    100%{
+    
+    100% {
         background-position: 868px 0
     }
 }

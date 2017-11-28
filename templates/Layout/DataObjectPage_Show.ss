@@ -22,8 +22,8 @@
     <% with Single %>
         <% include Single_Info %>
 
-        <div class="dataobject-tabs">
-            <% include Single_Tabs %>
+        <div class="dataobject-tabs preload" data-url="{$Up.TabsLink($ID)}">
+            <% include Single_EmptyTabs %>
         </div>
 
         <% include Single_Down %>

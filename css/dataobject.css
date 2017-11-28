@@ -280,6 +280,16 @@
   border: 0;
   margin-top: 15px;
 }
+.dataobject-page .dataobject-tabs.preload .nav {
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+}
 .dataobject-page .dataobject-item {
   padding: 15px 15px;
 }
@@ -881,6 +891,14 @@
   .dataobject-page .object-label.object-label-bottom-right {
     bottom: 14px;
     right: 0px;
+  }
+}
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -868px 0;
+  }
+  100% {
+    background-position: 868px 0;
   }
 }
 /*# sourceMappingURL=dataobject.css.map */

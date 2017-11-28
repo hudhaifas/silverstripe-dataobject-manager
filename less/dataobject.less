@@ -77,6 +77,24 @@
             border: 0;
             margin-top: 15px;
         }
+
+        &.preload {
+            .nav {
+                animation-duration: 1.5s;
+                animation-fill-mode: forwards;
+                animation-iteration-count: infinite;
+                animation-name: placeHolderShimmer;
+                animation-timing-function: linear;
+                background: #f6f7f8;
+                background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+                background-size: 800px 104px;
+
+                > li {
+                    a {
+                    }
+                }
+            }            
+        }
     }
 
     .dataobject-item {
@@ -807,5 +825,14 @@
                 right: (@object-padding-hor-xs - @object-label-margin);
             }
         }
+    }
+}
+
+@keyframes placeHolderShimmer {
+    0%{
+        background-position: -868px 0
+    }
+    100%{
+        background-position: 868px 0
     }
 }

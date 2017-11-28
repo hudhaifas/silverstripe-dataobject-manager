@@ -13,3 +13,17 @@ en:
   DataObjectExtension:
     CREATED_BY: 'Created By'
     EDITED_BY: 'Edited By'
+
+    # Privacy
+    PRIVACY: 'Privacy'
+    CAN_VIEW_TYPE: 'Who can view this location?'
+    VIEWER_GROUPS: 'Viewer Groups'
+    VIEWER_MEMBERS: 'Viewer Users'
+    CAN_EDIT_TYPE: 'Who can edit this location?'
+    EDITOR_GROUPS: 'Editor Groups'
+    EDITOR_MEMBERS: 'Editor Users'
+    GROUP_PLACEHOLDER: 'Click to select group'
+    MEMBER_PLACEHOLDER: 'Click to select user'
+    ACCESSANYONE: 'Anyone'
+    ACCESSLOGGEDIN: 'All Logged-in users'
+    ACCESSONLYTHESE: 'Only these people (choose from list)'

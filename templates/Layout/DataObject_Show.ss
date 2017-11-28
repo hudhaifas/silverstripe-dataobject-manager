@@ -8,7 +8,7 @@
             <div class="col-md-4"></div>
 
             <div class="col-md-4">
-                <% with Single %>
+                <% with Record %>
                     <% if ObjectNav %>
                         $ObjectNav
                     <% else %>
@@ -19,11 +19,11 @@
         </div>
     </div>
 
-    <% with Single %>
+    <% with Record %>
         <% include Single_Info %>
 
-        <div class="dataobject-tabs preload" data-url="{$Up.TabsLink($ID)}">
-            <% include Single_EmptyTabs %>
+        <div class="dataobject-tabs">
+            <% include Single_Tabs %>
         </div>
 
         <% include Single_Down %>

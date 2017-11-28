@@ -62,12 +62,14 @@ class DataObjectPage_Controller
     private static $allowed_actions = array(
         'show',
         'edit',
+        'tabs',
         'ObjectEditForm',
         'doObjectEdit',
     );
     private static $url_handlers = array(
         'show/$ID' => 'show',
-        'edit/$ID' => 'edit'
+        'edit/$ID' => 'edit',
+        'tabs/$ID' => 'tabs'
     );
 
     public function init() {
@@ -78,6 +80,7 @@ class DataObjectPage_Controller
             Requirements::css(DATAOBJECT_MANAGER_DIR . "/css/dataobject-rtl.css");
         }
 
+        Requirements::javascript(DATAOBJECT_MANAGER_DIR . "/js/dataobject.manager.js");
         Requirements::javascript(DATAOBJECT_MANAGER_DIR . "/js/jquery.imgzoom.js");
     }
 
@@ -130,6 +133,23 @@ class DataObjectPage_Controller
                 ))->first();
 
         return $this->editSingle($single);
+    }
+
+    public function tabs() {
+        $id = $this->getRequest()->param('ID');
+        $single = $this->getObjectsList()->filter(array(
+                    'ID' => $id
+                ))->first();
+
+        return $this
+                        ->customise(array(
+                            'ObjectTabs' => $single->getObjectTabs()
+                        ))
+                        ->renderWith('Single_Tabs');
+    }
+
+    public function TabsLink($id) {
+        return $this->Link("tabs/$id");
     }
 
     public function ObjectSearchForm() {

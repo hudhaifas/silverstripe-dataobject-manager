@@ -153,6 +153,10 @@ class DataObjectPage_Controller
     }
 
     public function ObjectSearchForm() {
+        if ($this->hasMethod('getGoogleSiteSearchForm')) {
+            return $this->getGoogleSiteSearchForm()->setTemplate('Form_GoogleSearch');
+        }
+
         $data = $this->request->getVars();
 
         $form = Form::create(

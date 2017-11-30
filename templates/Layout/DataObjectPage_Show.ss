@@ -1,3 +1,7 @@
+<script type="application/ld+json">
+    $RichSnippets
+</script>
+
 <div class="dataobject-page">
     <div class="container" style="margin-bottom: 1.5em;">
         <div class="row" >

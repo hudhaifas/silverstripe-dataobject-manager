@@ -118,28 +118,19 @@ class DataObjectPage_Controller
     }
 
     public function show() {
-        $id = $this->getRequest()->param('ID');
-        $single = $this->getObjectsList()->filter(array(
-                    'ID' => $id
-                ))->first();
+        $single = $this->getSingle();
 
         return $this->showSingle($single);
     }
 
     public function edit() {
-        $id = $this->getRequest()->param('ID');
-        $single = $this->getObjectsList()->filter(array(
-                    'ID' => $id
-                ))->first();
+        $single = $this->getSingle();
 
         return $this->editSingle($single);
     }
 
     public function tabs() {
-        $id = $this->getRequest()->param('ID');
-        $single = $this->getObjectsList()->filter(array(
-                    'ID' => $id
-                ))->first();
+        $single = $this->getSingle();
 
         return $this
                         ->customise(array(
@@ -264,10 +255,26 @@ class DataObjectPage_Controller
         return DataObject::get('Page');
     }
 
+    public function RichSnippets() {
+        $single = $this->getSingle();
+        $schema = $single->getObjectRichSnippets();
+        $schema['@context'] = "http://schema.org";
+        
+//        return json_encode($schema, JSON_UNESCAPED_UNICODE);
+        return Convert::array2json($schema);
+    }
+
     protected function searchObjects($list, $keywords) {
         return $list->filter(array(
                     'Title:PartialMatch' => $keywords
         ));
+    }
+
+    protected function getSingle() {
+        $id = $this->getRequest()->param('ID');
+        return $this->getObjectsList()->filter(array(
+                    'ID' => $id
+                ))->first();
     }
 
     /**

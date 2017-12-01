@@ -255,11 +255,18 @@ class DataObjectPage_Controller
         return DataObject::get('Page');
     }
 
+    protected function getSingle() {
+        $id = $this->getRequest()->param('ID');
+        return $this->getObjectsList()->filter(array(
+                    'ID' => $id
+                ))->first();
+    }
+
     public function RichSnippets() {
         $single = $this->getSingle();
         $schema = $single->getObjectRichSnippets();
         $schema['@context'] = "http://schema.org";
-        
+
 //        return json_encode($schema, JSON_UNESCAPED_UNICODE);
         return Convert::array2json($schema);
     }
@@ -268,13 +275,6 @@ class DataObjectPage_Controller
         return $list->filter(array(
                     'Title:PartialMatch' => $keywords
         ));
-    }
-
-    protected function getSingle() {
-        $id = $this->getRequest()->param('ID');
-        return $this->getObjectsList()->filter(array(
-                    'ID' => $id
-                ))->first();
     }
 
     /**

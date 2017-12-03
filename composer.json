@@ -16,7 +16,8 @@
     },
     "require": {
         "silverstripe/cms": "~3.0",
-        "silverstripe/framework": "~3.0"
+        "silverstripe/framework": "~3.0",
+        "samthejarvis/silverstripe-watermarking": "dev-master"
     },
     "extra": {
         "installer-name": "dataobject-manager"

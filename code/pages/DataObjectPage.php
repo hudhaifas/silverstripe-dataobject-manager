@@ -222,33 +222,41 @@ class DataObjectPage_Controller
     }
 
     protected function showSingle($single) {
-        if ($single && $single->canView()) {
-            $this->preRenderSingle($single);
-
-            return $this
-                            ->customise(array(
-                                'Single' => $single,
-                                'Title' => $single->Title
-                            ))
-                            ->renderWith(array('DataObjectPage_Show', 'Page'));
-        } else {
+        if (!$single) {
             return $this->httpError(404, 'That object could not be found!');
         }
+
+        if (!$single->canView()) {
+            return Security::permissionFailure($this);
+        }
+
+        $this->preRenderSingle($single);
+
+        return $this
+                        ->customise(array(
+                            'Single' => $single,
+                            'Title' => $single->Title
+                        ))
+                        ->renderWith(array('DataObjectPage_Show', 'Page'));
     }
 
     protected function editSingle($single) {
-        if ($single && $single->canEdit()) {
-            $this->preRenderSingle($single);
-
-            return $this
-                            ->customise(array(
-                                'Single' => $single,
-                                'Title' => $single->Title
-                            ))
-                            ->renderWith(array('DataObjectPage_Edit', 'Page'));
-        } else {
+        if (!$single) {
             return $this->httpError(404, 'That object could not be found!');
         }
+
+        if (!$single->canEdit()) {
+            return Security::permissionFailure($this);
+        }
+
+        $this->preRenderSingle($single);
+
+        return $this
+                        ->customise(array(
+                            'Single' => $single,
+                            'Title' => $single->Title
+                        ))
+                        ->renderWith(array('DataObjectPage_Edit', 'Page'));
     }
 
     protected function getObjectsList() {

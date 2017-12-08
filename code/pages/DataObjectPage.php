@@ -272,11 +272,14 @@ class DataObjectPage_Controller
 
     public function RichSnippets() {
         $single = $this->getSingle();
-        $schema = $single->getObjectRichSnippets();
-        $schema['@context'] = "http://schema.org";
+
+        if ($single instanceof SearchableDataObject) {
+            $schema = $single->getObjectRichSnippets();
+            $schema['@context'] = "http://schema.org";
 
 //        return json_encode($schema, JSON_UNESCAPED_UNICODE);
-        return Convert::array2json($schema);
+            return Convert::array2json($schema);
+        }
     }
 
     protected function searchObjects($list, $keywords) {

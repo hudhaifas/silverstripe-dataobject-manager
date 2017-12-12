@@ -17,9 +17,7 @@
         </div>
     </div>
 
-    <% with Single %>
-        <% include Single_Info %>
-    <% end_with %>
+    <% include Single_Info %>
 
     <div class="container">
         $ObjectEditForm($Single.ClassName, $Single.ID)

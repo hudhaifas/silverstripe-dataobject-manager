@@ -23,7 +23,7 @@
         </div>
     </div>
 
-        <% include Single_Info %>
+    <% include Single_Info %>
 
     <div class="dataobject-tabs place-holder" data-url="{$TabsLink($Single.ID)}">
             <% include Single_Tabs_PlaceHolder %>

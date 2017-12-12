@@ -8,7 +8,7 @@
 
 .dataobject-page {
     min-height: 70vh;
-    
+
     .dataobject-tabs {
         .nav {
             float: right;
@@ -230,6 +230,12 @@
 
     .dataobject-related {
         &.place-holder {
+            .dataobject-title > h2 {
+                width: 40%;
+                
+                .place-holder();
+            }
+            
             .dataobject-item > div {
                 height: 200px;
                 .place-holder();

@@ -2,6 +2,14 @@
     Created on : Jan 21, 2017, 10:25:41 PM
     Author     : hudhaifa
 */
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -868px 0;
+  }
+  100% {
+    background-position: 868px 0;
+  }
+}
 .ellipsis {
   overflow: hidden;
   height: 42px;
@@ -432,36 +440,16 @@
   transition: all 500ms ease-out;
   overflow: hidden;
 }
-.dataobject-page .dataobject-related.dataobject-item {
-  padding: 8px 8px;
-}
-.dataobject-page .dataobject-related.dataobject-item > div {
-  padding: 5px;
-  height: auto;
-  border: 1px solid #bbb;
-  border: 1px solid transparent;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
-  -o-box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
-}
-.dataobject-page .dataobject-related.dataobject-item > div .content {
-  padding-left: 6px;
-}
-.dataobject-page .dataobject-related.dataobject-item .thumbnail .caption {
-  top: 6%;
-  padding: 6px;
-}
-.dataobject-page .dataobject-related.dataobject-item .thumbnail .caption h4,
-.dataobject-page .dataobject-related.dataobject-item .thumbnail .caption .h4 {
-  font-size: 9px;
-}
-.dataobject-page .dataobject-related.dataobject-item:hover .thumbnail .caption h4,
-.dataobject-page .dataobject-related.dataobject-item:hover .thumbnail .caption .h4 {
-  font-size: 9px;
+.dataobject-page .dataobject-related.place-holder .dataobject-item > div {
+  height: 200px;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
 }
 .dataobject-page .dataobject-list {
   width: 100%;
@@ -545,6 +533,16 @@
   height: 160px;
   margin: 0 0 -160px 0;
 }
+.dataobject-page .dataobject-header .dataobject-card .dataobject-picture.place-holder {
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+}
 .dataobject-page .dataobject-header .dataobject-card .dataobject-brief {
   display: inline-block;
   line-height: 1.3;
@@ -561,6 +559,38 @@
 .dataobject-page .dataobject-header .dataobject-card .dataobject-brief .dataobject-info {
   font-size: 15px;
   margin-bottom: 2px;
+}
+.dataobject-page .dataobject-header .dataobject-card .dataobject-brief.place-holder .dataobject-title {
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+}
+.dataobject-page .dataobject-header .dataobject-card .dataobject-brief.place-holder .dataobject-info {
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+}
+.dataobject-page .dataobject-header .dataobject-card .dataobject-brief.place-holder .dataobject-info.dataobject-info-1 {
+  width: 70%;
+}
+.dataobject-page .dataobject-header .dataobject-card .dataobject-brief.place-holder .dataobject-info.dataobject-info-2 {
+  width: 60%;
+}
+.dataobject-page .dataobject-header .dataobject-card .dataobject-brief.place-holder .dataobject-info.dataobject-info-3 {
+  width: 80%;
+}
+.dataobject-page .dataobject-header .dataobject-card .dataobject-brief.place-holder .dataobject-info.dataobject-info-4 {
+  width: 65%;
 }
 .dataobject-page .object-label {
   position: absolute;
@@ -894,14 +924,6 @@
   .dataobject-page .object-label.object-label-bottom-right {
     bottom: 14px;
     right: 0px;
-  }
-}
-@keyframes placeHolderShimmer {
-  0% {
-    background-position: -868px 0;
-  }
-  100% {
-    background-position: 868px 0;
   }
 }
 /*# sourceMappingURL=dataobject.css.map */

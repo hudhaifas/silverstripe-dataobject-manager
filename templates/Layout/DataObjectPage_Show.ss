@@ -23,13 +23,13 @@
         </div>
     </div>
 
-    <% with Single %>
         <% include Single_Info %>
 
-        <div class="dataobject-tabs place-holder" data-url="{$Up.TabsLink($ID)}">
+    <div class="dataobject-tabs place-holder" data-url="{$TabsLink($Single.ID)}">
             <% include Single_Tabs_PlaceHolder %>
         </div>
 
-        <% include Single_Down %>
-    <% end_with %>
+    <div class="dataobject-related place-holder" data-url="{$RelatedLink($Single.ID)}">
+        <% include Single_Related_PlaceHolder %>
+    </div>
 </div>

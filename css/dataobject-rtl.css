@@ -1,4 +1,12 @@
 /* Right to Left */
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -868px 0;
+  }
+  100% {
+    background-position: 868px 0;
+  }
+}
 .ellipsis:before {
   float: right;
 }

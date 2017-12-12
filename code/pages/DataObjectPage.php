@@ -63,13 +63,19 @@ class DataObjectPage_Controller
         'show',
         'edit',
         'tabs',
+        'summary',
+        'picture',
+        'related',
         'ObjectEditForm',
         'doObjectEdit',
     );
     private static $url_handlers = array(
         'show/$ID' => 'show',
         'edit/$ID' => 'edit',
-        'tabs/$ID' => 'tabs'
+        'tabs/$ID' => 'tabs',
+        'summary/$ID' => 'summary',
+        'picture/$ID' => 'picture',
+        'related/$ID' => 'related'
     );
 
     public function init() {
@@ -139,8 +145,53 @@ class DataObjectPage_Controller
                         ->renderWith('Single_Tabs');
     }
 
+    public function summary() {
+        $single = $this->getSingle();
+
+        return $this
+                        ->customise(array(
+                            'Single' => $single
+                        ))
+                        ->renderWith('Single_Summary');
+    }
+
+    public function picture() {
+        $single = $this->getSingle();
+
+        return $this
+                        ->customise(array(
+                            'ObjectImage' => $single->getObjectImage(),
+                            'ObjectDefaultImage' => $single->getObjectDefaultImage(),
+                            'isObjectDisabled' => $single->isObjectDisabled(),
+                            'ObjectTitle' => $single->getObjectTitle()
+                        ))
+                        ->renderWith('Single_Image');
+    }
+
+    public function related() {
+        $single = $this->getSingle();
+
+        return $this
+                        ->customise(array(
+                            'Single' => $single
+                        ))
+                        ->renderWith('Single_Related');
+    }
+
     public function TabsLink($id) {
         return $this->Link("tabs/$id");
+    }
+
+    public function SummaryLink($id) {
+        return $this->Link("summary/$id");
+    }
+
+    public function PictureLink($id) {
+        return $this->Link("picture/$id");
+    }
+
+    public function RelatedLink($id) {
+        return $this->Link("related/$id");
     }
 
     public function ObjectSearchForm() {
@@ -353,6 +404,10 @@ class DataObjectPage_Controller
                 });
 JS
         );
+    }
+
+    public function Align() {
+        return $this->isRTL() == 'rtl' ? 'right' : 'left';
     }
 
     public function isRTL() {

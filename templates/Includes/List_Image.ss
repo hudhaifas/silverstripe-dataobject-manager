@@ -4,7 +4,7 @@
     <% if ObjectDefaultImage %>
         <img src= "$ObjectDefaultImage" alt="" class="img-responsive zoom-img" />
     <% else %>
-        <img src= "heritage-dataobject-manager/images/default-image.jpg" alt="" class="img-responsive zoom-img" />
+        <img src= "dataobject-manager/images/default-image.jpg" alt="" class="img-responsive zoom-img" />
     <% end_if %>
 
     <div class="caption" style="">

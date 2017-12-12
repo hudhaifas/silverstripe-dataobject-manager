@@ -390,20 +390,6 @@ class DataObjectPage_Controller
     }
 
     protected function preRenderSingle($single) {
-        $align = $this->isRTL() == 'rtl' ? 'right' : 'left';
-
-        Requirements::customScript(<<<JS
-                $(document).ready(function () {
-                    $('.imgBox').imgZoom({
-                        boxWidth: 500,
-                        boxHeight: 400,
-                        marginLeft: 5,
-                        align: '{$align}',
-                        origin: 'data-origin'
-                    });
-                });
-JS
-        );
     }
 
     public function Align() {

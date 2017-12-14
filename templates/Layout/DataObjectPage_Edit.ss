@@ -20,7 +20,7 @@
     <% include Single_Info %>
 
     <div class="container">
-        $ObjectEditForm($Single.ClassName, $Single.ID)
+        $ObjectEditForm($Single.ID)
     </div>
 
 </div>

@@ -219,34 +219,30 @@ class DataObjectPage_Controller
         return $form;
     }
 
-    public function ObjectEditForm($class, $id) {
-        $single = DataObject::get_by_id($class, $id);
+    public function ObjectEditForm($singleID) {
+        if ($singleID instanceof SS_HTTPRequest) {
+            $id = $singleID->postVar('ObjectID');
+        } else {
+            $id = $singleID;
+        }
+        $single = $this->getSingle($id);
+
+        if (!$single) {
+            $this->httpError(404, 'That object could not be found!');
+        }
+
+        if ($single && !$single->canView()) {
+            Security::permissionFailure($this);
+        }
 
         // Create fields          
         $fields = new FieldList();
-        $fields->push(HiddenField::create('ObjectID', 'ObjectID', $id));
-
-        if ($single) {
-            $dbFields = $single->db();
-
-            // iterate database fields
-            foreach ($dbFields as $fieldName => $fieldType) {
-                if ($this->restrictFields() && !in_array($fieldName, $this->restrictFields())) {
-                    continue;
-                }
-
-                $fieldObject = $single->dbObject($fieldName)->scaffoldFormField(null);
-
-                $fieldObject->setTitle($single->fieldLabel($fieldName));
-                $fieldObject->setValue($single->$fieldName);
-                $fields->push($fieldObject);
-            }
-        }
+        $fields->push(HiddenField::create('ObjectID', 'ObjectID', $single->ID));
+        $this->getRecordFields($single, $fields);
 
         // Create action
-        $actions = new FieldList(
-                FormAction::create('doObjectEdit', _t('DataObjectPage.SAVE', 'Save'))
-        );
+        $actions = new FieldList();
+        $this->getRecordActions($single, $actions);
 
         // Create Validators
         $validator = new RequiredFields();
@@ -259,10 +255,7 @@ class DataObjectPage_Controller
     public function doObjectEdit($data, $form) {
         $objectID = $data['ObjectID'];
 
-        $single = $this->getObjectsList()->filter(array(
-                    'ID' => $objectID
-                ))->first();
-
+        $single = $this->getSingle($objectID);
 
         foreach ($data as $key => $value) {
             $single->$key = $value;
@@ -314,8 +307,11 @@ class DataObjectPage_Controller
         return DataObject::get('Page');
     }
 
-    protected function getSingle() {
-        $id = $this->getRequest()->param('ID');
+    protected function getSingle($id = null) {
+        if (!$id) {
+            $id = $this->getRequest()->param('ID');
+        }
+
         return $this->getObjectsList()->filter(array(
                     'ID' => $id
                 ))->first();
@@ -390,6 +386,47 @@ class DataObjectPage_Controller
     }
 
     protected function preRenderSingle($single) {
+        
+    }
+
+    protected final function getRecordActions($record, &$actions) {
+        if ($record->hasMethod('canEdit') && $record->canEdit()) {
+            $actions->push(
+                    FormAction::create('doObjectEdit', _t('DataObjectPage.SAVE', 'Save'))
+            );
+        }
+
+        if ($record->ID && $record->hasMethod('canDelete') && $record->canDelete()) {
+            $actions->push(
+                    FormAction::create('doDelete', _t('DataObjectPage.DELETE', 'Delete'))
+            );
+        }
+    }
+
+    protected final function getRecordFields($record, &$fields) {
+        if ($record) {
+            $dbFields = $record->db();
+            $restrictFields = $record->config()->restrict_fields;
+
+            // iterate database fields
+            foreach ($dbFields as $fieldName => $fieldType) {
+                if ($restrictFields && in_array($fieldName, $restrictFields)) {
+                    continue;
+                }
+
+                $fieldObject = $record->dbObject($fieldName)->scaffoldFormField(null);
+
+                $fieldObject->setTitle($record->fieldLabel($fieldName));
+                $fieldObject->setValue($record->$fieldName);
+
+                if ($fieldObject instanceof DateField) {
+                    $fieldObject->setConfig('showcalendar', true);
+//                    $fieldObject->setConfig('showdropdown', true);
+//                    $fieldObject->setConfig('dateformat', 'dd-MM-yyyy');
+                }
+                $fields->push($fieldObject);
+            }
+        }
     }
 
     public function Align() {

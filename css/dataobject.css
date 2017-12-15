@@ -337,6 +337,7 @@
 }
 .dataobject-page .dataobject-item > div .content {
   padding: 0;
+  margin: 0;
 }
 .dataobject-page .dataobject-item .title {
   margin-bottom: 5px;

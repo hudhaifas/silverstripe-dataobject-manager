@@ -9,7 +9,7 @@
         </div>
 
         <div class="content col-sm-12 col-xs-8 ellipsis">
-            <% include Single_Summary %>
+            <% include Single_Summary_Content %>
         </div>		
     </a>
 </div>

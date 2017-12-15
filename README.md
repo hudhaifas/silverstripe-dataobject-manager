@@ -6,12 +6,6 @@ DataObject Manager is a standard Fronend wapper fot a certain DataObject instanc
 
 ### [Live Demo](http://dom.hudhaifa.com/)
 
-**Table of Contents**
-
-[TOCM]
-
-[TOC]
-
 ### Screenshots
 - List Objects
 ![](https://user-images.githubusercontent.com/5335447/34019586-54a8a386-e0f5-11e7-9121-5ea2fcc5f94f.jpg)

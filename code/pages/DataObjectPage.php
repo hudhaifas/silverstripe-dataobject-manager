@@ -317,6 +317,10 @@ class DataObjectPage_Controller
                 ))->first();
     }
 
+    public function ExtraTags() {
+        return $this->renderWith('Single_MetaTags');
+    }
+
     public function RichSnippets() {
         $single = $this->getSingle();
 
@@ -327,6 +331,16 @@ class DataObjectPage_Controller
 //        return json_encode($schema, JSON_UNESCAPED_UNICODE);
             return Convert::array2json($schema);
         }
+    }
+
+    public function OpenGraph() {
+        $single = $this->getSingle();
+
+        return $this
+                        ->customise(array(
+                            'Single' => $single
+                        ))
+                        ->renderWith('Single_OpenGraph');
     }
 
     protected function searchObjects($list, $keywords) {
@@ -440,4 +454,5 @@ class DataObjectPage_Controller
     public function Strip($html) {
         return strip_tags($html);
     }
+
 }

@@ -1,7 +1,3 @@
-<% include Single_RichSnippets %>
-
-<% include Single_OpenGraph %>
-
 <div class="dataobject-page">
     <div class="container" style="margin-bottom: 1.5em;">
         <div class="row" >

@@ -11,10 +11,10 @@ ar:
     PAGE_LENGTH: 'حجم الصفحة'
     PREVIOUS: 'السابق'
     NEXT: 'التالي'
-
     SAVE: 'حفظ'
     SHOW: 'عرض'
     EDIT: 'تعديل'
+    COMMA: '،'
 
   DataObjectExtension:
     CREATED_BY: 'أنشأ بواسطة'

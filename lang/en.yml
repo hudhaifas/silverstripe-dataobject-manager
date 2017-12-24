@@ -11,10 +11,10 @@ en:
     PAGE_LENGTH: 'Page Length'
     PREVIOUS: 'Previous'
     NEXT: 'Next'
-    
     SAVE: 'Save'
     SHOW: 'Show'
     EDIT: 'Edit'
+    COMMA: ','
     
   DataObjectExtension:
     CREATED_BY: 'Created By'

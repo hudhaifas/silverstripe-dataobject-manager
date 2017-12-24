@@ -34,6 +34,7 @@ class DataObjectPage
 
     private static $db = array(
         'PageLength' => 'Int',
+        'FbAppId' => 'Varchar(100)',
     );
     private static $defaults = array(
         'PageLength' => 36,
@@ -50,6 +51,7 @@ class DataObjectPage
         $fields->removeFieldFromTab("Root.Main", "Content");
 
         $fields->addFieldToTab('Root.Main', new NumericField('PageLength', _t('DataObjectPage.PAGE_LENGTH', 'Page Length'), $this->PageLength));
+        $fields->addFieldToTab('Root.Main', new TextField('FbAppId', _t('DataObjectPage.FB_APP_ID', 'Facebook App ID'), $this->FbAppId));
 
         return $fields;
     }

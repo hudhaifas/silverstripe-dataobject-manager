@@ -52,6 +52,9 @@ var updateTabs = function () {
 
         $tabsHolder.load(url, function () {
             $tabsHolder.removeClass('place-holder');
+            try {
+                onTabsLoaded();
+            } catch (e) {}
         });
     }
 };

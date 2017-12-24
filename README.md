@@ -38,6 +38,8 @@ DataObject Manager is a standard Fronend wapper fot a certain DataObject instanc
 - SilverStripe Framework 3.x
 - SilverStripe CMS 3.x
 - SilverStripe Watermarking
+- jQuery.js
+- Bootstrap.css
 
 ### Installation
 - Install the module through composer:

@@ -30,6 +30,7 @@ DataObject Manager is a standard Fronend wapper fot a certain DataObject instanc
 
 ### Todos
 - Edit many_many relationship fields.
+- Add create new function from the frontend.
 - Waiting for your contributions
 
 ## Usage

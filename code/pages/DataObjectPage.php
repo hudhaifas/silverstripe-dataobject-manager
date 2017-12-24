@@ -310,11 +310,16 @@ class DataObjectPage_Controller
     }
 
     protected function getSingle($id = null) {
+        $list = $this->getObjectsList();
+        if (!$list) {
+            return null;
+        }
+
         if (!$id) {
             $id = $this->getRequest()->param('ID');
         }
 
-        return $this->getObjectsList()->filter(array(
+        return $list->filter(array(
                     'ID' => $id
                 ))->first();
     }
@@ -350,6 +355,10 @@ class DataObjectPage_Controller
     }
 
     protected function searchObjects($list, $keywords) {
+        if (!$list) {
+            return null;
+        }
+
         return $list->filter(array(
                     'Title:PartialMatch' => $keywords
         ));

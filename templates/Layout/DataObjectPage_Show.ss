@@ -1,6 +1,6 @@
 <% include Single_RichSnippets %>
 
-<% include Single_FB %>
+<% include Single_OpenGraph %>
 
 <div class="dataobject-page">
     <div class="container" style="margin-bottom: 1.5em;">

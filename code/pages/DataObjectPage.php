@@ -437,4 +437,7 @@ class DataObjectPage_Controller
         return i18n::get_script_direction(i18n::get_locale()) == 'rtl';
     }
 
+    public function Strip($html) {
+        return strip_tags($html);
+    }
 }

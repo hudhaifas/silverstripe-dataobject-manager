@@ -343,6 +343,11 @@ class DataObjectPage_Controller
                         ->renderWith('Single_OpenGraph');
     }
 
+    public function FullURL($url) {
+        var_dump($url);
+        return Director::absoluteURL($url);
+    }
+
     protected function searchObjects($list, $keywords) {
         return $list->filter(array(
                     'Title:PartialMatch' => $keywords

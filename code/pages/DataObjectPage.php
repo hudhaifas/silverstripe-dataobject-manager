@@ -344,7 +344,6 @@ class DataObjectPage_Controller
     }
 
     public function FullURL($url) {
-        var_dump($url);
         return Director::absoluteURL($url);
     }
 

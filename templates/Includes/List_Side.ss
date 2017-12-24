@@ -1,5 +1,5 @@
 <% loop FiltersList %>
-    <% if not $isObjectDisabled %>
+    <% if CanView %>
         <div class="dataobject-side">
             <h5 class="side-menu">$Title</h5>
 

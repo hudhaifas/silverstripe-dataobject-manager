@@ -162,7 +162,7 @@ class DataObjectPage_Controller
                         ->customise(array(
                             'ObjectImage' => $single->getObjectImage(),
                             'ObjectDefaultImage' => $single->getObjectDefaultImage(),
-                            'isObjectDisabled' => $single->isObjectDisabled(),
+                            'CanView' => $single->canView(),
                             'ObjectTitle' => $single->getObjectTitle()
                         ))
                         ->renderWith('Single_Image');

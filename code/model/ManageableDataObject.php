@@ -50,6 +50,4 @@ interface ManageableDataObject {
     public function getObjectRelated();
 
     public function getObjectTabs();
-
-    public function isObjectDisabled();
 }

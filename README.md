@@ -63,7 +63,6 @@ DataObject Manager is a standard Fronend wapper fot a certain DataObject instanc
 | `getObjectNav()`      | Extra nav bar  |  |
 | `getObjectRelated()`      | List of related objects |  |
 | `getObjectTabs()`      | Object's details and content returned in an array(Title=>Content), the content could be text or rendered object |  |
-| `isObjectDisabled()`      | Whether the object is disabled | `return flase;` |
 
 - Create / Adjust Page to extend DataObjectPage
 

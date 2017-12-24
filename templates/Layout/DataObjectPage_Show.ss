@@ -1,6 +1,6 @@
-<script type="application/ld+json">
-    $RichSnippets
-</script>
+<% include Single_RichSnippets %>
+
+<% include Single_FB %>
 
 <div class="dataobject-page">
     <div class="container" style="margin-bottom: 1.5em;">

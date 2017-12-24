@@ -1,9 +1,9 @@
 <div style="height: auto;">
-    <a <% if not $isObjectDisabled %>href="$ObjectLink"<% end_if %> title="$ObjectTitle">
+    <a <% if CanView %>href="$ObjectLink"<% end_if %> title="$ObjectTitle">
         <div class="thumbnail text-center col-sm-12 col-xs-4">
             <% include List_Image %>
 
-            <% if not $isObjectDisabled %>
+            <% if CanView %>
                 <div class="mask"></div>
             <% end_if %>
         </div>

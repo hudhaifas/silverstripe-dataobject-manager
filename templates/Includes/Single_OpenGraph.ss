@@ -1,6 +1,6 @@
 <% with Single %>
-    <meta property="og:url" content="{$Top.FullURL($ObjectLink)}" />
     <meta property="og:type" content="article" />
+    <meta property="og:url" content="{$Top.FullURL($ObjectLink)}" />
     <meta property="og:title" content="$ObjectTitle" />
     <meta property="og:locale" content="$Top.ContentLocale" />
     

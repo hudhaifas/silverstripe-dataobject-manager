@@ -12,6 +12,7 @@ en:
     PREVIOUS: 'Previous'
     NEXT: 'Next'
     SAVE: 'Save'
+    DELETE: 'Delete'
     SHOW: 'Show'
     EDIT: 'Edit'
     COMMA: ','

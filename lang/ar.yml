@@ -12,6 +12,7 @@ ar:
     PREVIOUS: 'السابق'
     NEXT: 'التالي'
     SAVE: 'حفظ'
+    DELETE: 'حذف'
     SHOW: 'عرض'
     EDIT: 'تعديل'
     COMMA: '،'

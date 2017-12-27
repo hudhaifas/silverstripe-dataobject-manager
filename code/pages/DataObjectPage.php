@@ -433,28 +433,32 @@ class DataObjectPage_Controller
     }
 
     protected final function getRecordFields($record, &$fields) {
-        if ($record) {
-            $dbFields = $record->db();
-            $restrictFields = $record->config()->restrict_fields;
+        if (!$record) {
+            return;
+        }
 
-            // iterate database fields
-            foreach ($dbFields as $fieldName => $fieldType) {
-                if ($restrictFields && in_array($fieldName, $restrictFields)) {
-                    continue;
-                }
+        $dbFields = $record->db();
+        $restrictFields = $record->config()->restrict_fields;
 
-                $fieldObject = $record->dbObject($fieldName)->scaffoldFormField(null);
+        // iterate database fields
+        foreach ($dbFields as $fieldName => $fieldType) {
+            if ($restrictFields && in_array($fieldName, $restrictFields)) {
+                continue;
+            }
 
-                $fieldObject->setTitle($record->fieldLabel($fieldName));
-                $fieldObject->setValue($record->$fieldName);
+            $fieldObject = $record->dbObject($fieldName)->scaffoldFormField(null);
 
-                if ($fieldObject instanceof DateField) {
-                    $fieldObject->setConfig('showcalendar', true);
+            $fieldObject->setTitle($record->fieldLabel($fieldName));
+            $fieldObject->setValue($record->$fieldName);
+
+            if ($fieldObject instanceof HtmlEditorField) {
+                
+            } else if ($fieldObject instanceof DateField) {
+                $fieldObject->setConfig('showcalendar', true);
 //                    $fieldObject->setConfig('showdropdown', true);
 //                    $fieldObject->setConfig('dateformat', 'dd-MM-yyyy');
-                }
-                $fields->push($fieldObject);
             }
+            $fields->push($fieldObject);
         }
     }
 

@@ -10,6 +10,9 @@
     min-height: 70vh;
 
     .dataobject-tabs {
+        background-color: #fff;
+        margin-bottom: 30px;
+
         .nav {
             float: right;
             border-bottom: 0px;
@@ -164,42 +167,6 @@
             }
         }
 
-        .thumbnail {
-            position: relative;
-            margin-bottom: auto;
-            padding: 0;
-            border: 0;
-
-            overflow: hidden;
-
-            .caption {
-                position: absolute;
-                width: 100%;
-                top: 15%;
-                left: 0;
-                bottom: 0rem;
-
-                color: #fff;
-                background: @default-color;
-                background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-                background:    -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-                background:      -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-                background:         linear-gradient(to top, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-
-                h4, .h4 {
-                    .transition(all 0.4s ease);
-
-                    text-shadow: 0 0 2px @default-color;
-                    font-size: 16px;
-                }
-            }
-
-            img.zoom-img {
-                .scale(1);
-                .transition(all 250ms ease);
-            }
-        }
-
         &:hover {
             .mask {
                 &:before, &:after {
@@ -211,32 +178,19 @@
                     background: @mask-color-hover;
                 }
             }
-
-            .thumbnail {
-                .caption {
-                    h4, .h4 {
-                        text-shadow: 0 0 2px @default-color-hover;
-                        font-size: 16px;
-                    }
-                }
-
-                img.zoom-img {
-                    .scale(1.15);
-                    .transition(all 500ms ease-out);
-                    overflow: hidden;
-                }
-            }
         }
     }
 
     .dataobject-related {
+        margin-bottom: 30px;
+
         &.place-holder {
             .dataobject-title > h2 {
                 width: 40%;
-                
+
                 .place-holder();
             }
-            
+
             .dataobject-item > div {
                 height: 200px;
                 .place-holder();
@@ -304,10 +258,6 @@
 
     .dataobject-details {
         margin-bottom: 10px;
-
-        .thumbnail {
-            overflow: hidden;
-        }
     }
 
     .dataobject-header {
@@ -465,6 +415,39 @@
         &.object-label-bottom-right {
             bottom: 24px;
             right: (@object-padding-hor - @object-label-margin);
+        }
+    }
+
+    .thumbnail {
+        position: relative;
+        /*background: #b3b3b3;*/
+        margin-bottom: auto;
+        padding: 0;
+        border: 0;
+
+        .caption {
+            position: absolute;
+            top: 20%;
+            left: 0;
+            width: 100%;
+            /*width: 140px;*/
+            bottom: 0rem;
+
+            background:#000;
+            background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+            background:    -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+            background:      -o-linear-gradient(bottom, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+            background:         linear-gradient(to top, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+
+            h4 {
+                padding-left: 5px;
+                padding-right: 5px;
+
+                color: #fff;
+                font-size: 12px;
+                .font-smoothing();
+                .selectNone();
+            }
         }
     }
 }

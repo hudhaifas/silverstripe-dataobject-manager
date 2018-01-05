@@ -240,6 +240,10 @@
 .dataobject-page {
   min-height: 70vh;
 }
+.dataobject-page .dataobject-tabs {
+  background-color: #fff;
+  margin-bottom: 30px;
+}
 .dataobject-page .dataobject-tabs .nav {
   float: right;
   border-bottom: 0px;
@@ -372,48 +376,6 @@
   right: 0;
   bottom: 0;
 }
-.dataobject-page .dataobject-item .thumbnail {
-  position: relative;
-  margin-bottom: auto;
-  padding: 0;
-  border: 0;
-  overflow: hidden;
-}
-.dataobject-page .dataobject-item .thumbnail .caption {
-  position: absolute;
-  width: 100%;
-  top: 15%;
-  left: 0;
-  bottom: 0rem;
-  color: #fff;
-  background: #000;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-.dataobject-page .dataobject-item .thumbnail .caption h4,
-.dataobject-page .dataobject-item .thumbnail .caption .h4 {
-  -webkit-transition: all 0.4s ease;
-  -moz-transition: all 0.4s ease;
-  -ms-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-  text-shadow: 0 0 2px #000;
-  font-size: 16px;
-}
-.dataobject-page .dataobject-item .thumbnail img.zoom-img {
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition: all 250ms ease;
-  -moz-transition: all 250ms ease;
-  -ms-transition: all 250ms ease;
-  -o-transition: all 250ms ease;
-  transition: all 250ms ease;
-}
 .dataobject-page .dataobject-item:hover .mask:before,
 .dataobject-page .dataobject-item:hover .mask:after {
   top: 0;
@@ -423,23 +385,8 @@
   opacity: 0.1;
   background: #000;
 }
-.dataobject-page .dataobject-item:hover .thumbnail .caption h4,
-.dataobject-page .dataobject-item:hover .thumbnail .caption .h4 {
-  text-shadow: 0 0 2px #f84545;
-  font-size: 16px;
-}
-.dataobject-page .dataobject-item:hover .thumbnail img.zoom-img {
-  -webkit-transform: scale(1.15);
-  -moz-transform: scale(1.15);
-  -ms-transform: scale(1.15);
-  -o-transform: scale(1.15);
-  transform: scale(1.15);
-  -webkit-transition: all 500ms ease-out;
-  -moz-transition: all 500ms ease-out;
-  -ms-transition: all 500ms ease-out;
-  -o-transition: all 500ms ease-out;
-  transition: all 500ms ease-out;
-  overflow: hidden;
+.dataobject-page .dataobject-related {
+  margin-bottom: 30px;
 }
 .dataobject-page .dataobject-related.place-holder .dataobject-title > h2 {
   width: 40%;
@@ -520,9 +467,6 @@
 }
 .dataobject-page .dataobject-details {
   margin-bottom: 10px;
-}
-.dataobject-page .dataobject-details .thumbnail {
-  overflow: hidden;
 }
 .dataobject-page .dataobject-header {
   position: relative;
@@ -684,6 +628,50 @@
 .dataobject-page .object-label.object-label-bottom-right {
   bottom: 24px;
   right: 7px;
+}
+.dataobject-page .thumbnail {
+  position: relative;
+  /*background: #b3b3b3;*/
+  margin-bottom: auto;
+  padding: 0;
+  border: 0;
+}
+.dataobject-page .thumbnail .caption {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  width: 100%;
+  /*width: 140px;*/
+  bottom: 0rem;
+  background: #000;
+  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.dataobject-page .thumbnail .caption h4 {
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #fff;
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-touch-callout: none;
+  /* prevent callout to copy image, etc when tap to hold */
+  -webkit-text-size-adjust: none;
+  /* prevent webkit from resizing text to fit */
+  -webkit-user-select: none;
+  /* prevent copy paste, to allow, change 'none' to 'text' */
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  /* Firefox all */
+  -o-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Likely future */
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  user-drag: none;
 }
 /* Meduim (Portrait tablet to landscape and desktop) */
 @media (min-width: 768px) and (max-width: 979px) {

@@ -164,7 +164,7 @@ class DataObjectPage_Controller
                         ->customise(array(
                             'ObjectImage' => $single->getObjectImage(),
                             'ObjectDefaultImage' => $single->getObjectDefaultImage(),
-                            'CanView' => $single->canView(),
+                            'CanPublicView' => $single->canPublicView(),
                             'ObjectTitle' => $single->getObjectTitle()
                         ))
                         ->renderWith('Single_Image');
@@ -233,7 +233,7 @@ class DataObjectPage_Controller
             $this->httpError(404, 'That object could not be found!');
         }
 
-        if ($single && !$single->canView()) {
+        if ($single && !$single->canPublicView()) {
             Security::permissionFailure($this);
         }
 
@@ -272,7 +272,7 @@ class DataObjectPage_Controller
             return $this->httpError(404, 'That object could not be found!');
         }
 
-        if (!$single->canView()) {
+        if (!$single->canPublicView()) {
             return Security::permissionFailure($this);
         }
 

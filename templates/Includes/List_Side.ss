@@ -1,5 +1,5 @@
 <% loop FiltersList %>
-    <% if CanView %>
+    <% if CanPublicView %>
         <div class="dataobject-side">
             <h5 class="side-menu">$Title</h5>
 

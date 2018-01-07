@@ -1,4 +1,4 @@
-<% if $ObjectImage && CanView %>
+<% if $ObjectImage && CanPublicView %>
     <img src="$ObjectImage.PaddedImage(256,256).Watermark.URL" alt="image" class="img-responsive zoom-img" />
 <% else %>
     <% if ObjectDefaultImage %>

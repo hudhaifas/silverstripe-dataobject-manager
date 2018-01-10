@@ -1,5 +1,5 @@
 <% if $ObjectSummary.Count >= 0 %>
-    <% if $Title %><p class="dataobject-title"><a <% if ObjectLink %>href="$ObjectLink"<% end_if %> title="$Title">$Title</a></p><% end_if %>
+    <% if $Title %><p class="dataobject-title"><a <% if ObjectLink %>href="$ObjectLink"<% end_if %> title="$ObjectTitle">$ObjectTitle</a></p><% end_if %>
 
     <% loop $ObjectSummary %>
         <p class="dataobject-info">

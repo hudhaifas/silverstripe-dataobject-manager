@@ -422,12 +422,14 @@ class DataObjectPage_Controller
         if ($record->hasMethod('canEdit') && $record->canEdit()) {
             $actions->push(
                     FormAction::create('doObjectEdit', _t('DataObjectPage.SAVE', 'Save'))
+                            ->addExtraClass('btn btn-primary btn-block')
             );
         }
 
         if ($record->ID && $record->hasMethod('canDelete') && $record->canDelete()) {
             $actions->push(
                     FormAction::create('doDelete', _t('DataObjectPage.DELETE', 'Delete'))
+                            ->addExtraClass('btn btn-danger btn-block')
             );
         }
     }

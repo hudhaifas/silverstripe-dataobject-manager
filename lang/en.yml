@@ -1,5 +1,11 @@
 en:
   DataObjectPage:
+    PAGE_LENGTH: 'Page Length'
+    FB_APP_ID: 'Facebook App ID'
+    TWITTER_SITE: 'Twitter Site'
+    DEFAULT_SOCIAL_DESC: 'Default Social Description'
+    DEFAULT_SOCIAL_IMAGE: 'Default Social Image'
+    
     KEYWORDS: 'Keywords'
     MORE_ABOUT: 'More'
     ALSO_SEE: 'Also See'
@@ -8,7 +14,6 @@ en:
     SEARCH_RESULTS_COUNT: 'About {value} results'
     SEARCH_RESULTS_1: 'About'
     SEARCH_RESULTS_2: 'results'
-    PAGE_LENGTH: 'Page Length'
     PREVIOUS: 'Previous'
     NEXT: 'Next'
     SAVE: 'Save'

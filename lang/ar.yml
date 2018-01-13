@@ -1,5 +1,11 @@
 ar:
   DataObjectPage:
+    PAGE_LENGTH: 'حجم الصفحة'
+    FB_APP_ID: 'رقم برنامج فيسبوك'
+    TWITTER_SITE: 'صفحة تويتر'
+    DEFAULT_SOCIAL_DESC: 'الوصف الإجتماعي'
+    DEFAULT_SOCIAL_IMAGE: 'الصورة الإجتماعية'
+
     KEYWORDS: 'الكلمات الدلالية'
     MORE_ABOUT: 'المزيد'
     ALSO_SEE: 'انظر أيضا'
@@ -8,7 +14,6 @@ ar:
     SEARCH_RESULTS_COUNT: 'حوالي {value} نتيجة'
     SEARCH_RESULTS_1: 'حوالي'
     SEARCH_RESULTS_2: 'نتيجة'
-    PAGE_LENGTH: 'حجم الصفحة'
     PREVIOUS: 'السابق'
     NEXT: 'التالي'
     SAVE: 'حفظ'

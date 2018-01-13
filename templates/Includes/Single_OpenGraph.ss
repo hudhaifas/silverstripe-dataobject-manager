@@ -8,32 +8,28 @@
     <% if $ObjectImage %>
         <meta property="og:image" content="{$Top.FullURL($ObjectImage.PaddedImage(1200,627).Watermark.URL)}" />
     <% else %>
-        <meta property="og:image" content="{$Top.ThemedURL(/images/social-1200x627.png)}" />
+        <meta property="og:image" content="{$Top.FullURL($Top.DefaultSocialImage.PaddedImage(1200,627).Watermark.URL)}" />
     <% end_if %>    
 
     <% if $SocialDescription %>
         <meta property="og:description" content="{$SocialDescription.Summary(300)}" />
-    <% else_if $ObjectSummary.Count >= 0 %>
-        <meta property="og:description" content="<% loop $ObjectSummary %><% if $Title %>$Title:<% end_if %> $Value<% if not Last %><%t DataObjectPage.COMMA %> <% end_if %><% end_loop %>" />
     <% else %>
-        <meta property="og:description" content="{$Top.Strip($ObjectSummary)}" />
+        <meta property="og:description" content="{$Top.DefaultSocialDesc}" />
     <% end_if %>
     
     <!--Twitter-->
+    <meta property="twitter:site" content="{$Top.TwitterSite}" />
     <meta property="twitter:title" content="$SiteConfig.Title | $ObjectTitle" />
     <% if $SocialDescription %>
         <meta property="twitter:description" content="{$SocialDescription.Summary(300)}" />
-    <% else_if $ObjectSummary.Count >= 0 %>
-        <meta property="twitter:description" content="<% loop $ObjectSummary %><% if $Title %>$Title:<% end_if %> $Value<% if not Last %><%t DataObjectPage.COMMA %> <% end_if %><% end_loop %>" />
     <% else %>
-        <meta property="twitter:description" content="$SocialDescription" />
+        <meta property="twitter:description" content="{$Top.DefaultSocialDesc}" />
     <% end_if %>
     
     <meta property="twitter:card" content="summary_large_image" />
     <% if $ObjectImage %>
         <meta property="twitter:image" content="{$Top.FullURL($ObjectImage.PaddedImage(1200,627).Watermark.URL)}" />
     <% else %>
-        <meta property="twitter:image" content="{$Top.ThemedURL(/images/social-1200x627.png)}" />
+        <meta property="twitter:image" content="{$Top.FullURL($Top.DefaultSocialImage.PaddedImage(1200,627).Watermark.URL)}" />
     <% end_if %>    
-    <meta property="twitter:site" content="{$Top.TwitterSite}" />
 <% end_with %>

@@ -12,7 +12,7 @@
     <% end_if %>    
 
     <% if $SocialDescription %>
-        <meta property="og:description" content="{$SocialDescription}" />
+        <meta property="og:description" content="{$SocialDescription.Summary(300)}" />
     <% else_if $ObjectSummary.Count >= 0 %>
         <meta property="og:description" content="<% loop $ObjectSummary %><% if $Title %>$Title:<% end_if %> $Value<% if not Last %><%t DataObjectPage.COMMA %> <% end_if %><% end_loop %>" />
     <% else %>
@@ -22,7 +22,7 @@
     <!--Twitter-->
     <meta property="twitter:title" content="$SiteConfig.Title | $ObjectTitle" />
     <% if $SocialDescription %>
-        <meta property="twitter:description" content="{$SocialDescription}" />
+        <meta property="twitter:description" content="{$SocialDescription.Summary(300)}" />
     <% else_if $ObjectSummary.Count >= 0 %>
         <meta property="twitter:description" content="<% loop $ObjectSummary %><% if $Title %>$Title:<% end_if %> $Value<% if not Last %><%t DataObjectPage.COMMA %> <% end_if %><% end_loop %>" />
     <% else %>

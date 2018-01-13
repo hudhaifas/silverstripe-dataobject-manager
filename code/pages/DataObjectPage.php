@@ -354,11 +354,15 @@ class DataObjectPage_Controller
     public function OpenGraph() {
         $single = $this->getSingle();
 
-        return $this
-                        ->customise(array(
-                            'Single' => $single
-                        ))
-                        ->renderWith('Single_OpenGraph');
+        if ($single) {
+            return $this
+                            ->customise(array(
+                                'Single' => $single
+                            ))
+                            ->renderWith('Single_OpenGraph');
+        } else {
+            return $this->renderWith('Page_OpenGraph');
+        }
     }
 
     public function FullURL($url) {

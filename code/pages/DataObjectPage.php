@@ -336,7 +336,7 @@ class DataObjectPage_Controller
     }
 
     public function ExtraTags() {
-        return $this->renderWith('Single_ExtraTags');
+        return $this->renderWith('Page_ExtraTags');
     }
 
     public function RichSnippets() {

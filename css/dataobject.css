@@ -240,9 +240,14 @@
 .dataobject-page {
   min-height: 70vh;
 }
+.dataobject-page .dataobject-page-header {
+  padding-top: 15px;
+}
+.dataobject-page .dataobject-page-content {
+  padding-bottom: 15px;
+}
 .dataobject-page .dataobject-tabs {
-  background-color: #fff;
-  margin-bottom: 30px;
+  padding-bottom: 30px;
 }
 .dataobject-page .dataobject-tabs .nav {
   float: right;
@@ -386,7 +391,7 @@
   background: #000;
 }
 .dataobject-page .dataobject-related {
-  margin-bottom: 30px;
+  padding-bottom: 30px;
 }
 .dataobject-page .dataobject-related.place-holder .dataobject-title > h2 {
   width: 40%;

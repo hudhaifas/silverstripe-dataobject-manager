@@ -5,6 +5,8 @@
     <meta property="og:url" content="{$Top.FullURL($ObjectLink)}" />
     <meta property="og:title" content="$SiteConfig.Title | $ObjectTitle" />
     <meta property="og:locale" content="{$Top.ContentLocale}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="627" />
     <% if $ObjectImage %>
         <meta property="og:image" content="{$Top.FullURL($ObjectImage.PaddedImage(1200,627).Watermark.URL)}" />
     <% else %>

@@ -342,7 +342,7 @@ class DataObjectPage_Controller
     public function RichSnippets() {
         $single = $this->getSingle();
 
-        if ($single instanceof SearchableDataObject) {
+        if ($single && $single instanceof SearchableDataObject) {
             $schema = $single->getObjectRichSnippets();
             $schema['@context'] = "http://schema.org";
 

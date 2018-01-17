@@ -20,18 +20,6 @@ var updatePicture = function () {
 
         $pictureHolder.load(url, function (data) {
             $pictureHolder.removeClass('place-holder');
-
-            var $imgBox = $('.imgBox');
-            var align = $pictureHolder.data('align');
-            if ($imgBox.length) {
-                $('.imgBox').imgZoom({
-                    boxWidth: 500,
-                    boxHeight: 400,
-                    marginLeft: 5,
-                    align: align,
-                    origin: 'data-origin'
-                });
-            }
         });
     }
 };

@@ -95,12 +95,13 @@ class DataObjectPage_Controller
         parent::init();
 
         Requirements::css(DATAOBJECT_MANAGER_DIR . "/css/dataobject.css");
+        Requirements::css(DATAOBJECT_MANAGER_DIR . "/css/lightbox.css");
         if ($this->isRTL()) {
             Requirements::css(DATAOBJECT_MANAGER_DIR . "/css/dataobject-rtl.css");
         }
 
+        Requirements::javascript(DATAOBJECT_MANAGER_DIR . "/js/lightbox.js");
         Requirements::javascript(DATAOBJECT_MANAGER_DIR . "/js/dataobject.manager.js");
-        Requirements::javascript(DATAOBJECT_MANAGER_DIR . "/js/jquery.imgzoom.js");
     }
 
     public function index(SS_HTTPRequest $request) {

@@ -1,5 +1,8 @@
 ---
 Name: dataobjectpage
+After:
+  - 'framework/*'
+  - 'cms/*'
 ---
 
 DataObject_EditController:

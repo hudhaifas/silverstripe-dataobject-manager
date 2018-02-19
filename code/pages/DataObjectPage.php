@@ -81,6 +81,9 @@ class DataObjectPage_Controller
         'related',
         'ObjectEditForm',
         'doObjectEdit',
+        'ImageEditForm',
+        'doImageEdit',
+        'doImageCancel',
     );
     private static $url_handlers = array(
         'show/$ID' => 'show',
@@ -276,6 +279,75 @@ class DataObjectPage_Controller
         }
 
         $single->write();
+        return $this->owner->redirectBack();
+    }
+
+    public function ImageEditForm($singleID) {
+        if ($singleID instanceof SS_HTTPRequest) {
+            $id = $singleID->postVar('ObjectID');
+        } else {
+            $id = $singleID;
+        }
+        $single = $this->getSingle($id);
+
+        if (!$single) {
+            $this->httpError(404, 'That object could not be found!');
+        }
+
+        if ($single && !$single->canEdit()) {
+            Security::permissionFailure($this);
+        }
+        
+        if ($single && !$single->getObjectEditableImageName()) {
+            return null;
+        }
+
+        // Create fields          
+        $fields = new FieldList();
+        $fields->push(HiddenField::create('ObjectID', 'ObjectID', $single->ID));
+
+        // Upload Field
+        $images = new ArrayList();
+        $images->push($single->getObjectImage());
+        
+        $field = FrontendUploadField::create($single->getObjectEditableImageName(), '', $images);
+        $field->setCanAttachExisting(false); // Block access to SilverStripe assets library
+        $field->setCanPreviewFolder(false); // Don't show target filesystem folder on upload field
+        $field->setAllowedMaxFileNumber(1);
+        $field->setPreviewMaxHeight(160);
+        $field->setPreviewMaxWidth(160);
+
+        $fields->push($field);
+
+        // Create action
+        $actions = new FieldList();
+        $actions->push(
+                FormAction::create('doImageEdit', _t('DataObjectPage.SAVE', 'Save'))
+                        ->addExtraClass('btn btn-primary')
+        );
+        $actions->push(
+                FormAction::create(null, _t('DataObjectPage.CANCEL', 'Cancel'))
+                        ->addExtraClass('btn btn-default btn-hide-form')
+        );
+
+        // Create Validators
+        $validator = new RequiredFields();
+
+        $form = Form::create($this, 'ImageEditForm', $fields, $actions, $validator);
+
+        return $form;
+    }
+
+    public function doImageEdit($data, $form) {
+        $objectID = $data['ObjectID'];
+        $single = $this->getSingle($objectID);
+
+        $form->saveInto($single);
+        $single->write();
+        return $this->owner->redirectBack();
+    }
+
+    public function doImageCancel($data, $form) {
         return $this->owner->redirectBack();
     }
 

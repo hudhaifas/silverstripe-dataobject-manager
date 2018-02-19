@@ -39,6 +39,8 @@ interface ManageableDataObject {
 
     public function getObjectEditLink();
 
+    public function getObjectEditableImageName();
+
     public function getObjectImage();
 
     public function getObjectDefaultImage();

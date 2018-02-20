@@ -262,13 +262,16 @@
   margin-bottom: 0;
   padding-bottom: 5px;
   padding-top: 5px;
+  font-size: 0;
 }
 .dataobject-page .dataobject-tabs .nav > li {
   /*float: left;*/
   float: none;
+  font-size: 17px;
   position: relative;
   display: inline-block;
   white-space: initial;
+  margin: 0 3px;
 }
 .dataobject-page .dataobject-tabs .nav > li:first-child {
   margin-left: 15px;
@@ -279,6 +282,7 @@
 .dataobject-page .dataobject-tabs .nav > li > a {
   color: #534d46;
   border-radius: 4px;
+  margin: 0;
 }
 .dataobject-page .dataobject-tabs .nav-tabs > li.active a,
 .dataobject-page .dataobject-tabs .nav-tabs > li.active a:hover,

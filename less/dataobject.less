@@ -36,14 +36,17 @@
             margin-bottom: 0;
             padding-bottom: 5px;
             padding-top: 5px;
+            font-size: 0; // to remove the default inline-block gap
 
             > li {
                 /*float: left;*/
                 float: none;
+                font-size: 17px; // to add custom inline-block gap
 
                 position: relative;
                 display: inline-block;
                 white-space: initial;
+                margin: 0 3px; 
 
                 &:first-child {
                     margin-left: 15px; 
@@ -56,6 +59,7 @@
                 > a {
                     color: #534d46;
                     border-radius: 4px;
+                    margin: 0;
                 }
             }
         }

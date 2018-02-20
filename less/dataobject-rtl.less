@@ -9,17 +9,21 @@
     .dataobject-tabs {
         .nav {
             float: left;
+            font-size: 0; // to remove the default inline-block gap
 
             li {
+                font-size: 17px; // to add custom inline-block gap
+                margin: 0 3px; 
+
                 /*float: right;*/
                 &:first-child {
-                    margin-left: auto; 
+                    margin-left: 3px; 
                     margin-right: 15px; 
                 }
 
                 &:last-child {
                     margin-left: 15px; 
-                    margin-right: auto; 
+                    margin-right: 3px; 
                 }
             }
         }

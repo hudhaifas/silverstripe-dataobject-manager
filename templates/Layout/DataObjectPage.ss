@@ -1,4 +1,4 @@
-<div class="container dataobject-page">
+<div class="container dataobject-page $ExtraClasses">
     <div class="dataobject-page-header">
         <div class="row" style="margin-bottom: 1.5em;">
             <div class="col-md-12">
@@ -13,7 +13,11 @@
 
     <div class="dataobject-page-content">
         <div class="row">
-            <% if FiltersList %>
+            <% if IsVerticalList %>
+                <div class="col-md-12">
+                    <% include List_List %>
+                </div>
+            <% else_if FiltersList %>
                 <div class="col-md-4">
                     <% include List_Side %>
                 </div>

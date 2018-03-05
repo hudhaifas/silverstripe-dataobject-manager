@@ -1,4 +1,4 @@
-<div class="dataobject-page dataobject-show">
+<div class="dataobject-page dataobject-show $ExtraClasses">
     <div class="dataobject-page-header">
         <div class="container" style="margin-bottom: 1.5em;">
             <div class="row" >

@@ -209,7 +209,19 @@
         }
     }
 
-    .dataobject-list {
+    .dataobject-vlist {
+        .dataobject-item {
+            font-size: 14px;
+            padding: 5px;
+            border-bottom: 1px solid #dddfe2;
+
+            &:hover {
+                background-color: #f6f6f6;
+            }
+        }
+    }
+
+    .dataobject-hlist {
         width: 100%;
         white-space: nowrap;
         overflow-x: scroll;
@@ -688,7 +700,7 @@
             }
         }
 
-        .dataobject-list {
+        .dataobject-hlist {
             .dataobject-item {
                 width: 176px;
                 font-size: 11px;
@@ -844,7 +856,7 @@
             }
         }
 
-        .dataobject-list {
+        .dataobject-hlist {
             .dataobject-item {
                 width: 160px;
                 font-size: 10px;

@@ -297,7 +297,7 @@ class DataObjectPage_Controller
         if ($single && !$single->canEdit()) {
             Security::permissionFailure($this);
         }
-        
+
         if ($single && !$single->getObjectEditableImageName()) {
             return null;
         }
@@ -309,7 +309,7 @@ class DataObjectPage_Controller
         // Upload Field
         $images = new ArrayList();
         $images->push($single->getObjectImage());
-        
+
         $field = FrontendUploadField::create($single->getObjectEditableImageName(), '', $images);
         $field->setCanAttachExisting(false); // Block access to SilverStripe assets library
         $field->setCanPreviewFolder(false); // Don't show target filesystem folder on upload field
@@ -367,7 +367,7 @@ class DataObjectPage_Controller
                             'Single' => $single,
                             'Title' => $single->Title
                         ))
-                        ->renderWith(array('DataObjectPage_Show', 'Page'));
+                        ->renderWith(array('DataObjectPage_Show', 'DataObjectPage', 'Page'));
     }
 
     protected function editSingle($single) {
@@ -386,7 +386,7 @@ class DataObjectPage_Controller
                             'Single' => $single,
                             'Title' => $single->Title
                         ))
-                        ->renderWith(array('DataObjectPage_Edit', 'Page'));
+                        ->renderWith(array('DataObjectPage_Edit', 'DataObjectPage', 'Page'));
     }
 
     protected function getObjectsList() {
@@ -410,6 +410,10 @@ class DataObjectPage_Controller
 
     public function ExtraTags() {
         return $this->renderWith('Page_ExtraTags');
+    }
+
+    public function ExtraClasses() {
+        return '';
     }
 
     public function RichSnippets() {
@@ -454,6 +458,10 @@ class DataObjectPage_Controller
         return $list->filter(array(
                     'Title:PartialMatch' => $keywords
         ));
+    }
+
+    protected function IsVerticalList() {
+        return false;
     }
 
     /**

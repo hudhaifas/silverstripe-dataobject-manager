@@ -419,13 +419,21 @@
   background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
   background-size: 800px 104px;
 }
-.dataobject-page .dataobject-list {
+.dataobject-page .dataobject-vlist .dataobject-item {
+  font-size: 14px;
+  padding: 5px;
+  border-bottom: 1px solid #dddfe2;
+}
+.dataobject-page .dataobject-vlist .dataobject-item:hover {
+  background-color: #f6f6f6;
+}
+.dataobject-page .dataobject-hlist {
   width: 100%;
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
 }
-.dataobject-page .dataobject-list .dataobject-item {
+.dataobject-page .dataobject-hlist .dataobject-item {
   position: relative;
   display: inline-block;
   white-space: initial;
@@ -848,7 +856,7 @@
   .dataobject-page .dataobject-related.dataobject-item > div .content {
     padding-left: 6px;
   }
-  .dataobject-page .dataobject-list .dataobject-item {
+  .dataobject-page .dataobject-hlist .dataobject-item {
     width: 176px;
     font-size: 11px;
   }
@@ -953,14 +961,14 @@
   .dataobject-page .dataobject-related.dataobject-item:hover .thumbnail .caption .h4 {
     font-size: 9px;
   }
-  .dataobject-page .dataobject-list .dataobject-item {
+  .dataobject-page .dataobject-hlist .dataobject-item {
     width: 160px;
     font-size: 10px;
   }
-  .dataobject-page .dataobject-list .dataobject-item > div .content {
+  .dataobject-page .dataobject-hlist .dataobject-item > div .content {
     padding: 0;
   }
-  .dataobject-page .dataobject-list .dataobject-item .title {
+  .dataobject-page .dataobject-hlist .dataobject-item .title {
     font-size: 12px;
     line-height: 18px;
   }

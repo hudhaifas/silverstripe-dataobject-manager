@@ -1,6 +1,6 @@
 <% with ObjectTabs %>
     <div class="clearfix">
-        <ul class="nav nav-tabs">
+        <ul class="nav nav-tabs nav-loaded">
             <% loop $Me %>
                <li class="<% if First %>active<% end_if %>"><a href="#tab{$Pos}" data-toggle="tab">$Title</a></li>
             <% end_loop %>

@@ -1,5 +1,5 @@
 <div class="clearfix">
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs nav-loading">
         <li><a href="#tab2" data-toggle="tab">&nbsp;</a></li>
     </ul>
 

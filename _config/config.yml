@@ -1,6 +1,3 @@
 ---
 Name: dataobject-manager
-After:
-  - 'framework/*'
-  - 'cms/*'
 ---

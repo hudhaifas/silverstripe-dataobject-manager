@@ -1,5 +1,7 @@
 <?php
 
+use SilverStripe\Control\Director;
+
 /**
  * Fetches the name of the current module folder name.
  *

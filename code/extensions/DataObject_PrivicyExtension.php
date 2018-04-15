@@ -24,6 +24,16 @@
  * SOFTWARE.
  */
 
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\ListboxField;
+use SilverStripe\Forms\OptionsetField;
+use SilverStripe\Forms\Tab;
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Security\Group;
+use SilverStripe\Security\Member;
+use SilverStripe\Security\Permission;
+
 /**
  *
  * @author Hudhaifa Shatnawi <hudhaifa.shatnawi@gmail.com>

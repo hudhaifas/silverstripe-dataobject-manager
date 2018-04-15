@@ -24,6 +24,9 @@
  * SOFTWARE.
  */
 
+use SilverStripe\Forms\FieldList;
+use SilverStripe\ORM\DataExtension;
+
 /**
  *
  * @author Hudhaifa Shatnawi <hudhaifa.shatnawi@gmail.com>

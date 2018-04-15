@@ -15,11 +15,16 @@
         "issues": "https://github.com/hudhaifas/silverstripe-dataobject-manager/issues"
     },
     "require": {
-        "silverstripe/cms": "~3.0",
-        "silverstripe/framework": "~3.0",
+        "silverstripe/framework": "^4",
+        "silverstripe/cms": "^4",
         "samthejarvis/silverstripe-watermarking": "dev-master"
     },
     "extra": {
         "installer-name": "dataobject-manager"
+        "expose": [
+            "css",
+            "images",
+            "js"
+        ]
     }
 }

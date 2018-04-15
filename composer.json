@@ -16,7 +16,8 @@
     },
     "require": {
         "silverstripe/framework": "^4",
-        "silverstripe/cms": "^4"
+        "silverstripe/cms": "^4",
+        "silverstripe/vendor-plugin": "^1.0"
     },
     "extra": {
         "installer-name": "dataobject-manager",

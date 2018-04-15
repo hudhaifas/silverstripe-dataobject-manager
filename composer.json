@@ -21,9 +21,7 @@
     "extra": {
         "installer-name": "dataobject-manager",
         "expose": [
-            "css",
-            "images",
-            "js"
+            "client"
         ]
     }
 }

@@ -516,7 +516,7 @@ class DataObjectPageController
             return;
         }
 
-        $dbFields = $record->db();
+        $dbFields = $record->config()->get('db');
         $restrictFields = $record->config()->restrict_fields;
 
         // iterate database fields
@@ -526,6 +526,11 @@ class DataObjectPageController
             }
 
             $fieldObject = $record->dbObject($fieldName)->scaffoldFormField(null);
+
+            // Allow fields to opt-out of scaffolding
+            if (!$fieldObject) {
+                continue;
+            }
 
             $fieldObject->setTitle($record->fieldLabel($fieldName));
             $fieldObject->setValue($record->$fieldName);

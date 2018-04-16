@@ -37,8 +37,8 @@ class DataObject_MemberExtension
         extends DataExtension {
 
     private static $has_one = array(
-        'CreatedBy' => 'Member',
-        'EditedBy' => 'Member',
+        'CreatedBy' => Member::class,
+        'EditedBy' => Member::class,
     );
 
     public function updateSummaryFields(&$fields) {

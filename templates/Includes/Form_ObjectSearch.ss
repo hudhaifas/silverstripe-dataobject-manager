@@ -4,8 +4,8 @@
             <div class="input-group">
                 <input type="text" name="q" class="form-control" />
 
-                <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-secondary">
                         <i class="fa fa-search"></i>
                     </button>
                 </div>

@@ -207,7 +207,7 @@ class DataObjectPageController
                 ->disableSecurityToken()
                 ->setFormMethod('GET')
                 ->setFormAction($this->Link())
-                ->setTemplate('Form_ObjectSearch')
+                ->setTemplate('Includes\Form_ObjectSearch')
                 ->loadDataFrom($data);
 
         return $form;
@@ -304,7 +304,7 @@ class DataObjectPageController
         );
         $actions->push(
                 FormAction::create(null, _t('DataObjectPage.CANCEL', 'Cancel'))
-                        ->addExtraClass('btn btn-default btn-hide-form')
+                        ->addExtraClass('btn btn-secondary btn-hide-form')
         );
 
         // Create Validators

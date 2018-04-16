@@ -7,7 +7,7 @@
                 <input type="text" name="Search" id="Form_GoogleSiteSearchForm_Search" class="form-control" placeholder="<%t DataObjectPage.SEARCH 'Search' %>" />
 
                 <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default" name="action_doSearch" id="Form_GoogleSiteSearchForm_action_doSearch">
+                    <button type="submit" class="btn btn-secondary" name="action_doSearch" id="Form_GoogleSiteSearchForm_action_doSearch">
                         <i class="fa fa-search"></i>
                     </button>
                 </div>

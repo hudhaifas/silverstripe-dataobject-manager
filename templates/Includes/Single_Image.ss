@@ -8,7 +8,7 @@
         <% if ObjectDefaultImage %>
             <img src= "$ObjectDefaultImage" alt="{$Title}" class="img-responsive" />
         <% else %>
-            <img src= "$resourceURL(hudhaifas/silverstripe-dataobject-manager: client/images/default-image.jpg)" alt="{$Title}" class="img-responsive" />
+            <img src= "$resourceURL(hudhaifas/silverstripe-dataobject-manager: res/images/default-image.jpg)" alt="{$Title}" class="img-responsive" />
         <% end_if %>
 
         <div class="caption" style="">

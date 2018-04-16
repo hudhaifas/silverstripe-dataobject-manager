@@ -74,14 +74,14 @@ class DataObjectPageController
     public function init() {
         parent::init();
 
-        Requirements::css("hudhaifas/silverstripe-dataobject-manager: client/css/dataobject.css");
-        Requirements::css("hudhaifas/silverstripe-dataobject-manager: client/css/lightbox.css");
+        Requirements::css("hudhaifas/silverstripe-dataobject-manager: res/css/dataobject.css");
+        Requirements::css("hudhaifas/silverstripe-dataobject-manager: res/css/lightbox.css");
         if ($this->isRTL()) {
-            Requirements::css("hudhaifas/silverstripe-dataobject-manager: client/css/dataobject-rtl.css");
+            Requirements::css("hudhaifas/silverstripe-dataobject-manager: res/css/dataobject-rtl.css");
         }
 
-        Requirements::javascript("hudhaifas/silverstripe-dataobject-manager: client/js/lightbox.js");
-        Requirements::javascript("hudhaifas/silverstripe-dataobject-manager: client/js/dataobject.manager.js");
+        Requirements::javascript("hudhaifas/silverstripe-dataobject-manager: res/js/lightbox.js");
+        Requirements::javascript("hudhaifas/silverstripe-dataobject-manager: res/js/dataobject.manager.js");
     }
 
     public function index(HTTPRequest $request) {

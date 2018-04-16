@@ -25,6 +25,7 @@
  */
 
 use SilverStripe\Control\Director;
+use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Convert;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\FieldList;
@@ -73,17 +74,17 @@ class DataObjectPageController
     public function init() {
         parent::init();
 
-        Requirements::css(DATAOBJECT_MANAGER_DIR . "/css/dataobject.css");
-        Requirements::css(DATAOBJECT_MANAGER_DIR . "/css/lightbox.css");
+        Requirements::css("hudhaifas/silverstripe-dataobject-manager: client/css/dataobject.css");
+        Requirements::css("hudhaifas/silverstripe-dataobject-manager: client/css/lightbox.css");
         if ($this->isRTL()) {
-            Requirements::css(DATAOBJECT_MANAGER_DIR . "/css/dataobject-rtl.css");
+            Requirements::css("hudhaifas/silverstripe-dataobject-manager: client/css/dataobject-rtl.css");
         }
 
-        Requirements::javascript(DATAOBJECT_MANAGER_DIR . "/js/lightbox.js");
-        Requirements::javascript(DATAOBJECT_MANAGER_DIR . "/js/dataobject.manager.js");
+        Requirements::javascript("hudhaifas/silverstripe-dataobject-manager: client/js/lightbox.js");
+        Requirements::javascript("hudhaifas/silverstripe-dataobject-manager: client/js/dataobject.manager.js");
     }
 
-    public function index(SS_HTTPRequest $request) {
+    public function index(HTTPRequest $request) {
         $start = microtime(true); // time in Microseconds
 
         $results = $this->getObjectsList();
@@ -110,7 +111,7 @@ class DataObjectPageController
 
         if ($request->isAjax()) {
             return $this->customise($data)
-                            ->renderWith('ObjectsList');
+                            ->renderWith('Includes\ObjectsList');
         }
 
         return $data;
@@ -135,7 +136,7 @@ class DataObjectPageController
                         ->customise(array(
                             'ObjectTabs' => $single->getObjectTabs()
                         ))
-                        ->renderWith('Single_Tabs');
+                        ->renderWith('Includes\Single_Tabs');
     }
 
     public function summary() {
@@ -145,7 +146,7 @@ class DataObjectPageController
                         ->customise(array(
                             'Single' => $single
                         ))
-                        ->renderWith('Single_Summary');
+                        ->renderWith('Includes\Single_Summary');
     }
 
     public function picture() {
@@ -158,7 +159,7 @@ class DataObjectPageController
                             'CanPublicView' => $single->canPublicView(),
                             'ObjectTitle' => $single->getObjectTitle()
                         ))
-                        ->renderWith('Single_Image');
+                        ->renderWith('Includes\Single_Image');
     }
 
     public function related() {
@@ -168,7 +169,7 @@ class DataObjectPageController
                         ->customise(array(
                             'Single' => $single
                         ))
-                        ->renderWith('Single_Related');
+                        ->renderWith('Includes\Single_Related');
     }
 
     public function TabsLink($id) {
@@ -385,7 +386,7 @@ class DataObjectPageController
     }
 
     public function ExtraTags() {
-        return $this->renderWith('Page_ExtraTags');
+        return $this->renderWith('Includes\Page_ExtraTags');
     }
 
     public function ExtraClasses() {
@@ -412,9 +413,9 @@ class DataObjectPageController
                             ->customise(array(
                                 'Single' => $single
                             ))
-                            ->renderWith('Single_OpenGraph');
+                            ->renderWith('Includes\Single_OpenGraph');
         } else {
-            return $this->renderWith('Page_OpenGraph');
+            return $this->renderWith('Includes\Page_OpenGraph');
         }
     }
 

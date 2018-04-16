@@ -25,6 +25,7 @@
  */
 
 use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\Assets\Image;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\TextField;
@@ -44,14 +45,14 @@ class DataObjectPage
         'DefaultSocialDesc' => 'Varchar(255)',
     );
     private static $has_one = array(
-        'DefaultSocialImage' => 'Image'
+        'DefaultSocialImage' => Image::class
     );
     private static $defaults = array(
         'PageLength' => 36,
     );
     private static $icon = "dataobjectpage/images/wrap.png";
 
-    public function canCreate($member = false) {
+    public function canCreate($member = null, $context = array()) {
         return false;
     }
 

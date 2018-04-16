@@ -242,6 +242,11 @@
 }
 .dataobject-page .dataobject-page-header {
   padding-top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .dataobject-page .dataobject-page-content {
   padding-bottom: 15px;
@@ -284,19 +289,22 @@
   border-radius: 4px;
   margin: 0;
 }
-.dataobject-page .dataobject-tabs .nav-tabs > li.active a,
-.dataobject-page .dataobject-tabs .nav-tabs > li.active a:hover,
-.dataobject-page .dataobject-tabs .nav-tabs > li.active a:focus {
+.dataobject-page .dataobject-tabs .nav-pills > li a {
+  border: 1px solid transparent;
+}
+.dataobject-page .dataobject-tabs .nav-pills > li a:hover,
+.dataobject-page .dataobject-tabs .nav-pills > li a:focus {
+  color: #534d46;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid transparent;
+}
+.dataobject-page .dataobject-tabs .nav-pills > li a.active,
+.dataobject-page .dataobject-tabs .nav-pills > li a.active:hover,
+.dataobject-page .dataobject-tabs .nav-pills > li a.active:focus {
   color: #534d46;
   cursor: default;
   background-color: transparent;
   border: 1px solid #534d46;
-}
-.dataobject-page .dataobject-tabs .nav-tabs > li a:hover,
-.dataobject-page .dataobject-tabs .nav-tabs > li a:focus {
-  color: #534d46;
-  background-color: rgba(0, 0, 0, 0.1);
-  border: 1px solid transparent;
 }
 .dataobject-page .dataobject-tabs .tab-content {
   width: 100%;
@@ -352,10 +360,10 @@
   padding: 0;
   margin: 0;
 }
-.dataobject-page .dataobject-item .title {
+.dataobject-page .dataobject-item .dataobject-title {
   margin-bottom: 5px;
 }
-.dataobject-page .dataobject-item .details {
+.dataobject-page .dataobject-item .dataobject-info {
   color: #555;
   font-size: 90%;
   padding: 0 6px;
@@ -498,6 +506,7 @@
   min-height: 160px;
 }
 .dataobject-page .dataobject-header .dataobject-card {
+  width: 100%;
   max-width: 700px;
   margin: 0 auto;
 }
@@ -517,7 +526,7 @@
   background-size: 800px 104px;
 }
 .dataobject-page .dataobject-header .dataobject-card .dataobject-brief {
-  display: inline-block;
+  display: block;
   line-height: 1.3;
   margin-top: -0.25em;
   vertical-align: middle;

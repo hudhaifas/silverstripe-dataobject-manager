@@ -11,6 +11,12 @@
 
     .dataobject-page-header {
         padding-top: 15px;
+
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     }
 
     .dataobject-page-content {
@@ -64,24 +70,24 @@
             }
         }
 
-        .nav-tabs {
-            > li.active {
-                a {
-                    &, &:hover, &:focus  {
-                        color: #534d46;
-                        cursor: default;
-                        background-color: transparent;
-                        border: 1px solid #534d46;
-                    }
-                }
-            }
-
+        .nav-pills {
             > li {
                 a {
+                    border: 1px solid transparent;
+
                     &:hover, &:focus  {
                         color: #534d46;
                         background-color: rgba(0,0,0,.1);
                         border: 1px solid transparent;
+                    }
+
+                    &.active {
+                        &, &:hover, &:focus  {
+                            color: #534d46;
+                            cursor: default;
+                            background-color: transparent;
+                            border: 1px solid #534d46;
+                        }
                     }
                 }
             }
@@ -142,11 +148,11 @@
             }
         }
 
-        .title {
+        .dataobject-title {
             margin-bottom: 5px;
         }
 
-        .details {
+        .dataobject-info {
             color: #555;
             font-size: 90%;
             padding: 0 6px;
@@ -297,6 +303,7 @@
         min-height: @dataobject-picture-size;
 
         .dataobject-card {
+            width: 100%;
             max-width: 700px;
             margin: 0 auto;
 
@@ -311,7 +318,7 @@
             }
 
             .dataobject-brief {
-                display: inline-block;
+                display: block;
                 line-height: 1.3;
                 margin-top: -0.25em;
                 vertical-align: middle;

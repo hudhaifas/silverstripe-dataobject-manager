@@ -50,7 +50,7 @@ class DataObjectPage
     private static $defaults = array(
         'PageLength' => 36,
     );
-    private static $icon = "dataobjectpage/images/wrap.png";
+    private static $icon = "hudhaifas/silverstripe-dataobject-manager: client/images/wrap.png";
 
     public function canCreate($member = null, $context = array()) {
         return false;

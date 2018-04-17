@@ -1,3 +1,3 @@
-<div class="card text-center imgBox">
+<div class="card text-center">
     &nbsp;
 </div>

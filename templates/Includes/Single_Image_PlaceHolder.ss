@@ -1,3 +1,3 @@
-<div class="thumbnail text-center imgBox">
+<div class="card text-center imgBox">
     &nbsp;
 </div>

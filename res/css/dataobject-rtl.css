@@ -50,7 +50,7 @@
 .dataobject-page .dataobject-tabs .tab-content {
   float: right;
 }
-.dataobject-page .dataobject-item .thumbnail .caption {
+.dataobject-page .dataobject-item .card .caption {
   left: auto;
   right: 0;
 }

@@ -135,7 +135,7 @@ class DataObject_PrivicyExtension
     }
 
     /// Permissions ///
-    public function canCreate($member = null) {
+    public function canCreate($member) {
         if (!$this->owner->isCreatable()) {
             return false;
         }
@@ -165,7 +165,7 @@ class DataObject_PrivicyExtension
         return false;
     }
 
-    public function canView($member = false) {
+    public function canView($member) {
         if (!$member) {
             $member = Member::currentUserID();
         }
@@ -205,7 +205,7 @@ class DataObject_PrivicyExtension
         return self::cache_permission_check('view', $member, $this->owner->ID, false);
     }
 
-    public function canDelete($member = false) {
+    public function canDelete($member) {
         if (!$member) {
             $member = Member::currentUserID();
         }
@@ -231,13 +231,13 @@ class DataObject_PrivicyExtension
         return false;
     }
 
-    public function canEdit($member = false) {
+    public function canEdit($member) {
         if (!$member) {
             $member = Member::currentUserID();
         }
 
         if ($member && is_numeric($member)) {
-            $member = DataObject::get_by_id('Member', $member);
+            $member = DataObject::get_by_id(Member::class, $member);
         }
 
         $cachedPermission = self::cache_permission_check('edit', $member, $this->owner->ID);

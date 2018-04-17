@@ -16,7 +16,7 @@
         </div>
     <% end_if %>
 
-    <% if CanEdit && ObjectEditableImageName %>
+    <% if canEdit(0) && ObjectEditableImageName %>
         <div class="caption caption-btn" style="">
             <a class="btn-show-form"><%t DataObjectPage.CHANGE 'Change' %></a>
         </div>

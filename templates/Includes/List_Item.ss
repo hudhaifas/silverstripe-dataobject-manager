@@ -1,6 +1,6 @@
 <div style="height: auto;">
     <a <% if CanPublicView %>href="$ObjectLink"<% end_if %> title="$ObjectTitle">
-        <div class="thumbnail text-center col-sm-12 col-xs-4">
+        <div class="card text-center col-sm-12 col-xs-4">
             <% include List_Image %>
 
             <% if CanPublicView %>

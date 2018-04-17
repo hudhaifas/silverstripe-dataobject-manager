@@ -49,10 +49,9 @@ var updateTabs = function () {
         }
 
         $tabsHolder.load(url, function () {
+            // Remove url before #
             $('a.nav-link.tab-link').each(function () {
-                console.log(this.href);
                 var hashLink = this.href.split('#')[1];
-                console.log(hashLink);
                 $(this).attr('href', '#' + hashLink);
             });
 

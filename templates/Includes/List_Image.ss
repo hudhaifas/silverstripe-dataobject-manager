@@ -1,5 +1,5 @@
 <% if $ObjectImage && CanPublicView %>
-    <img src="$ObjectImage.PaddedImage(256,256).Watermark.URL" alt="image" class="img-responsive" />
+    <img src="$ObjectImage.Pad(256,256).URL" alt="image" class="img-responsive" />
 <% else %>
     <% if ObjectDefaultImage %>
         <img src= "$ObjectDefaultImage" alt="" class="img-responsive" />

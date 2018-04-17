@@ -1,8 +1,8 @@
 <% with Single %>
 <div class="card text-center imgBox">
     <% if ObjectImage %>
-        <a href="$ObjectImage.Watermark.URL" data-lightbox="dataobject-gallery" data-title="{$Title}">
-            <img src="$ObjectImage.PaddedImage(256,256).Watermark.URL" alt="{$Title}" class="img-responsive" />
+        <a href="$ObjectImage.URL" data-lightbox="dataobject-gallery" data-title="{$Title}">
+            <img src="$ObjectImage.Pad(256,256).URL" alt="{$Title}" class="img-responsive" />
         </a>
     <% else %>
         <% if ObjectDefaultImage %>

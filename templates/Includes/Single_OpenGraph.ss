@@ -8,9 +8,9 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="627" />
     <% if $ObjectImage %>
-        <meta property="og:image" content="{$Top.FullURL($ObjectImage.PaddedImage(1200,627).Watermark.URL)}" />
+        <meta property="og:image" content="{$Top.FullURL($ObjectImage.Pad(1200,627).URL)}" />
     <% else %>
-        <meta property="og:image" content="{$Top.FullURL($Top.DefaultSocialImage.PaddedImage(1200,627).Watermark.URL)}" />
+        <meta property="og:image" content="{$Top.FullURL($Top.DefaultSocialImage.Pad(1200,627).URL)}" />
     <% end_if %>    
 
     <% if $SocialDescription %>
@@ -30,8 +30,8 @@
     
     <meta property="twitter:card" content="summary_large_image" />
     <% if $ObjectImage %>
-        <meta property="twitter:image" content="{$Top.FullURL($ObjectImage.PaddedImage(1200,627).Watermark.URL)}" />
+        <meta property="twitter:image" content="{$Top.FullURL($ObjectImage.Pad(1200,627).URL)}" />
     <% else %>
-        <meta property="twitter:image" content="{$Top.FullURL($Top.DefaultSocialImage.PaddedImage(1200,627).Watermark.URL)}" />
+        <meta property="twitter:image" content="{$Top.FullURL($Top.DefaultSocialImage.Pad(1200,627).URL)}" />
     <% end_if %>    
 <% end_with %>

@@ -214,7 +214,7 @@ class DataObjectPageController
     }
 
     public function ObjectEditForm($singleID) {
-        if ($singleID instanceof SS_HTTPRequest) {
+        if ($singleID instanceof HTTPRequest) {
             $id = $singleID->postVar('ObjectID');
         } else {
             $id = $singleID;
@@ -260,7 +260,7 @@ class DataObjectPageController
     }
 
     public function ImageEditForm($singleID) {
-        if ($singleID instanceof SS_HTTPRequest) {
+        if ($singleID instanceof HTTPRequest) {
             $id = $singleID->postVar('ObjectID');
         } else {
             $id = $singleID;
@@ -370,7 +370,13 @@ class DataObjectPageController
         return DataObject::get('Page');
     }
 
-    protected function getSingle($id = null) {
+    protected function getSingle($singleID = null) {
+        if ($singleID instanceof HTTPRequest) {
+            $id = $singleID->postVar('ObjectID');
+        } else {
+            $id = $singleID;
+        }
+        
         $list = $this->getObjectsList();
         if (!$list) {
             return null;

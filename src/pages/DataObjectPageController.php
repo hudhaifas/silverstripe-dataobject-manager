@@ -376,7 +376,7 @@ class DataObjectPageController
         } else {
             $id = $singleID;
         }
-        
+
         $list = $this->getObjectsList();
         if (!$list) {
             return null;
@@ -544,9 +544,7 @@ class DataObjectPageController
             if ($fieldObject instanceof HtmlEditorField) {
                 
             } else if ($fieldObject instanceof DateField) {
-                $fieldObject->setConfig('showcalendar', true);
-//                    $fieldObject->setConfig('showdropdown', true);
-//                    $fieldObject->setConfig('dateformat', 'dd-MM-yyyy');
+                
             }
             $fields->push($fieldObject);
         }

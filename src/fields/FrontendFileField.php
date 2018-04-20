@@ -31,7 +31,15 @@ use SilverStripe\Forms\FileField;
  *
  * @author hudha
  */
-class FrontendUploadField
+class FrontendFileField
         extends FileField {
-    
+
+    /**
+     * @param array $properties
+     * @return string
+     */
+    public function Field($properties = array()) {
+        return parent::Field($properties);
+    }
+
 }

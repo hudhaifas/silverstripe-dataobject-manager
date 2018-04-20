@@ -27,10 +27,9 @@
 use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Convert;
-use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\DateField;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\FileHandleField;
+use SilverStripe\Forms\FileField;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
@@ -289,8 +288,7 @@ class DataObjectPageController
         $images = new ArrayList();
         $images->push($single->getObjectImage());
 
-//        $field = FrontendUploadField::create($single->getObjectEditableImageName(), '', $images);
-        $field = Injector::inst()->create(FileHandleField::class, 'Files');
+        $field = FrontendUploadField::create($single->getObjectEditableImageName(), '', $images);
 
 //        $field->setCanAttachExisting(false); // Block access to SilverStripe assets library
 //        $field->setCanPreviewFolder(false); // Don't show target filesystem folder on upload field

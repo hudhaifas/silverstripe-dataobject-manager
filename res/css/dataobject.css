@@ -756,6 +756,7 @@
   margin: 0;
   background: rgba(0, 0, 0, 0.54);
   font-size: 11px;
+  line-height: 18px;
   padding: 3px;
   cursor: pointer;
 }

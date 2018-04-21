@@ -24,6 +24,7 @@
  * SOFTWARE.
  */
 
+use HudhaifaS\DOM\FrontendImageField;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Convert;
@@ -284,10 +285,7 @@ class DataObjectPageController
         $fields->push(HiddenField::create('ObjectID', 'ObjectID', $single->ID));
 
         // Upload Field
-        $images = new ArrayList();
-        $images->push($single->getObjectImage());
-
-        $field = FrontendImageField::create($single->getObjectEditableImageName(), '', $images);
+        $field = FrontendImageField::create($single->getObjectEditableImageName(), '', $single->getObjectImage());
         $fields->push($field);
 
         // Create action

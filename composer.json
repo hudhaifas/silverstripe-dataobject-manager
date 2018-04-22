@@ -1,7 +1,7 @@
 {
     "name": "hudhaifas/silverstripe-dataobject-manager",
     "description": "Wrap any Silverstripe DataObject in a page.",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "homepage": "https://github.com/hudhaifas/silverstripe-dataobject-manager",
     "keywords": ["silverstripe", "dataobject", "page"],
     "license": "MIT",

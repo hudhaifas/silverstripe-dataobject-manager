@@ -24,7 +24,7 @@
  * SOFTWARE.
  */
 
-use HudhaifaS\DOM\FrontendImageField;
+use HudhaifaS\Fields\FrontendImageField;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Convert;

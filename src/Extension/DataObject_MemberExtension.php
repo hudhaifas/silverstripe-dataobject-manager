@@ -1,6 +1,6 @@
 <?php
 
-namespace HudhaifaS\DOM\Extensions;
+namespace HudhaifaS\DOM\Extension;
 
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;

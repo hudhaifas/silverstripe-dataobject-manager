@@ -1,6 +1,6 @@
 <?php
 
-namespace HudhaifaS\DOM;
+namespace HudhaifaS\DOM\View;
 
 use HudhaifaS\DOM\Model\SearchableDataObject;
 use HudhaifaS\Fields\FrontendImageField;

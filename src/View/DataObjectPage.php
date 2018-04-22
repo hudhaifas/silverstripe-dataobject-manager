@@ -1,6 +1,6 @@
 <?php
 
-namespace HudhaifaS\DOM;
+namespace HudhaifaS\DOM\View;
 
 use Page;
 use SilverStripe\AssetAdmin\Forms\UploadField;

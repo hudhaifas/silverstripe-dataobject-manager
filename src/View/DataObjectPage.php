@@ -1,8 +1,5 @@
 <?php
 
-namespace HudhaifaS\DOM\View;
-
-use Page;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\NumericField;

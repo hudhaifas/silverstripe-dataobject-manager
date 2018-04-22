@@ -42,16 +42,16 @@ use SilverStripe\Security\Permission;
 class DataObject_PrivicyExtension
         extends DataExtension {
 
-    private static $db = array(
+    private static $db = [
         // Permession Level
         "CanViewType" => "Enum('Anyone, LoggedInUsers, OnlyTheseUsers', 'Anyone')",
         "CanEditType" => "Enum('LoggedInUsers, OnlyTheseUsers', 'OnlyTheseUsers')",
-    );
-    private static $defaults = array(
+    ];
+    private static $defaults = [
         "CanViewType" => "Anyone",
         "CanEditType" => "OnlyTheseUsers"
-    );
-    private static $cache_permissions = array();
+    ];
+    private static $cache_permissions = [];
 
     public function updateFieldLabels(&$labels) {
         // Privacy
@@ -65,14 +65,14 @@ class DataObject_PrivicyExtension
 
     public function getPrivacyFields(FieldList $fields) {
         // Prepare groups and members lists
-        $groupsMap = array();
+        $groupsMap = [];
         foreach (Group::get() as $group) {
             // Listboxfield values are escaped, use ASCII char instead of &raquo;
             $groupsMap[$group->ID] = $group->getBreadcrumbs(' > ');
         }
         asort($groupsMap);
 
-        $membersMap = array();
+        $membersMap = [];
         foreach (Member::get() as $member) {
             // Listboxfield values are escaped, use ASCII char instead of &raquo;
             $membersMap[$member->ID] = $member->getTitle();
@@ -80,16 +80,16 @@ class DataObject_PrivicyExtension
         asort($membersMap);
 
         // Prepare Options
-        $viewersOptionsSource = array(
+        $viewersOptionsSource = [
             "Anyone" => _t('DataObjectExtension.ACCESSANYONE', "Anyone"),
             "LoggedInUsers" => _t('DataObjectExtension.ACCESSLOGGEDIN', "All Logged-in users"),
             "OnlyTheseUsers" => _t('DataObjectExtension.ACCESSONLYTHESE', "Only these people (choose from list)")
-        );
+        ];
 
-        $editorsOptionsSource = array(
+        $editorsOptionsSource = [
             "LoggedInUsers" => _t('DataObjectExtension.ACCESSLOGGEDIN', "All Logged-in users"),
             "OnlyTheseUsers" => _t('DataObjectExtension.ACCESSONLYTHESE', "Only these people (choose from list)")
-        );
+        ];
 
         // Remove existing fields
         $fields->removeFieldFromTab('Root.Main', 'CanViewType');
@@ -108,7 +108,7 @@ class DataObject_PrivicyExtension
         $privacyTab = new Tab('PrivacyTab', _t('DataObjectExtension.PRIVACY', 'Privacy'));
         $fields->insertAfter('Main', $privacyTab);
 
-        $fields->addFieldsToTab('Root.PrivacyTab', array(
+        $fields->addFieldsToTab('Root.PrivacyTab', [
             OptionsetField::create(
                     "CanViewType", _t('DataObjectExtension.CAN_VIEW_TYPE', 'Who can view this person?')
             )->setSource($viewersOptionsSource), //
@@ -131,7 +131,7 @@ class DataObject_PrivicyExtension
                     ->setMultiple(true)
                     ->setSource($membersMap)
                     ->setAttribute('data-placeholder', _t('DataObjectExtension.MEMBER_PLACEHOLDER', 'Click to select user'))
-        ));
+        ]);
     }
 
     /// Permissions ///

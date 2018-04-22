@@ -35,9 +35,9 @@ use SilverStripe\ORM\DataExtension;
 class DataObject_ViewsCounterExtension
         extends DataExtension {
 
-    private static $db = array(
+    private static $db = [
         'ViewsCount' => 'Int',
-    );
+    ];
 
     public function updateSummaryFields(&$fields) {
         $fields['ViewsCount'] = _t('DataObjectExtension.VIEWS_COUNT', 'Views Count');

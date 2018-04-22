@@ -36,7 +36,6 @@ use SilverStripe\Forms\HiddenField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextField;
 use SilverStripe\i18n\i18n;
-use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\Security\Security;
@@ -50,7 +49,7 @@ use SilverStripe\View\Requirements;
 class DataObjectPageController
         extends PageController {
 
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         'show',
         'edit',
         'tabs',
@@ -62,15 +61,15 @@ class DataObjectPageController
         'ImageEditForm',
         'doImageEdit',
         'doImageCancel',
-    );
-    private static $url_handlers = array(
+    ];
+    private static $url_handlers = [
         'show/$ID' => 'show',
         'edit/$ID' => 'edit',
         'tabs/$ID' => 'tabs',
         'summary/$ID' => 'summary',
         'picture/$ID' => 'picture',
         'related/$ID' => 'related'
-    );
+    ];
 
     public function init() {
         parent::init();
@@ -95,7 +94,7 @@ class DataObjectPageController
         }
 
         if (!$results) {
-            return array();
+            return [];
         }
 
         $paginated = PaginatedList::create(
@@ -105,10 +104,10 @@ class DataObjectPageController
 
         $end = microtime(true); // time in Microseconds
 
-        $data = array(
+        $data = [
             'Results' => $paginated,
             'Seconds' => ($end - $start) / 1000
-        );
+        ];
 
         if ($request->isAjax()) {
             return $this->customise($data)
@@ -134,9 +133,9 @@ class DataObjectPageController
         $single = $this->getSingle();
 
         return $this
-                        ->customise(array(
+                        ->customise([
                             'ObjectTabs' => $single->getObjectTabs()
-                        ))
+                        ])
                         ->renderWith('Includes\Single_Tabs');
     }
 
@@ -144,9 +143,9 @@ class DataObjectPageController
         $single = $this->getSingle();
 
         return $this
-                        ->customise(array(
+                        ->customise([
                             'Single' => $single
-                        ))
+                        ])
                         ->renderWith('Includes\Single_Summary');
     }
 
@@ -154,12 +153,12 @@ class DataObjectPageController
         $single = $this->getSingle();
 
         return $this
-                        ->customise(array(
+                        ->customise([
                             'ObjectImage' => $single->getObjectImage(),
                             'ObjectDefaultImage' => $single->getObjectDefaultImage(),
                             'CanPublicView' => $single->canPublicView(),
                             'ObjectTitle' => $single->getObjectTitle()
-                        ))
+                        ])
                         ->renderWith('Includes\Single_Image');
     }
 
@@ -167,9 +166,9 @@ class DataObjectPageController
         $single = $this->getSingle();
 
         return $this
-                        ->customise(array(
+                        ->customise([
                             'Single' => $single
-                        ))
+                        ])
                         ->renderWith('Includes\Single_Related');
     }
 
@@ -332,11 +331,11 @@ class DataObjectPageController
         $this->preRenderSingle($single);
 
         return $this
-                        ->customise(array(
+                        ->customise([
                             'Single' => $single,
                             'Title' => $single->Title
-                        ))
-                        ->renderWith(array('DataObjectPage_Show', 'DataObjectPage', 'Page'));
+                        ])
+                        ->renderWith(['DataObjectPage_Show', 'DataObjectPage', 'Page']);
     }
 
     protected function editSingle($single) {
@@ -351,11 +350,11 @@ class DataObjectPageController
         $this->preRenderSingle($single);
 
         return $this
-                        ->customise(array(
+                        ->customise([
                             'Single' => $single,
                             'Title' => $single->Title
-                        ))
-                        ->renderWith(array('DataObjectPage_Edit', 'DataObjectPage', 'Page'));
+                        ])
+                        ->renderWith(['DataObjectPage_Edit', 'DataObjectPage', 'Page']);
     }
 
     protected function getObjectsList() {
@@ -378,9 +377,9 @@ class DataObjectPageController
             $id = $this->getRequest()->param('ID');
         }
 
-        return $list->filter(array(
+        return $list->filter([
                     'ID' => $id
-                ))->first();
+                ])->first();
     }
 
     public function ExtraTags() {
@@ -408,9 +407,9 @@ class DataObjectPageController
 
         if ($single) {
             return $this
-                            ->customise(array(
+                            ->customise([
                                 'Single' => $single
-                            ))
+                            ])
                             ->renderWith('Includes\Single_OpenGraph');
         } else {
             return $this->renderWith('Includes\Page_OpenGraph');
@@ -430,9 +429,9 @@ class DataObjectPageController
             return null;
         }
 
-        return $list->filter(array(
+        return $list->filter([
                     'Title:PartialMatch' => $keywords
-        ));
+        ]);
     }
 
     protected function IsVerticalList() {
@@ -441,16 +440,16 @@ class DataObjectPageController
 
     /**
      * 
-     * $lists = array(
-     *     array(
+     * $lists = [
+     *     [
      *         'Title' => 'Categories',
      *         'Items' => $this->getObjectsList()
-     *     ),
-     *     array(
+     *     ],
+     *     [
      *         'Title' => 'Categories',
      *         'Items' => $this->getObjectsList()->Limit(6)
-     *     )
-     * );
+     *     ]
+     * ];
      * return new ArrayList($lists);
      * 
      * @return type
@@ -460,25 +459,25 @@ class DataObjectPageController
     }
 
     public function restrictFields() {
-        return array();
+        return [];
     }
 
     /**
      * 
-     * $lists = array(
-     *     array(
+     * $lists = [
+     *     [
      *         'Title' => 'Header 1',
      *         'Content' => 'Content 1'
-     *     ),
-     *     array(
+     *     ],
+     *     [
      *         'Title' => 'Header 2',
      *         'Content' => 'Content 2'
-     *     ),
-     *     array(
+     *     ],
+     *     [
      *         'Title' => 'Header 3',
      *         'Content' => 'Content 3'
-     *     ),
-     * );
+     *     ],
+     * ];
      * return new ArrayList($lists);
      */
     protected function getTabsList() {

@@ -38,21 +38,21 @@ use SilverStripe\Forms\TextField;
 class DataObjectPage
         extends Page {
 
-    private static $db = array(
+    private static $db = [
         'PageLength' => 'Int',
         'FbAppId' => 'Varchar(100)',
         'TwitterSite' => 'Varchar(100)',
         'DefaultSocialDesc' => 'Varchar(255)',
-    );
-    private static $has_one = array(
+    ];
+    private static $has_one = [
         'DefaultSocialImage' => Image::class
-    );
-    private static $defaults = array(
+    ];
+    private static $defaults = [
         'PageLength' => 36,
-    );
+    ];
     private static $icon = "hudhaifas/silverstripe-dataobject-manager: res/images/wrap.png";
 
-    public function canCreate($member = null, $context = array()) {
+    public function canCreate($member = null, $context = []) {
         return false;
     }
 

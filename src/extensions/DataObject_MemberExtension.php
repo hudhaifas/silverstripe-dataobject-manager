@@ -36,10 +36,10 @@ use SilverStripe\Security\Member;
 class DataObject_MemberExtension
         extends DataExtension {
 
-    private static $has_one = array(
+    private static $has_one = [
         'CreatedBy' => Member::class,
         'EditedBy' => Member::class,
-    );
+    ];
 
     public function updateSummaryFields(&$fields) {
         $fields['CreatedBy.Title'] = _t('DataObjectExtension.CREATED_BY', 'Created By');

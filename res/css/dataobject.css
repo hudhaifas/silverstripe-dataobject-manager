@@ -503,7 +503,7 @@
   text-align: center;
   margin: 0 auto 20px;
   font-size: 18px;
-  line-height: 120px;
+  /*        line-height: 120px;*/
   min-height: 160px;
 }
 .dataobject-page .dataobject-header .dataobject-card {

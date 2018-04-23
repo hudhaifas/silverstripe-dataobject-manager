@@ -270,10 +270,6 @@ class DataObjectPageController
                 FormAction::create('doImageEdit', _t('DataObjectPage.SAVE', 'Save'))
                         ->addExtraClass('btn btn-primary')
         );
-        $actions->push(
-                FormAction::create(null, _t('DataObjectPage.CANCEL', 'Cancel'))
-                        ->addExtraClass('btn btn-secondary btn-hide-form')
-        );
 
         // Create Validators
         $validator = new RequiredFields();
@@ -466,7 +462,7 @@ class DataObjectPageController
     }
 
     protected function preRenderSingle($single) {
-        
+        FrontendImageField::init_scripts();
     }
 
     protected final function getRecordActions($record, &$actions) {

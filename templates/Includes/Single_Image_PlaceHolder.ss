@@ -1,3 +1,3 @@
-<div class="card text-center">
+<div class="">
     &nbsp;
 </div>

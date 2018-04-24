@@ -796,6 +796,35 @@
   border-radius: 6px;
   /*max-height: 200px;*/
 }
+.modal {
+  background: #fff;
+  color: #000;
+  border: 0;
+  padding: 0;
+  cursor: auto;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.16);
+}
+.modal > .card-header {
+  background: transparent;
+  border: 0;
+}
+.modal > .card-body .family-members-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.modal > .card-body .family-members-list {
+  font-size: 13px;
+  font-weight: normal;
+}
+.modal a.close-modal {
+  top: 8px;
+  right: 8px;
+  background: none;
+  width: auto;
+  height: auto;
+  text-indent: initial;
+}
 /* Meduim (Portrait tablet to landscape and desktop) */
 @media (min-width: 768px) and (max-width: 979px) {
   .dataobject-page .dataobject-item {

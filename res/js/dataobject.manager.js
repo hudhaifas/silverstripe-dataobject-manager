@@ -20,6 +20,12 @@ var updatePicture = function () {
 
         $pictureHolder.load(url, function (data) {
             $pictureHolder.removeClass('place-holder');
+            // Open modal in AJAX callback
+            $('.btn-show-upload').click(function (event) {
+                event.preventDefault();
+                loadModal(this.href);
+            });
+
         });
     }
 };
@@ -84,4 +90,17 @@ var getURL = function ($element) {
     $element.attr('data-url', '');
 
     return url;
+};
+
+var loadModal = function (url) {
+    $.get(url, function (html) {
+        var $content = $(html);
+        $content.appendTo('body').modal({
+            closeText: '<span aria-hidden="true">×</span>',
+            closeClass: 'close',
+            fadeDuration: 400
+        });
+
+        initFileinput();
+    });
 };

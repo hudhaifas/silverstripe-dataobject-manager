@@ -32,6 +32,7 @@ class DataObjectPageController
         'tabs',
         'summary',
         'picture',
+        'upload',
         'related',
         'ObjectEditForm',
         'doObjectEdit',
@@ -45,18 +46,24 @@ class DataObjectPageController
         'tabs/$ID' => 'tabs',
         'summary/$ID' => 'summary',
         'picture/$ID' => 'picture',
+        'upload/$ID' => 'upload',
         'related/$ID' => 'related'
     ];
 
     public function init() {
         parent::init();
 
+        FrontendImageField::init_scripts();
+
+        Requirements::css("https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css");
         Requirements::css("hudhaifas/silverstripe-dataobject-manager: res/css/dataobject.css");
         Requirements::css("hudhaifas/silverstripe-dataobject-manager: res/css/lightbox.css");
+
         if ($this->isRTL()) {
             Requirements::css("hudhaifas/silverstripe-dataobject-manager: res/css/dataobject-rtl.css");
         }
 
+        Requirements::javascript("https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js");
         Requirements::javascript("hudhaifas/silverstripe-dataobject-manager: res/js/lightbox.js");
         Requirements::javascript("hudhaifas/silverstripe-dataobject-manager: res/js/dataobject.manager.js");
     }
@@ -139,6 +146,19 @@ class DataObjectPageController
                         ->renderWith('Includes\Single_Image');
     }
 
+    public function upload() {
+        $single = $this->getSingle();
+
+        return $this
+                        ->customise([
+                            'ObjectImage' => $single->getObjectImage(),
+                            'ObjectDefaultImage' => $single->getObjectDefaultImage(),
+                            'CanPublicView' => $single->canPublicView(),
+                            'ObjectTitle' => $single->getObjectTitle()
+                        ])
+                        ->renderWith('Includes\Single_Image_Upload');
+    }
+
     public function related() {
         $single = $this->getSingle();
 
@@ -159,6 +179,10 @@ class DataObjectPageController
 
     public function PictureLink($id) {
         return $this->Link("picture/$id");
+    }
+
+    public function UploadLink($id) {
+        return $this->Link("upload/$id");
     }
 
     public function RelatedLink($id) {
@@ -462,7 +486,6 @@ class DataObjectPageController
     }
 
     protected function preRenderSingle($single) {
-        FrontendImageField::init_scripts();
     }
 
     protected final function getRecordActions($record, &$actions) {

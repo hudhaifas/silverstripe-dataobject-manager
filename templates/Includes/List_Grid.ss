@@ -10,7 +10,7 @@
     <div class="row dataobject-grid">
         <% loop $Results %>
             <% if CanPublicView %>
-                <div class="<% if Up.FiltersList %>col-sm-4<% else %>col-sm-3<% end_if %> col-xs-6 dataobject-item">
+                <div class="<% if Up.FiltersList %>col-sm-4<% else %>col-sm-3<% end_if %> col-6 dataobject-item">
                     $ObjectItem
                 </div>
             <% end_if %>

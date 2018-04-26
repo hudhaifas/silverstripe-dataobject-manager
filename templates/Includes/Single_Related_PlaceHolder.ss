@@ -4,16 +4,16 @@
     </div>
 
     <div class="row dataobject-grid">
-        <div class="col-sm-3 col-xs-6 dataobject-item">
+        <div class="col-md-2 col-6 dataobject-item">
             <div>&nbsp;</div>
         </div>
-        <div class="col-sm-3 col-xs-6 dataobject-item">
+        <div class="col-md-2 col-6 dataobject-item">
             <div>&nbsp;</div>
         </div>
-        <div class="col-sm-3 col-xs-6 dataobject-item">
+        <div class="col-md-2 col-6 dataobject-item">
             <div>&nbsp;</div>
         </div>
-        <div class="col-sm-3 col-xs-6 dataobject-item">
+        <div class="col-md-2 col-6 dataobject-item">
             <div>&nbsp;</div>
         </div>
     </div>

@@ -6,7 +6,7 @@
             <div class="row dataobject-grid">
                 <% loop ObjectRelated.Limit(4) %>
                     <% if not $IsObjectDisabled %>
-                        <div class="<% if Up.FiltersList %>col-sm-4<% else %>col-sm-3<% end_if %> col-xs-6 dataobject-item">
+                        <div class="col-md-2 col-6 dataobject-item">
                             $ObjectItem
                         </div>
                     <% end_if %>

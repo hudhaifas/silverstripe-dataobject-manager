@@ -94,4 +94,4 @@ DataObject Manager is a standard Fronend wapper fot a certain DataObject instanc
     DEALINGS IN THE SOFTWARE.
 
 
-   [github.com]: <http://github.com/hudhaifas/silverstripe-librarian/issues>
+   [github.com]: <http://github.com/hudhaifas/silverstripe-dataobject-manager/issues>

@@ -7,7 +7,6 @@
                 </div>
 
                 <div class="col-md-4"></div>
-
                 <div class="col-md-4">
                     <% with Single %>
                         <% if ObjectNav %>
@@ -22,6 +21,8 @@
 
         <% include Single_Info %>
     </div>
+        
+    $Single.Progress
 
     <div class="dataobject-page-content">
         <div class="dataobject-tabs place-holder" data-url="{$TabsLink($Single.ID)}">

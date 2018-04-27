@@ -10,9 +10,9 @@
 
                 <div class="col-md-4">
                     <% with Single %>
-                        <div class="pull-right">
-                            <a href="{$ObjectLink}" class="btn btn-secondary" title="<%t DataObjectPage.SHOW 'Show' %>"><%t DataObjectPage.SHOW 'Show' %></a>
-                        </div>
+                    <div class="pull-right">
+                        <a href="{$ObjectLink}" class="btn btn-secondary" title="<%t DataObjectPage.SHOW 'Show' %>"><%t DataObjectPage.SHOW 'Show' %></a>
+                    </div>
                     <% end_with %>
                 </div>
             </div>
@@ -23,8 +23,11 @@
 
     <div class="dataobject-page-content">
         <div class="container">
-            $ObjectEditForm($Single.ID)
+            <div class="row">
+                <div class="offset-md-3 col-md-6 col-12">
+                    $ObjectEditForm($Single.ID)
+                </div>
+            </div>
         </div>
-    </div>
 
-</div>
+    </div>

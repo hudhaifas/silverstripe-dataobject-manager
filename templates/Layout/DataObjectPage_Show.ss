@@ -21,8 +21,10 @@
 
         <% include Single_Info %>
     </div>
-        
-    $Single.Progress
+    
+    <% if $Single.canEdit %>
+        $Single.Progress
+    <% end_if %>
 
     <div class="dataobject-page-content">
         <div class="dataobject-tabs place-holder" data-url="{$TabsLink($Single.ID)}">

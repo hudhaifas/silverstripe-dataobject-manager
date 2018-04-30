@@ -23,7 +23,7 @@
     </div>
     
     <% if $Single.canEdit %>
-        $Single.Progress
+        $Single.ProgressBar
     <% end_if %>
 
     <div class="dataobject-page-content">

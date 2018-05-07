@@ -27,6 +27,7 @@ class DataObjectPageController
         extends PageController {
 
     private static $allowed_actions = [
+        // Actions
         'show',
         'edit',
         'tabs',
@@ -34,11 +35,14 @@ class DataObjectPageController
         'picture',
         'upload',
         'related',
+        // Forms
         'ObjectEditForm',
         'doObjectEdit',
         'ImageEditForm',
         'doImageEdit',
         'doImageCancel',
+        'ImportantEditForm',
+        'doImportantEdit',
     ];
     private static $url_handlers = [
         'show/$ID' => 'show',
@@ -101,6 +105,116 @@ class DataObjectPageController
         return $data;
     }
 
+    protected function showSingle($single) {
+        if (!$single) {
+            return $this->httpError(404, 'That object could not be found!');
+        }
+
+        if (!$single->canPublicView()) {
+            return Security::permissionFailure($this);
+        }
+
+        $this->preRenderSingle($single);
+
+        return $this
+                        ->customise([
+                            'Single' => $single,
+                            'Title' => $single->Title
+                        ])
+                        ->renderWith(['DataObjectPage_Show', 'DataObjectPage', 'Page']);
+    }
+
+    protected function editSingle($single) {
+        if (!$single) {
+            return $this->httpError(404, 'That object could not be found!');
+        }
+
+        if (!$single->canEdit()) {
+            return Security::permissionFailure($this);
+        }
+
+        $this->preRenderSingle($single);
+
+        return $this
+                        ->customise([
+                            'Single' => $single,
+                            'Title' => $single->Title
+                        ])
+                        ->renderWith(['DataObjectPage_Edit', 'DataObjectPage', 'Page']);
+    }
+
+    protected function getObjectsList() {
+        return DataObject::get('Page');
+    }
+
+    protected function getSingle($singleID = null) {
+        if ($singleID instanceof HTTPRequest) {
+            $id = $singleID->postVar('ObjectID');
+        } else {
+            $id = $singleID;
+        }
+
+        $list = $this->getObjectsList();
+        if (!$list) {
+            return null;
+        }
+
+        if (!$id) {
+            $id = $this->getRequest()->param('ID');
+        }
+
+        return $list->filter([
+                    'ID' => $id
+                ])->first();
+    }
+
+    protected function searchObjects($list, $keywords) {
+        if (!$list) {
+            return null;
+        }
+
+        return $list->filter([
+                    'Title:PartialMatch' => $keywords
+        ]);
+    }
+
+    protected function IsVerticalList() {
+        return false;
+    }
+
+    /**
+     * 
+     * $lists = [
+     *     [
+     *         'Title' => 'Categories',
+     *         'Items' => $this->getObjectsList()
+     *     ],
+     *     [
+     *         'Title' => 'Categories',
+     *         'Items' => $this->getObjectsList()->Limit(6)
+     *     ]
+     * ];
+     * return new ArrayList($lists);
+     * 
+     * @return type
+     */
+    protected function getFiltersList() {
+        return null;
+    }
+
+    public function restrictFields() {
+        return [];
+    }
+
+    protected function preRenderList() {
+        
+    }
+
+    protected function preRenderSingle($single) {
+        
+    }
+
+    /// Actions
     public function show() {
         $single = $this->getSingle();
 
@@ -169,6 +283,7 @@ class DataObjectPageController
                         ->renderWith('Includes\Single_Related');
     }
 
+    /// Links
     public function TabsLink($id) {
         return $this->Link("tabs/$id");
     }
@@ -189,6 +304,7 @@ class DataObjectPageController
         return $this->Link("related/$id");
     }
 
+    /// Forms    
     public function ObjectSearchForm() {
         if ($this->hasMethod('getGoogleSiteSearchForm')) {
             return $this->getGoogleSiteSearchForm()->setTemplate('Form_GoogleSearch');
@@ -316,176 +432,51 @@ class DataObjectPageController
         return $this->owner->redirectBack();
     }
 
-    protected function showSingle($single) {
-        if (!$single) {
-            return $this->httpError(404, 'That object could not be found!');
-        }
-
-        if (!$single->canPublicView()) {
-            return Security::permissionFailure($this);
-        }
-
-        $this->preRenderSingle($single);
-
-        return $this
-                        ->customise([
-                            'Single' => $single,
-                            'Title' => $single->Title
-                        ])
-                        ->renderWith(['DataObjectPage_Show', 'DataObjectPage', 'Page']);
-    }
-
-    protected function editSingle($single) {
-        if (!$single) {
-            return $this->httpError(404, 'That object could not be found!');
-        }
-
-        if (!$single->canEdit()) {
-            return Security::permissionFailure($this);
-        }
-
-        $this->preRenderSingle($single);
-
-        return $this
-                        ->customise([
-                            'Single' => $single,
-                            'Title' => $single->Title
-                        ])
-                        ->renderWith(['DataObjectPage_Edit', 'DataObjectPage', 'Page']);
-    }
-
-    protected function getObjectsList() {
-        return DataObject::get('Page');
-    }
-
-    protected function getSingle($singleID = null) {
+    public function ImportantEditForm($singleID) {
         if ($singleID instanceof HTTPRequest) {
             $id = $singleID->postVar('ObjectID');
         } else {
             $id = $singleID;
         }
+        $single = $this->getSingle($id);
 
-        $list = $this->getObjectsList();
-        if (!$list) {
+        if (!$single) {
+            $this->httpError(404, 'That object could not be found!');
+        }
+
+        if ($single && !$single->canEdit()) {
+            Security::permissionFailure($this);
+        }
+
+        if ($single && !$single->getImportantItems()) {
             return null;
         }
 
-        if (!$id) {
-            $id = $this->getRequest()->param('ID');
-        }
+        $items = $single->getImportantItems();
+        $items[] = HiddenField::create('ObjectID', 'ObjectID', $single->ID);
 
-        return $list->filter([
-                    'ID' => $id
-                ])->first();
+        // Create fields
+        $fields = new FieldList($items);
+
+        // Create action
+        $actions = new FieldList(
+                FormAction::create('doImageEdit', _t('DataObjectPage.SAVE', 'Save'))
+                        ->addExtraClass('btn btn-primary')
+        );
+
+        // Create Validators
+        $validator = new RequiredFields();
+
+        return Form::create($this, 'ImportantEditForm', $fields, $actions, $validator);
     }
 
-    public function ExtraTags() {
-        return $this->renderWith('Includes\Page_ExtraTags');
-    }
+    public function doImportantEdit($data, $form) {
+        $objectID = $data['ObjectID'];
+        $single = $this->getSingle($objectID);
 
-    public function ExtraClasses() {
-        return '';
-    }
-
-    public function RichSnippets() {
-        $single = $this->getSingle();
-
-        if ($single && $single instanceof SearchableDataObject) {
-            $schema = $single->getObjectRichSnippets();
-            $schema['@context'] = "http://schema.org";
-
-//        return json_encode($schema, JSON_UNESCAPED_UNICODE);
-            return Convert::array2json($schema);
-        }
-    }
-
-    public function OpenGraph() {
-        $single = $this->getSingle();
-
-        if ($single) {
-            return $this
-                            ->customise([
-                                'Single' => $single
-                            ])
-                            ->renderWith('Includes\Single_OpenGraph');
-        } else {
-            return $this->renderWith('Includes\Page_OpenGraph');
-        }
-    }
-
-    public function FullURL($url) {
-        return Director::absoluteURL($url);
-    }
-
-    public function ThemedURL($url) {
-        return Director::absoluteURL($this->ThemeDir() . $url);
-    }
-
-    protected function searchObjects($list, $keywords) {
-        if (!$list) {
-            return null;
-        }
-
-        return $list->filter([
-                    'Title:PartialMatch' => $keywords
-        ]);
-    }
-
-    protected function IsVerticalList() {
-        return false;
-    }
-
-    /**
-     * 
-     * $lists = [
-     *     [
-     *         'Title' => 'Categories',
-     *         'Items' => $this->getObjectsList()
-     *     ],
-     *     [
-     *         'Title' => 'Categories',
-     *         'Items' => $this->getObjectsList()->Limit(6)
-     *     ]
-     * ];
-     * return new ArrayList($lists);
-     * 
-     * @return type
-     */
-    protected function getFiltersList() {
-        return null;
-    }
-
-    public function restrictFields() {
-        return [];
-    }
-
-    /**
-     * 
-     * $lists = [
-     *     [
-     *         'Title' => 'Header 1',
-     *         'Content' => 'Content 1'
-     *     ],
-     *     [
-     *         'Title' => 'Header 2',
-     *         'Content' => 'Content 2'
-     *     ],
-     *     [
-     *         'Title' => 'Header 3',
-     *         'Content' => 'Content 3'
-     *     ],
-     * ];
-     * return new ArrayList($lists);
-     */
-    protected function getTabsList() {
-        return null;
-    }
-
-    protected function preRenderList() {
-        
-    }
-
-    protected function preRenderSingle($single) {
+        $form->saveInto($single);
+        $single->write();
+        return $this->owner->redirectBack();
     }
 
     protected final function getRecordActions($record, &$actions) {
@@ -535,6 +526,49 @@ class DataObjectPageController
             }
             $fields->push($fieldObject);
         }
+    }
+
+    /// Utilities
+    public function ExtraTags() {
+        return $this->renderWith('Includes\Page_ExtraTags');
+    }
+
+    public function ExtraClasses() {
+        return '';
+    }
+
+    public function RichSnippets() {
+        $single = $this->getSingle();
+
+        if ($single && $single instanceof SearchableDataObject) {
+            $schema = $single->getObjectRichSnippets();
+            $schema['@context'] = "http://schema.org";
+
+//        return json_encode($schema, JSON_UNESCAPED_UNICODE);
+            return Convert::array2json($schema);
+        }
+    }
+
+    public function OpenGraph() {
+        $single = $this->getSingle();
+
+        if ($single) {
+            return $this
+                            ->customise([
+                                'Single' => $single
+                            ])
+                            ->renderWith('Includes\Single_OpenGraph');
+        } else {
+            return $this->renderWith('Includes\Page_OpenGraph');
+        }
+    }
+
+    public function FullURL($url) {
+        return Director::absoluteURL($url);
+    }
+
+    public function ThemedURL($url) {
+        return Director::absoluteURL($this->ThemeDir() . $url);
     }
 
     public function Align() {

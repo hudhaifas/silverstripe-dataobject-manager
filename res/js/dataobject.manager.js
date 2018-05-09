@@ -63,6 +63,11 @@ var updateTabs = function () {
 
             $tabsHolder.removeClass('place-holder');
             try {
+                onCoreTabsLoaded();
+            } catch (e) {
+            }
+
+            try {
                 onTabsLoaded();
             } catch (e) {
             }

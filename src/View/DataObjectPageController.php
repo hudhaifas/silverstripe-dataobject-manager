@@ -1,7 +1,7 @@
 <?php
 
 use HudhaifaS\DOM\Model\SearchableDataObject;
-use HudhaifaS\Fields\FrontendImageField;
+use HudhaifaS\Forms\FrontendImageField;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Convert;

@@ -116,6 +116,10 @@ class DataObjectPageController
 
         $this->preRenderSingle($single);
 
+        if ($single->hasMethod('addView')) {
+            $single->addView();
+        }
+
         return $this
                         ->customise([
                             'Single' => $single,

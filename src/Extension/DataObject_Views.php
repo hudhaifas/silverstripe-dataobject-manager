@@ -2,6 +2,7 @@
 
 namespace HudhaifaS\DOM\Extension;
 
+use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
@@ -18,6 +19,21 @@ class DataObject_Views
     private static $db = [
         'NumView' => 'Int',
     ];
+    private static $restrict_fields = [
+        'NumView'
+    ];
+
+    public function updateSummaryFields(&$fields) {
+        $fields['NumView'] = _t('DataObjectExtension.VIEWS', 'Views');
+    }
+
+    public function updateFieldLabels(&$labels) {
+        $labels['NumView'] = _t('DataObjectExtension.VIEWS', 'Views');
+    }
+
+    public function updateCMSFields(FieldList $fields) {
+        $fields->removeFieldFromTab('Root.Main', 'NumView');
+    }
 
     public function addView() {
         // Increament the views counter

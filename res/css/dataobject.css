@@ -915,13 +915,14 @@
   font-size: 13px;
 }
 .dataobject-sm .dataobject-hlist .dataobject-item {
-  width: 176px;
-  font-size: 11px;
+  width: 176px !important;
+  font-size: 11px !important;
+  padding: 10px 5px;
 }
 .dataobject-sm .object-label {
   width: 66px;
   line-height: 22px;
-  font-size: 10px;
+  font-size: 10px !important;
 }
 .dataobject-sm .object-label .object-label.object-label-top-left {
   left: 2px;
@@ -967,15 +968,15 @@
   font-size: 10px !important;
 }
 .dataobject-xs .dataobject-hlist .dataobject-item {
-  width: 160px;
-  font-size: 10px;
+  width: 160px !important;
+  font-size: 10px !important;
 }
 .dataobject-xs .dataobject-hlist .dataobject-item > div .content {
   padding: 0;
 }
 .dataobject-xs .dataobject-hlist .dataobject-item .title {
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 12px !important;
+  line-height: 18px !important;
 }
 .dataobject-xs .object-label {
   width: 60px;

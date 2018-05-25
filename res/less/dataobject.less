@@ -626,15 +626,16 @@
 
     .dataobject-hlist {
         .dataobject-item {
-            width: 176px;
-            font-size: 11px;
+            width: 176px !important;
+            font-size: 11px !important;
+            padding: @object-padding-ver-sm (@object-padding-hor-sm / 2);
         }
     }
 
     .object-label {
         width: @object-label-width-sm;
         line-height: @object-label-height-sm;
-        font-size: 10px;
+        font-size: 10px !important;
 
         .object-label {
             &.object-label-top-left {
@@ -706,8 +707,8 @@
 
     .dataobject-hlist {
         .dataobject-item {
-            width: 160px;
-            font-size: 10px;
+            width: 160px !important;
+            font-size: 10px !important;
 
             > div {
                 .content {
@@ -716,8 +717,8 @@
             }
 
             .title {
-                font-size: 12px;
-                line-height: 18px;
+                font-size: 12px !important;
+                line-height: 18px !important;
             }
         }
     }

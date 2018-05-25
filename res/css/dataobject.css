@@ -89,6 +89,108 @@
   background: -ms-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
   background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
 }
+.dataobject-sm .ellipsis {
+  height: 32px;
+  line-height: 16px;
+  font-size: 11px;
+}
+.dataobject-sm .ellipsis:before {
+  width: 3px;
+  height: 32px;
+}
+.dataobject-sm .ellipsis.ellipsis-1 {
+  height: 16px;
+  line-height: 16px;
+}
+.dataobject-sm .ellipsis.ellipsis-1:before {
+  height: 16px;
+}
+.dataobject-sm .ellipsis.ellipsis-2 {
+  height: 32px;
+  line-height: 16px;
+}
+.dataobject-sm .ellipsis.ellipsis-2:before {
+  height: 32px;
+}
+.dataobject-sm .ellipsis.ellipsis-3 {
+  height: 48px;
+  line-height: 16px;
+}
+.dataobject-sm .ellipsis.ellipsis-3:before {
+  height: 48px;
+}
+.dataobject-sm .ellipsis.ellipsis-4 {
+  height: 64px;
+  line-height: 16px;
+}
+.dataobject-sm .ellipsis.ellipsis-4:before {
+  height: 64px;
+}
+.dataobject-sm .ellipsis.ellipsis-5 {
+  height: 80px;
+  line-height: 16px;
+}
+.dataobject-sm .ellipsis.ellipsis-5:before {
+  height: 80px;
+}
+.dataobject-sm .ellipsis > *:first-child {
+  margin-left: -3px;
+}
+.dataobject-sm .ellipsis:after {
+  top: -16px;
+  padding-right: 3px;
+}
+.dataobject-sx .ellipsis {
+  height: 35.2px;
+  line-height: 16px;
+  font-size: 11px;
+}
+.dataobject-sx .ellipsis:before {
+  width: 3px;
+  height: 35.2px;
+}
+.dataobject-sx .ellipsis.ellipsis-1 {
+  height: 16px;
+  line-height: 16px;
+}
+.dataobject-sx .ellipsis.ellipsis-1:before {
+  height: 16px;
+}
+.dataobject-sx .ellipsis.ellipsis-2 {
+  height: 32px;
+  line-height: 16px;
+}
+.dataobject-sx .ellipsis.ellipsis-2:before {
+  height: 32px;
+}
+.dataobject-sx .ellipsis.ellipsis-3 {
+  height: 52.8px;
+  line-height: 16px;
+}
+.dataobject-sx .ellipsis.ellipsis-3:before {
+  height: 52.8px;
+}
+.dataobject-sx .ellipsis.ellipsis-4 {
+  height: 70.4px;
+  line-height: 16px;
+}
+.dataobject-sx .ellipsis.ellipsis-4:before {
+  height: 70.4px;
+}
+.dataobject-sx .ellipsis.ellipsis-5 {
+  height: 88px;
+  line-height: 16px;
+}
+.dataobject-sx .ellipsis.ellipsis-5:before {
+  height: 88px;
+}
+.dataobject-sx .ellipsis > *:first-child {
+  margin-left: -3px;
+}
+.dataobject-sx .ellipsis:after {
+  top: -16px;
+  padding-right: 3px;
+}
 /* Meduim (Portrait tablet to landscape and desktop) */
 @media (min-width: 768px) and (max-width: 979px) {
   .ellipsis {
@@ -134,7 +236,7 @@
   .ellipsis {
     height: 32px;
     line-height: 16px;
-    font-size: 12px;
+    font-size: 11px;
   }
   .ellipsis:before {
     width: 3px;
@@ -350,13 +452,6 @@
   -ms-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease;
-}
-.dataobject-page .dataobject-item > div:hover {
-  background-color: #f6f6f6;
-  border: 1px solid transparent;
-}
-.dataobject-page .dataobject-item > div a:hover {
-  text-decoration: none;
 }
 .dataobject-page .dataobject-item > div .content {
   padding: 0;
@@ -796,6 +891,123 @@
 .dataobject-page .dataobject-gallery > div .card .caption {
   border-radius: 6px;
   /*max-height: 200px;*/
+}
+.dataobject-sm .dataobject-item {
+  padding: 10px 10px;
+}
+.dataobject-sm .dataobject-item > div {
+  padding: 5px;
+  height: auto;
+}
+.dataobject-sm .dataobject-item > div .content {
+  padding-left: 6px;
+}
+.dataobject-sm .dataobject-item .card .caption {
+  top: 6%;
+  padding: 6px;
+}
+.dataobject-sm .dataobject-item .card .caption h4,
+.dataobject-sm .dataobject-item .card .caption .h4 {
+  font-size: 11px;
+}
+.dataobject-sm .dataobject-item:hover .card .caption h4,
+.dataobject-sm .dataobject-item:hover .card .caption .h4 {
+  font-size: 13px;
+}
+.dataobject-sm .dataobject-hlist .dataobject-item {
+  width: 176px;
+  font-size: 11px;
+}
+.dataobject-sm .object-label {
+  width: 66px;
+  line-height: 22px;
+  font-size: 10px;
+}
+.dataobject-sm .object-label .object-label.object-label-top-left {
+  left: 2px;
+}
+.dataobject-sm .object-label .object-label.object-label-top-right {
+  right: 2px;
+}
+.dataobject-sm .object-label .object-label.object-label-bottom-left {
+  left: 2px;
+}
+.dataobject-sm .object-label .object-label.object-label-bottom-right {
+  right: 2px;
+}
+.dataobject-sm .card .caption.caption-btn a {
+  font-size: 11px;
+  line-height: 18px;
+  padding: 3px;
+}
+.dataobject-sm .card .caption h4 {
+  font-size: 11px;
+}
+.dataobject-xs .dataobject-item {
+  padding: 8px 8px;
+}
+.dataobject-xs .dataobject-item > div {
+  padding: 5px;
+  height: auto;
+  border: 1px solid #bbb;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.dataobject-xs .dataobject-item > div .content {
+  padding-left: 6px;
+}
+.dataobject-xs .dataobject-item .card .caption {
+  top: 3%;
+  padding: 5px;
+}
+.dataobject-xs .dataobject-item .card .caption h4,
+.dataobject-xs .dataobject-item .card .caption .h4 {
+  font-size: 10px !important;
+}
+.dataobject-xs .dataobject-hlist .dataobject-item {
+  width: 160px;
+  font-size: 10px;
+}
+.dataobject-xs .dataobject-hlist .dataobject-item > div .content {
+  padding: 0;
+}
+.dataobject-xs .dataobject-hlist .dataobject-item .title {
+  font-size: 12px;
+  line-height: 18px;
+}
+.dataobject-xs .object-label {
+  width: 60px;
+  height: 20px;
+  line-height: 20px;
+}
+.dataobject-xs .object-label.object-label-top-left {
+  top: 14px;
+  left: 0px;
+}
+.dataobject-xs .object-label.object-label-top-right {
+  top: 14px;
+  right: 0px;
+}
+.dataobject-xs .object-label.object-label-bottom-left {
+  bottom: 14px;
+  left: 0px;
+}
+.dataobject-xs .object-label.object-label-bottom-right {
+  bottom: 14px;
+  right: 0px;
+}
+.dataobject-xs .card .caption {
+  top: 20%;
+}
+.dataobject-xs .card .caption.caption-btn a {
+  font-size: 11px;
+  line-height: 18px;
+  padding: 3px;
+}
+.dataobject-xs .card .caption h4 {
+  font-size: 12px;
 }
 .modal {
   background: #fff;

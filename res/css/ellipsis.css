@@ -77,6 +77,108 @@
   background: -ms-linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
   background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
 }
+.dataobject-sm .ellipsis {
+  height: 32px;
+  line-height: 16px;
+  font-size: 11px;
+}
+.dataobject-sm .ellipsis:before {
+  width: 3px;
+  height: 32px;
+}
+.dataobject-sm .ellipsis.ellipsis-1 {
+  height: 16px;
+  line-height: 16px;
+}
+.dataobject-sm .ellipsis.ellipsis-1:before {
+  height: 16px;
+}
+.dataobject-sm .ellipsis.ellipsis-2 {
+  height: 32px;
+  line-height: 16px;
+}
+.dataobject-sm .ellipsis.ellipsis-2:before {
+  height: 32px;
+}
+.dataobject-sm .ellipsis.ellipsis-3 {
+  height: 48px;
+  line-height: 16px;
+}
+.dataobject-sm .ellipsis.ellipsis-3:before {
+  height: 48px;
+}
+.dataobject-sm .ellipsis.ellipsis-4 {
+  height: 64px;
+  line-height: 16px;
+}
+.dataobject-sm .ellipsis.ellipsis-4:before {
+  height: 64px;
+}
+.dataobject-sm .ellipsis.ellipsis-5 {
+  height: 80px;
+  line-height: 16px;
+}
+.dataobject-sm .ellipsis.ellipsis-5:before {
+  height: 80px;
+}
+.dataobject-sm .ellipsis > *:first-child {
+  margin-left: -3px;
+}
+.dataobject-sm .ellipsis:after {
+  top: -16px;
+  padding-right: 3px;
+}
+.dataobject-sx .ellipsis {
+  height: 35.2px;
+  line-height: 16px;
+  font-size: 11px;
+}
+.dataobject-sx .ellipsis:before {
+  width: 3px;
+  height: 35.2px;
+}
+.dataobject-sx .ellipsis.ellipsis-1 {
+  height: 16px;
+  line-height: 16px;
+}
+.dataobject-sx .ellipsis.ellipsis-1:before {
+  height: 16px;
+}
+.dataobject-sx .ellipsis.ellipsis-2 {
+  height: 32px;
+  line-height: 16px;
+}
+.dataobject-sx .ellipsis.ellipsis-2:before {
+  height: 32px;
+}
+.dataobject-sx .ellipsis.ellipsis-3 {
+  height: 52.8px;
+  line-height: 16px;
+}
+.dataobject-sx .ellipsis.ellipsis-3:before {
+  height: 52.8px;
+}
+.dataobject-sx .ellipsis.ellipsis-4 {
+  height: 70.4px;
+  line-height: 16px;
+}
+.dataobject-sx .ellipsis.ellipsis-4:before {
+  height: 70.4px;
+}
+.dataobject-sx .ellipsis.ellipsis-5 {
+  height: 88px;
+  line-height: 16px;
+}
+.dataobject-sx .ellipsis.ellipsis-5:before {
+  height: 88px;
+}
+.dataobject-sx .ellipsis > *:first-child {
+  margin-left: -3px;
+}
+.dataobject-sx .ellipsis:after {
+  top: -16px;
+  padding-right: 3px;
+}
 /* Meduim (Portrait tablet to landscape and desktop) */
 @media (min-width: 768px) and (max-width: 979px) {
   .ellipsis {
@@ -122,7 +224,7 @@
   .ellipsis {
     height: 32px;
     line-height: 16px;
-    font-size: 12px;
+    font-size: 11px;
   }
   .ellipsis:before {
     width: 3px;

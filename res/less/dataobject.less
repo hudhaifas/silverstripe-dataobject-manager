@@ -45,7 +45,7 @@
             padding-bottom: 5px;
             padding-top: 5px;
             font-size: 0; // to remove the default inline-block gap
-            
+
             > li {
                 /*float: left;*/
                 float: none;
@@ -132,17 +132,6 @@
             background-color: @color-background;
 
             .transition(all 0.4s ease);
-
-            &:hover {
-                background-color: @color-background-hover;
-                border: 1px solid @border-color-hover;
-            }
-
-            a {
-                &:hover {
-                    text-decoration: none;
-                }
-            }
 
             .content {
                 padding: 0;
@@ -595,6 +584,184 @@
             a > img, .caption {
                 border-radius: 6px;
                 /*max-height: 200px;*/
+            }
+        }
+    }
+}
+
+.dataobject-sm {
+    .dataobject-item {
+        padding: @object-padding-ver-sm @object-padding-hor-sm;
+
+        > div {
+            padding: 5px;
+            height: auto;
+
+            .content {
+                padding-left: 6px;
+            }
+        }
+
+        .card {
+            .caption {
+                top: 6%;
+                padding: 6px;
+
+                h4, .h4 {
+                    font-size: 11px;
+                }
+            }
+        }
+
+        &:hover {
+            .card {
+                .caption {
+                    h4, .h4 {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+
+    .dataobject-hlist {
+        .dataobject-item {
+            width: 176px;
+            font-size: 11px;
+        }
+    }
+
+    .object-label {
+        width: @object-label-width-sm;
+        line-height: @object-label-height-sm;
+        font-size: 10px;
+
+        .object-label {
+            &.object-label-top-left {
+                left: (@object-padding-hor-sm - @object-label-margin);
+            }
+
+            &.object-label-top-right {
+                right: (@object-padding-hor-sm - @object-label-margin);
+            }
+
+            &.object-label-bottom-left {
+                left: (@object-padding-hor-sm - @object-label-margin);
+            }
+
+            &.object-label-bottom-right {
+                right: (@object-padding-hor-sm - @object-label-margin);
+            }
+        }
+    }
+
+    .card {
+        .caption {
+            &.caption-btn {
+                a {
+                    font-size: 11px;
+                    line-height: 18px;
+                    padding: 3px;
+                }
+            }
+
+            h4 {
+                font-size: 11px;
+            }
+        }
+    }
+}
+
+.dataobject-xs {
+    .dataobject-item {
+        padding: @object-padding-ver-xs @object-padding-hor-xs;
+
+        > div {
+            padding: 5px;
+            height: auto;
+            border: 1px solid #bbb;
+
+            border: 1px solid @border-color;
+            border-radius: 3px;
+
+            -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+            .content {
+                padding-left: 6px;
+            }
+        }
+
+        .card {
+            .caption {
+                top: 3%;
+                padding: 5px;
+
+                h4, .h4 {
+                    font-size: 10px !important;
+                }
+            }
+        }
+    }
+
+    .dataobject-hlist {
+        .dataobject-item {
+            width: 160px;
+            font-size: 10px;
+
+            > div {
+                .content {
+                    padding: 0;
+                }
+            }
+
+            .title {
+                font-size: 12px;
+                line-height: 18px;
+            }
+        }
+    }
+
+    .object-label {
+        width: @object-label-width-xs;
+        height: @object-label-height-xs;
+        line-height: @object-label-height-xs;
+
+        &.object-label-top-left {
+            top: 14px;
+            left: (@object-padding-hor-xs - @object-label-margin);
+        }
+
+        &.object-label-top-right {
+            top: 14px;
+            right: (@object-padding-hor-xs - @object-label-margin);
+        }
+
+        &.object-label-bottom-left {
+            bottom: 14px;
+            left: (@object-padding-hor-xs - @object-label-margin);
+        }
+
+        &.object-label-bottom-right {
+            bottom: 14px;
+            right: (@object-padding-hor-xs - @object-label-margin);
+        }
+    }
+
+    .card {
+        .caption {
+            top: 20%;
+
+            &.caption-btn {
+                a {
+                    font-size: 11px;
+                    line-height: 18px;
+                    padding: 3px;
+                }
+            }
+
+            h4 {
+                font-size: 12px;
             }
         }
     }

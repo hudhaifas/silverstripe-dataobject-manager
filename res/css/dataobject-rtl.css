@@ -124,18 +124,18 @@
 }
 .dataobject-page .object-label.object-label-top-left {
   left: auto;
-  right: 7px;
+  right: -2px;
 }
 .dataobject-page .object-label.object-label-top-right {
-  left: 7px;
+  left: -2px;
   right: auto;
 }
 .dataobject-page .object-label.object-label-bottom-left {
   left: auto;
-  right: 7px;
+  right: -2px;
 }
 .dataobject-page .object-label.object-label-bottom-right {
-  left: 7px;
+  left: -2px;
   right: auto;
 }
 /* Small (Landscape phone to portrait tablet) */
@@ -155,18 +155,18 @@
   }
   .dataobject-page .object-label.object-label-top-left {
     left: auto;
-    right: 2px;
+    right: -4px;
   }
   .dataobject-page .object-label.object-label-top-right {
-    left: 2px;
+    left: -4px;
     right: auto;
   }
   .dataobject-page .object-label.object-label-bottom-left {
     left: auto;
-    right: 2px;
+    right: -4px;
   }
   .dataobject-page .object-label.object-label-bottom-right {
-    left: 2px;
+    left: -4px;
     right: auto;
   }
 }
@@ -178,18 +178,18 @@
   }
   .dataobject-page .object-label.object-label-top-left {
     left: auto;
-    right: 0px;
+    right: -6px;
   }
   .dataobject-page .object-label.object-label-top-right {
-    left: 0px;
+    left: -6px;
     right: auto;
   }
   .dataobject-page .object-label.object-label-bottom-left {
     left: auto;
-    right: 0px;
+    right: -6px;
   }
   .dataobject-page .object-label.object-label-bottom-right {
-    left: 0px;
+    left: -6px;
     right: auto;
   }
 }

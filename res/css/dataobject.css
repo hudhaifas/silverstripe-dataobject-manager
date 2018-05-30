@@ -427,7 +427,7 @@
   background-size: 800px 104px;
 }
 .dataobject-page .dataobject-item {
-  padding: 15px 15px;
+  padding: 6px 6px;
 }
 .dataobject-page .dataobject-item > div {
   /*position: relative;*/
@@ -815,7 +815,7 @@
   /*max-height: 200px;*/
 }
 .dataobject-sm .dataobject-item {
-  padding: 10px 10px;
+  padding: 4px 4px;
 }
 .dataobject-sm .dataobject-item > div {
   padding: 5px;
@@ -839,7 +839,7 @@
 .dataobject-sm .dataobject-hlist .dataobject-item {
   width: 176px !important;
   font-size: 11px !important;
-  padding: 10px 5px;
+  padding: 4px 2px;
 }
 .dataobject-sm .object-label {
   width: 66px;
@@ -847,16 +847,16 @@
   font-size: 10px !important;
 }
 .dataobject-sm .object-label .object-label.object-label-top-left {
-  left: 2px;
+  left: -4px;
 }
 .dataobject-sm .object-label .object-label.object-label-top-right {
-  right: 2px;
+  right: -4px;
 }
 .dataobject-sm .object-label .object-label.object-label-bottom-left {
-  left: 2px;
+  left: -4px;
 }
 .dataobject-sm .object-label .object-label.object-label-bottom-right {
-  right: 2px;
+  right: -4px;
 }
 .dataobject-sm .card .caption.caption-btn a {
   font-size: 11px;
@@ -867,7 +867,7 @@
   font-size: 11px;
 }
 .dataobject-xs .dataobject-item {
-  padding: 8px 8px;
+  padding: 2px 2px;
 }
 .dataobject-xs .dataobject-item > div {
   padding: 5px;
@@ -907,19 +907,19 @@
 }
 .dataobject-xs .object-label.object-label-top-left {
   top: 14px;
-  left: 0px;
+  left: -6px;
 }
 .dataobject-xs .object-label.object-label-top-right {
   top: 14px;
-  right: 0px;
+  right: -6px;
 }
 .dataobject-xs .object-label.object-label-bottom-left {
   bottom: 14px;
-  left: 0px;
+  left: -6px;
 }
 .dataobject-xs .object-label.object-label-bottom-right {
   bottom: 14px;
-  right: 0px;
+  right: -6px;
 }
 .dataobject-xs .card .caption {
   top: 20%;
@@ -999,19 +999,19 @@
 }
 .object-label.object-label-top-left {
   top: 24px;
-  left: 7px;
+  left: -2px;
 }
 .object-label.object-label-top-right {
   top: 24px;
-  right: 7px;
+  right: -2px;
 }
 .object-label.object-label-bottom-left {
   bottom: 24px;
-  left: 7px;
+  left: -2px;
 }
 .object-label.object-label-bottom-right {
   bottom: 24px;
-  right: 7px;
+  right: -2px;
 }
 .modal {
   background: #fff;
@@ -1045,7 +1045,7 @@
 /* Meduim (Portrait tablet to landscape and desktop) */
 @media (min-width: 768px) and (max-width: 979px) {
   .dataobject-page .dataobject-item {
-    padding: 12px 12px;
+    padding: 5px 5px;
   }
   .dataobject-page .dataobject-item > div {
     padding: 5px;
@@ -1063,16 +1063,16 @@
     font-size: 16px;
   }
   .object-label.object-label-top-left {
-    left: 4px;
+    left: -3px;
   }
   .object-label.object-label-top-right {
-    right: 4px;
+    right: -3px;
   }
   .object-label.object-label-bottom-left {
-    left: 4px;
+    left: -3px;
   }
   .object-label.object-label-bottom-right {
-    right: 4px;
+    right: -3px;
   }
 }
 /* Small (Landscape phone to portrait tablet) */
@@ -1081,7 +1081,7 @@
     margin-bottom: 0;
   }
   .dataobject-page .dataobject-item {
-    padding: 10px 10px;
+    padding: 4px 4px;
   }
   .dataobject-page .dataobject-item > div {
     padding: 5px;
@@ -1147,16 +1147,16 @@
     font-size: 10px;
   }
   .object-label .object-label.object-label-top-left {
-    left: 2px;
+    left: -4px;
   }
   .object-label .object-label.object-label-top-right {
-    right: 2px;
+    right: -4px;
   }
   .object-label .object-label.object-label-bottom-left {
-    left: 2px;
+    left: -4px;
   }
   .object-label .object-label.object-label-bottom-right {
-    right: 2px;
+    right: -4px;
   }
 }
 /* X-Small (Landscape phones and down) */
@@ -1169,7 +1169,7 @@
     margin-left: -6px;
   }
   .dataobject-page .dataobject-item {
-    padding: 8px 8px;
+    padding: 2px 2px;
   }
   .dataobject-page .dataobject-item > div {
     padding: 5px;
@@ -1280,19 +1280,19 @@
   }
   .object-label.object-label-top-left {
     top: 14px;
-    left: 0px;
+    left: -6px;
   }
   .object-label.object-label-top-right {
     top: 14px;
-    right: 0px;
+    right: -6px;
   }
   .object-label.object-label-bottom-left {
     bottom: 14px;
-    left: 0px;
+    left: -6px;
   }
   .object-label.object-label-bottom-right {
     bottom: 14px;
-    right: 0px;
+    right: -6px;
   }
 }
 /*# sourceMappingURL=dataobject.css.map */

@@ -128,55 +128,55 @@
   top: -16px;
   padding-right: 3px;
 }
-.dataobject-sx .ellipsis {
-  height: 35.2px;
-  line-height: 16px;
-  font-size: 11px;
+.dataobject-xs .ellipsis {
+  height: 26.4px;
+  line-height: 12px;
+  font-size: 10px;
 }
-.dataobject-sx .ellipsis:before {
+.dataobject-xs .ellipsis:before {
   width: 3px;
-  height: 35.2px;
+  height: 26.4px;
 }
-.dataobject-sx .ellipsis.ellipsis-1 {
-  height: 16px;
-  line-height: 16px;
+.dataobject-xs .ellipsis.ellipsis-1 {
+  height: 12px;
+  line-height: 12px;
 }
-.dataobject-sx .ellipsis.ellipsis-1:before {
-  height: 16px;
+.dataobject-xs .ellipsis.ellipsis-1:before {
+  height: 12px;
 }
-.dataobject-sx .ellipsis.ellipsis-2 {
-  height: 32px;
-  line-height: 16px;
+.dataobject-xs .ellipsis.ellipsis-2 {
+  height: 24px;
+  line-height: 12px;
 }
-.dataobject-sx .ellipsis.ellipsis-2:before {
-  height: 32px;
+.dataobject-xs .ellipsis.ellipsis-2:before {
+  height: 24px;
 }
-.dataobject-sx .ellipsis.ellipsis-3 {
+.dataobject-xs .ellipsis.ellipsis-3 {
+  height: 39.6px;
+  line-height: 12px;
+}
+.dataobject-xs .ellipsis.ellipsis-3:before {
+  height: 39.6px;
+}
+.dataobject-xs .ellipsis.ellipsis-4 {
   height: 52.8px;
-  line-height: 16px;
+  line-height: 12px;
 }
-.dataobject-sx .ellipsis.ellipsis-3:before {
+.dataobject-xs .ellipsis.ellipsis-4:before {
   height: 52.8px;
 }
-.dataobject-sx .ellipsis.ellipsis-4 {
-  height: 70.4px;
-  line-height: 16px;
+.dataobject-xs .ellipsis.ellipsis-5 {
+  height: 66px;
+  line-height: 12px;
 }
-.dataobject-sx .ellipsis.ellipsis-4:before {
-  height: 70.4px;
+.dataobject-xs .ellipsis.ellipsis-5:before {
+  height: 66px;
 }
-.dataobject-sx .ellipsis.ellipsis-5 {
-  height: 88px;
-  line-height: 16px;
-}
-.dataobject-sx .ellipsis.ellipsis-5:before {
-  height: 88px;
-}
-.dataobject-sx .ellipsis > *:first-child {
+.dataobject-xs .ellipsis > *:first-child {
   margin-left: -3px;
 }
-.dataobject-sx .ellipsis:after {
-  top: -16px;
+.dataobject-xs .ellipsis:after {
+  top: -12px;
   padding-right: 3px;
 }
 /* Meduim (Portrait tablet to landscape and desktop) */
@@ -276,54 +276,54 @@
 /* X-Small (Landscape phones and down) */
 @media (max-width: 480px) {
   .ellipsis {
-    height: 35.2px;
-    line-height: 16px;
-    font-size: 11px;
+    height: 26.4px;
+    line-height: 12px;
+    font-size: 10px;
   }
   .ellipsis:before {
     width: 3px;
-    height: 35.2px;
+    height: 26.4px;
   }
   .ellipsis.ellipsis-1 {
-    height: 16px;
-    line-height: 16px;
+    height: 12px;
+    line-height: 12px;
   }
   .ellipsis.ellipsis-1:before {
-    height: 16px;
+    height: 12px;
   }
   .ellipsis.ellipsis-2 {
-    height: 32px;
-    line-height: 16px;
+    height: 24px;
+    line-height: 12px;
   }
   .ellipsis.ellipsis-2:before {
-    height: 32px;
+    height: 24px;
   }
   .ellipsis.ellipsis-3 {
-    height: 52.8px;
-    line-height: 16px;
+    height: 39.6px;
+    line-height: 12px;
   }
   .ellipsis.ellipsis-3:before {
-    height: 52.8px;
+    height: 39.6px;
   }
   .ellipsis.ellipsis-4 {
-    height: 70.4px;
-    line-height: 16px;
+    height: 52.8px;
+    line-height: 12px;
   }
   .ellipsis.ellipsis-4:before {
-    height: 70.4px;
+    height: 52.8px;
   }
   .ellipsis.ellipsis-5 {
-    height: 88px;
-    line-height: 16px;
+    height: 66px;
+    line-height: 12px;
   }
   .ellipsis.ellipsis-5:before {
-    height: 88px;
+    height: 66px;
   }
   .ellipsis > *:first-child {
     margin-left: -3px;
   }
   .ellipsis:after {
-    top: -16px;
+    top: -12px;
     padding-right: 3px;
   }
 }

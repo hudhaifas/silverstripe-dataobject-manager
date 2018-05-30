@@ -140,55 +140,55 @@
   top: -16px;
   padding-right: 3px;
 }
-.dataobject-sx .ellipsis {
-  height: 35.2px;
-  line-height: 16px;
-  font-size: 11px;
+.dataobject-xs .ellipsis {
+  height: 26.4px;
+  line-height: 12px;
+  font-size: 10px;
 }
-.dataobject-sx .ellipsis:before {
+.dataobject-xs .ellipsis:before {
   width: 3px;
-  height: 35.2px;
+  height: 26.4px;
 }
-.dataobject-sx .ellipsis.ellipsis-1 {
-  height: 16px;
-  line-height: 16px;
+.dataobject-xs .ellipsis.ellipsis-1 {
+  height: 12px;
+  line-height: 12px;
 }
-.dataobject-sx .ellipsis.ellipsis-1:before {
-  height: 16px;
+.dataobject-xs .ellipsis.ellipsis-1:before {
+  height: 12px;
 }
-.dataobject-sx .ellipsis.ellipsis-2 {
-  height: 32px;
-  line-height: 16px;
+.dataobject-xs .ellipsis.ellipsis-2 {
+  height: 24px;
+  line-height: 12px;
 }
-.dataobject-sx .ellipsis.ellipsis-2:before {
-  height: 32px;
+.dataobject-xs .ellipsis.ellipsis-2:before {
+  height: 24px;
 }
-.dataobject-sx .ellipsis.ellipsis-3 {
+.dataobject-xs .ellipsis.ellipsis-3 {
+  height: 39.6px;
+  line-height: 12px;
+}
+.dataobject-xs .ellipsis.ellipsis-3:before {
+  height: 39.6px;
+}
+.dataobject-xs .ellipsis.ellipsis-4 {
   height: 52.8px;
-  line-height: 16px;
+  line-height: 12px;
 }
-.dataobject-sx .ellipsis.ellipsis-3:before {
+.dataobject-xs .ellipsis.ellipsis-4:before {
   height: 52.8px;
 }
-.dataobject-sx .ellipsis.ellipsis-4 {
-  height: 70.4px;
-  line-height: 16px;
+.dataobject-xs .ellipsis.ellipsis-5 {
+  height: 66px;
+  line-height: 12px;
 }
-.dataobject-sx .ellipsis.ellipsis-4:before {
-  height: 70.4px;
+.dataobject-xs .ellipsis.ellipsis-5:before {
+  height: 66px;
 }
-.dataobject-sx .ellipsis.ellipsis-5 {
-  height: 88px;
-  line-height: 16px;
-}
-.dataobject-sx .ellipsis.ellipsis-5:before {
-  height: 88px;
-}
-.dataobject-sx .ellipsis > *:first-child {
+.dataobject-xs .ellipsis > *:first-child {
   margin-left: -3px;
 }
-.dataobject-sx .ellipsis:after {
-  top: -16px;
+.dataobject-xs .ellipsis:after {
+  top: -12px;
   padding-right: 3px;
 }
 /* Meduim (Portrait tablet to landscape and desktop) */
@@ -288,54 +288,54 @@
 /* X-Small (Landscape phones and down) */
 @media (max-width: 480px) {
   .ellipsis {
-    height: 35.2px;
-    line-height: 16px;
-    font-size: 11px;
+    height: 26.4px;
+    line-height: 12px;
+    font-size: 10px;
   }
   .ellipsis:before {
     width: 3px;
-    height: 35.2px;
+    height: 26.4px;
   }
   .ellipsis.ellipsis-1 {
-    height: 16px;
-    line-height: 16px;
+    height: 12px;
+    line-height: 12px;
   }
   .ellipsis.ellipsis-1:before {
-    height: 16px;
+    height: 12px;
   }
   .ellipsis.ellipsis-2 {
-    height: 32px;
-    line-height: 16px;
+    height: 24px;
+    line-height: 12px;
   }
   .ellipsis.ellipsis-2:before {
-    height: 32px;
+    height: 24px;
   }
   .ellipsis.ellipsis-3 {
-    height: 52.8px;
-    line-height: 16px;
+    height: 39.6px;
+    line-height: 12px;
   }
   .ellipsis.ellipsis-3:before {
-    height: 52.8px;
+    height: 39.6px;
   }
   .ellipsis.ellipsis-4 {
-    height: 70.4px;
-    line-height: 16px;
+    height: 52.8px;
+    line-height: 12px;
   }
   .ellipsis.ellipsis-4:before {
-    height: 70.4px;
+    height: 52.8px;
   }
   .ellipsis.ellipsis-5 {
-    height: 88px;
-    line-height: 16px;
+    height: 66px;
+    line-height: 12px;
   }
   .ellipsis.ellipsis-5:before {
-    height: 88px;
+    height: 66px;
   }
   .ellipsis > *:first-child {
     margin-left: -3px;
   }
   .ellipsis:after {
-    top: -16px;
+    top: -12px;
     padding-right: 3px;
   }
 }
@@ -498,6 +498,9 @@
   bottom: 0;
   opacity: 0.1;
   background: #000;
+}
+.dataobject-page .dataobject-item.dataobject-item-brief > div .content {
+  display: none;
 }
 .dataobject-page .dataobject-related {
   padding-bottom: 30px;
@@ -737,87 +740,6 @@
   float: left;
   margin: 0 5px 0 0;
 }
-.dataobject-page .object-label {
-  position: absolute;
-  width: 72px;
-  height: 26px;
-  line-height: 26px;
-  margin-bottom: 8px;
-  color: #fff;
-  text-align: center;
-  vertical-align: middle;
-  cursor: default;
-  text-transform: none;
-  z-index: 10;
-  -webkit-border-radius: 2px 2px 2px 0;
-  -moz-border-radius: 2px 2px 2px 0;
-  border-radius: 2px 2px 2px 0;
-  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
-  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
-  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
-  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
-}
-.dataobject-page .object-label:before {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: -8px;
-  width: 0;
-  height: 0;
-  border: 4px solid #e21111;
-  border-bottom-color: transparent;
-  border-right-color: transparent;
-  /*z-index: 0;*/
-  white-space: normal;
-}
-.dataobject-page .object-label.object-label-red {
-  background: #e42e2e;
-}
-.dataobject-page .object-label.object-label-red:before {
-  border: 4px solid #e42e2e;
-  border-bottom-color: transparent;
-  border-right-color: transparent;
-}
-.dataobject-page .object-label.object-label-blue {
-  background: #4747e8;
-}
-.dataobject-page .object-label.object-label-blue:before {
-  border: 4px solid #4747e8;
-  border-bottom-color: transparent;
-  border-right-color: transparent;
-}
-.dataobject-page .object-label.object-label-black {
-  background: #000;
-}
-.dataobject-page .object-label.object-label-black:before {
-  border: 4px solid #000;
-  border-bottom-color: transparent;
-  border-right-color: transparent;
-}
-.dataobject-page .object-label.object-label-green {
-  background: #11a111;
-}
-.dataobject-page .object-label.object-label-green:before {
-  border: 4px solid #11a111;
-  border-bottom-color: transparent;
-  border-right-color: transparent;
-}
-.dataobject-page .object-label.object-label-top-left {
-  top: 24px;
-  left: 7px;
-}
-.dataobject-page .object-label.object-label-top-right {
-  top: 24px;
-  right: 7px;
-}
-.dataobject-page .object-label.object-label-bottom-left {
-  bottom: 24px;
-  left: 7px;
-}
-.dataobject-page .object-label.object-label-bottom-right {
-  bottom: 24px;
-  right: 7px;
-}
 .dataobject-page .card {
   position: relative;
   /*background: #b3b3b3;*/
@@ -1010,6 +932,87 @@
 .dataobject-xs .card .caption h4 {
   font-size: 12px;
 }
+.object-label {
+  position: absolute;
+  width: 72px;
+  height: 26px;
+  line-height: 26px;
+  margin-bottom: 8px;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  cursor: default;
+  text-transform: none;
+  z-index: 10;
+  -webkit-border-radius: 2px 2px 2px 0;
+  -moz-border-radius: 2px 2px 2px 0;
+  border-radius: 2px 2px 2px 0;
+  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label:before {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  width: 0;
+  height: 0;
+  border: 4px solid #e21111;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  /*z-index: 0;*/
+  white-space: normal;
+}
+.object-label.object-label-red {
+  background: #e42e2e;
+}
+.object-label.object-label-red:before {
+  border: 4px solid #e42e2e;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+.object-label.object-label-blue {
+  background: #4747e8;
+}
+.object-label.object-label-blue:before {
+  border: 4px solid #4747e8;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+.object-label.object-label-black {
+  background: #000;
+}
+.object-label.object-label-black:before {
+  border: 4px solid #000;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+.object-label.object-label-green {
+  background: #11a111;
+}
+.object-label.object-label-green:before {
+  border: 4px solid #11a111;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+.object-label.object-label-top-left {
+  top: 24px;
+  left: 7px;
+}
+.object-label.object-label-top-right {
+  top: 24px;
+  right: 7px;
+}
+.object-label.object-label-bottom-left {
+  bottom: 24px;
+  left: 7px;
+}
+.object-label.object-label-bottom-right {
+  bottom: 24px;
+  right: 7px;
+}
 .modal {
   background: #fff;
   color: #000;
@@ -1059,16 +1062,16 @@
   .dataobject-page .dataobject-item:hover .card .caption .h4 {
     font-size: 16px;
   }
-  .dataobject-page .object-label.object-label-top-left {
+  .object-label.object-label-top-left {
     left: 4px;
   }
-  .dataobject-page .object-label.object-label-top-right {
+  .object-label.object-label-top-right {
     right: 4px;
   }
-  .dataobject-page .object-label.object-label-bottom-left {
+  .object-label.object-label-bottom-left {
     left: 4px;
   }
-  .dataobject-page .object-label.object-label-bottom-right {
+  .object-label.object-label-bottom-right {
     right: 4px;
   }
 }
@@ -1138,21 +1141,21 @@
     margin-bottom: 2px;
     text-align: left;
   }
-  .dataobject-page .object-label {
+  .object-label {
     width: 66px;
     line-height: 22px;
     font-size: 10px;
   }
-  .dataobject-page .object-label .object-label.object-label-top-left {
+  .object-label .object-label.object-label-top-left {
     left: 2px;
   }
-  .dataobject-page .object-label .object-label.object-label-top-right {
+  .object-label .object-label.object-label-top-right {
     right: 2px;
   }
-  .dataobject-page .object-label .object-label.object-label-bottom-left {
+  .object-label .object-label.object-label-bottom-left {
     left: 2px;
   }
-  .dataobject-page .object-label .object-label.object-label-bottom-right {
+  .object-label .object-label.object-label-bottom-right {
     right: 2px;
   }
 }
@@ -1270,24 +1273,24 @@
   .dataobject-page .dataobject-details .card {
     overflow: hidden;
   }
-  .dataobject-page .object-label {
+  .object-label {
     width: 60px;
     height: 20px;
     line-height: 20px;
   }
-  .dataobject-page .object-label.object-label-top-left {
+  .object-label.object-label-top-left {
     top: 14px;
     left: 0px;
   }
-  .dataobject-page .object-label.object-label-top-right {
+  .object-label.object-label-top-right {
     top: 14px;
     right: 0px;
   }
-  .dataobject-page .object-label.object-label-bottom-left {
+  .object-label.object-label-bottom-left {
     bottom: 14px;
     left: 0px;
   }
-  .dataobject-page .object-label.object-label-bottom-right {
+  .object-label.object-label-bottom-right {
     bottom: 14px;
     right: 0px;
   }

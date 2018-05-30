@@ -12,15 +12,15 @@
 @line-margin-sm: 3px;
 @line-margin-xs: 3px;
 
-@line-font-size: 14px;
-@line-font-size-md: 12px;
-@line-font-size-sm: 11px;
-@line-font-size-xs: 10px;
+@line-font-size: 13px;
+@line-font-size-md: 11px;
+@line-font-size-sm: 10px;
+@line-font-size-xs: 9px;
 
 .ellipsis {
     overflow: hidden;
     height: (@line-height * @line-count);
-    line-height: @line-height;
+    line-height: @line-height - 2;
     font-size: @line-font-size;
 
     &:before {
@@ -32,7 +32,6 @@
 
     &.ellipsis-1 {
         height: (@line-height * 1);
-        line-height: @line-height;
 
         &:before {
             height: (@line-height * 1);
@@ -41,7 +40,6 @@
 
     &.ellipsis-2 {
         height: (@line-height * 2);
-        line-height: @line-height;
 
         &:before {
             height: (@line-height * 2);
@@ -50,7 +48,6 @@
 
     &.ellipsis-3 {
         height: (@line-height * 3);
-        line-height: @line-height;
 
         &:before {
             height: (@line-height * 3);
@@ -59,7 +56,6 @@
 
     &.ellipsis-4 {
         height: (@line-height * 4);
-        line-height: @line-height;
 
         &:before {
             height: (@line-height * 4);
@@ -68,7 +64,6 @@
 
     &.ellipsis-5 {
         height: (@line-height * 5);
-        line-height: @line-height;
 
         &:before {
             height: (@line-height * 5);

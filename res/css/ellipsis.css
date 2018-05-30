@@ -1,8 +1,8 @@
 .ellipsis {
   overflow: hidden;
   height: 42px;
-  line-height: 21px;
-  font-size: 14px;
+  line-height: 19px;
+  font-size: 13px;
 }
 .ellipsis:before {
   content: "";
@@ -12,35 +12,30 @@
 }
 .ellipsis.ellipsis-1 {
   height: 21px;
-  line-height: 21px;
 }
 .ellipsis.ellipsis-1:before {
   height: 21px;
 }
 .ellipsis.ellipsis-2 {
   height: 42px;
-  line-height: 21px;
 }
 .ellipsis.ellipsis-2:before {
   height: 42px;
 }
 .ellipsis.ellipsis-3 {
   height: 63px;
-  line-height: 21px;
 }
 .ellipsis.ellipsis-3:before {
   height: 63px;
 }
 .ellipsis.ellipsis-4 {
   height: 84px;
-  line-height: 21px;
 }
 .ellipsis.ellipsis-4:before {
   height: 84px;
 }
 .ellipsis.ellipsis-5 {
   height: 105px;
-  line-height: 21px;
 }
 .ellipsis.ellipsis-5:before {
   height: 105px;
@@ -80,7 +75,7 @@
 .dataobject-sm .ellipsis {
   height: 32px;
   line-height: 16px;
-  font-size: 11px;
+  font-size: 10px;
 }
 .dataobject-sm .ellipsis:before {
   width: 3px;
@@ -131,7 +126,7 @@
 .dataobject-xs .ellipsis {
   height: 26.4px;
   line-height: 12px;
-  font-size: 10px;
+  font-size: 9px;
 }
 .dataobject-xs .ellipsis:before {
   width: 3px;
@@ -184,7 +179,7 @@
   .ellipsis {
     height: 36px;
     line-height: 18px;
-    font-size: 12px;
+    font-size: 11px;
   }
   .ellipsis:before {
     width: 4px;
@@ -224,7 +219,7 @@
   .ellipsis {
     height: 32px;
     line-height: 16px;
-    font-size: 11px;
+    font-size: 10px;
   }
   .ellipsis:before {
     width: 3px;
@@ -278,7 +273,7 @@
   .ellipsis {
     height: 26.4px;
     line-height: 12px;
-    font-size: 10px;
+    font-size: 9px;
   }
   .ellipsis:before {
     width: 3px;

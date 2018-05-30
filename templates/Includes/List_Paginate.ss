@@ -30,4 +30,6 @@
             </li>
         <% end_if %>
     </ul>
+    
+    <div class="clearfix"></div>
 <% end_if %>

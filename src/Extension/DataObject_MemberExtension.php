@@ -10,6 +10,7 @@ use SilverStripe\Security\Member;
  *
  * @author Hudhaifa Shatnawi <hudhaifa.shatnawi@gmail.com>
  * @version 1.0, Mar 3, 2017 - 9:33:52 AM
+ * @deprecated use composer require hudhaifas/silverstripe-member-ownership
  */
 class DataObject_MemberExtension
         extends DataExtension {

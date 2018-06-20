@@ -9,6 +9,14 @@ jQuery(document).ready(function () {
     updateRelated();
 });
 
+/* Picture */
+var pictureCallbacks = [];
+var onPictureLoaded = function (callback) {
+    pictureCallbacks.push(function () {
+        callback();
+    });
+};
+
 var updatePicture = function () {
     var $pictureHolder = $('.dataobject-picture.place-holder');
 
@@ -26,8 +34,19 @@ var updatePicture = function () {
                 loadModal(this.href);
             });
 
+            pictureCallbacks.forEach(function (callback) {
+                callback();
+            });
         });
     }
+};
+
+/* Summary */
+var summaryCallbacks = [];
+var onSummaryLoaded = function (callback) {
+    summaryCallbacks.push(function () {
+        callback();
+    });
 };
 
 var updateSummary = function () {
@@ -41,8 +60,20 @@ var updateSummary = function () {
 
         $summaryHolder.load(url, function (data) {
             $summaryHolder.removeClass('place-holder');
+
+            summaryCallbacks.forEach(function (callback) {
+                callback();
+            });
         });
     }
+};
+
+/* Tabs */
+var tabsCallbacks = [];
+var onTabsLoaded = function (callback) {
+    tabsCallbacks.push(function () {
+        callback();
+    });
 };
 
 var updateTabs = function () {
@@ -62,17 +93,20 @@ var updateTabs = function () {
             });
 
             $tabsHolder.removeClass('place-holder');
-            try {
-                onCoreTabsLoaded();
-            } catch (e) {
-            }
 
-            try {
-                onTabsLoaded();
-            } catch (e) {
-            }
+            tabsCallbacks.forEach(function (callback) {
+                callback();
+            });
         });
     }
+};
+
+/* Related */
+var relatedCallbacks = [];
+var onRelatedLoaded = function (callback) {
+    relatedCallbacks.push(function () {
+        callback();
+    });
 };
 
 var updateRelated = function () {
@@ -86,6 +120,10 @@ var updateRelated = function () {
 
         $relatedHolder.load(url, function (data) {
             $relatedHolder.removeClass('place-holder');
+
+            relatedCallbacks.forEach(function (callback) {
+                callback();
+            });
         });
     }
 };

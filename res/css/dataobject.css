@@ -523,9 +523,31 @@
   background-size: 800px 104px;
 }
 .dataobject-page .dataobject-vlist .dataobject-item {
-  font-size: 14px;
-  padding: 5px;
+  padding: 0;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #dddfe2;
+}
+.dataobject-page .dataobject-vlist .dataobject-item .dataobject-title {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+}
+.dataobject-page .dataobject-vlist .dataobject-item .dataobject-info {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  margin: 0;
+  padding: 0;
+}
+.dataobject-page .dataobject-vlist .dataobject-item .dataobject-tiny {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 16px;
+  margin: 0;
+  padding: 0;
 }
 .dataobject-page .dataobject-vlist .dataobject-item:hover {
   background-color: #f6f6f6;
@@ -1111,6 +1133,9 @@
   }
   .dataobject-page .dataobject-related.dataobject-item > div .content {
     padding-left: 6px;
+  }
+  .dataobject-page .dataobject-vlist .dataobject-item {
+    border-bottom: 1px solid #dddfe2;
   }
   .dataobject-page .dataobject-hlist .dataobject-item {
     width: 176px;

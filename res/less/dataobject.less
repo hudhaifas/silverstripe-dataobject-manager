@@ -5,6 +5,7 @@
 @import "mixins/all-mixins";
 @import "variables.less";
 @import "ellipsis.less";
+@import "dataobject-label.less";
 
 .dataobject-page {
     min-height: 70vh;
@@ -256,6 +257,7 @@
         white-space: nowrap;
         overflow-x: scroll;
         overflow-y: hidden;
+        padding: 0 10px;
 
         .dataobject-item {
             position: relative;
@@ -582,30 +584,6 @@
         }
     }
 
-    .object-label {
-        width: @object-label-width-sm;
-        line-height: @object-label-height-sm;
-        font-size: 10px !important;
-
-        .object-label {
-            &.object-label-top-left {
-                left: (@object-padding-hor-sm - @object-label-margin);
-            }
-
-            &.object-label-top-right {
-                right: (@object-padding-hor-sm - @object-label-margin);
-            }
-
-            &.object-label-bottom-left {
-                left: (@object-padding-hor-sm - @object-label-margin);
-            }
-
-            &.object-label-bottom-right {
-                right: (@object-padding-hor-sm - @object-label-margin);
-            }
-        }
-    }
-
     .card {
         .caption {
             &.caption-btn {
@@ -673,32 +651,6 @@
         }
     }
 
-    .object-label {
-        width: @object-label-width-xs;
-        height: @object-label-height-xs;
-        line-height: @object-label-height-xs;
-
-        &.object-label-top-left {
-            top: 14px;
-            left: (@object-padding-hor-xs - @object-label-margin);
-        }
-
-        &.object-label-top-right {
-            top: 14px;
-            right: (@object-padding-hor-xs - @object-label-margin);
-        }
-
-        &.object-label-bottom-left {
-            bottom: 14px;
-            left: (@object-padding-hor-xs - @object-label-margin);
-        }
-
-        &.object-label-bottom-right {
-            bottom: 14px;
-            right: (@object-padding-hor-xs - @object-label-margin);
-        }
-    }
-
     .card {
         .caption {
             top: 20%;
@@ -715,89 +667,6 @@
                 font-size: 12px;
             }
         }
-    }
-}
-
-.object-label {
-    position: absolute;
-    width: @object-label-width;
-    height: @object-label-height;
-    line-height: @object-label-height;
-    margin-bottom: 8px;
-
-    color: @color-white;
-
-    text-align: center;
-    vertical-align: middle;
-    cursor: default;
-    text-transform: none;
-    z-index: 10;
-
-    .border-radius(2px 2px 2px 0);
-    .box-shadow(1px 2px 1px rgba(0,0,0,0.32));
-
-    &:before {
-        content: '';
-        position: absolute;
-        right: 0;
-        bottom: -(@object-label-margin);
-        width: 0;
-        height: 0;
-        .triangle-right(#e21111);
-        /*z-index: 0;*/
-        white-space: normal;
-    }
-
-    &.object-label-red {
-        background: @color-red;
-
-        &:before {
-            .triangle-right(@color-red);
-        }
-    }
-
-    &.object-label-blue {
-        background: @color-blue;;
-
-        &:before {
-            .triangle-right(@color-blue);
-        }
-    }
-
-    &.object-label-black {
-        background: @color-black;
-
-        &:before {
-            .triangle-right(@color-black);
-        }
-    }
-
-    &.object-label-green {
-        background: @color-green;
-
-        &:before {
-            .triangle-right(@color-green);
-        }
-    }
-
-    &.object-label-top-left {
-        top: 24px;
-        left: (@object-padding-hor - @object-label-margin);
-    }
-
-    &.object-label-top-right {
-        top: 24px;
-        right: (@object-padding-hor - @object-label-margin);
-    }
-
-    &.object-label-bottom-left {
-        bottom: 24px;
-        left: (@object-padding-hor - @object-label-margin);
-    }
-
-    &.object-label-bottom-right {
-        bottom: 24px;
-        right: (@object-padding-hor - @object-label-margin);
     }
 }
 
@@ -870,24 +739,6 @@
                     }
                 }
             }
-        }
-    }
-
-    .object-label {
-        &.object-label-top-left {
-            left: (@object-padding-hor-md - @object-label-margin);
-        }
-
-        &.object-label-top-right {
-            right: (@object-padding-hor-md - @object-label-margin);
-        }
-
-        &.object-label-bottom-left {
-            left: (@object-padding-hor-md - @object-label-margin);
-        }
-
-        &.object-label-bottom-right {
-            right: (@object-padding-hor-md - @object-label-margin);
         }
     }
 }
@@ -992,30 +843,6 @@
                         text-align: left;
                     }
                 }
-            }
-        }
-    }
-
-    .object-label {
-        width: @object-label-width-sm;
-        line-height: @object-label-height-sm;
-        font-size: 10px;
-
-        .object-label {
-            &.object-label-top-left {
-                left: (@object-padding-hor-sm - @object-label-margin);
-            }
-
-            &.object-label-top-right {
-                right: (@object-padding-hor-sm - @object-label-margin);
-            }
-
-            &.object-label-bottom-left {
-                left: (@object-padding-hor-sm - @object-label-margin);
-            }
-
-            &.object-label-bottom-right {
-                right: (@object-padding-hor-sm - @object-label-margin);
             }
         }
     }
@@ -1133,9 +960,6 @@
                     line-height: 18px;
                 }
             }
-
-            .object-label {
-            }
         }
 
         .dataobject-side {
@@ -1174,32 +998,6 @@
             .card {
                 overflow: hidden;
             }
-        }
-    }
-
-    .object-label {
-        width: @object-label-width-xs;
-        height: @object-label-height-xs;
-        line-height: @object-label-height-xs;
-
-        &.object-label-top-left {
-            top: 14px;
-            left: (@object-padding-hor-xs - @object-label-margin);
-        }
-
-        &.object-label-top-right {
-            top: 14px;
-            right: (@object-padding-hor-xs - @object-label-margin);
-        }
-
-        &.object-label-bottom-left {
-            bottom: 14px;
-            left: (@object-padding-hor-xs - @object-label-margin);
-        }
-
-        &.object-label-bottom-right {
-            bottom: 14px;
-            right: (@object-padding-hor-xs - @object-label-margin);
         }
     }
 }

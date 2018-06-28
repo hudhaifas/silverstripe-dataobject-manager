@@ -126,58 +126,6 @@
             }
         }
     }
-
-    .object-label {
-        &:before {
-            left: 0;
-            right: auto;
-            .triangle-left(#e21111);
-        }
-
-        &.object-label-red {
-            &:before {
-                .triangle-left(@color-red);
-            }
-        }
-
-        &.object-label-blue {
-            &:before {
-                .triangle-left(@color-blue);
-            }
-        }
-
-        &.object-label-black {
-            &:before {
-                .triangle-left(@color-black);
-            }
-        }
-
-        &.object-label-green {
-            &:before {
-                .triangle-left(@color-green);
-            }
-        }
-
-        &.object-label-top-left {
-            left: auto;
-            right: (@object-padding-hor - @object-label-margin);
-        }
-
-        &.object-label-top-right {
-            left: (@object-padding-hor - @object-label-margin);
-            right: auto;
-        }
-
-        &.object-label-bottom-left {
-            left: auto;
-            right: (@object-padding-hor - @object-label-margin);
-        }
-
-        &.object-label-bottom-right {
-            left: (@object-padding-hor - @object-label-margin);
-            right: auto;
-        }
-    }
 }
 
 /* Small (Landscape phone to portrait tablet) */

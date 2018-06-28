@@ -1,0 +1,604 @@
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -868px 0;
+  }
+  100% {
+    background-position: 868px 0;
+  }
+}
+.object-label {
+  position: absolute;
+  width: 72px;
+  height: 26px;
+  line-height: 26px;
+  background: #e21111;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  cursor: default;
+  text-transform: none;
+  z-index: 10;
+}
+.object-label:before {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  width: 0;
+  height: 0;
+  /*z-index: 0;*/
+  white-space: normal;
+}
+.object-label.object-label-top-left {
+  top: 24px;
+  bottom: auto;
+  left: 0;
+  right: auto;
+  margin-top: auto;
+  margin-bottom: 8px;
+  -webkit-border-radius: 2px 2px 2px 0;
+  -moz-border-radius: 2px 2px 2px 0;
+  border-radius: 2px 2px 2px 0;
+  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-top-left:before {
+  left: 0;
+  right: auto;
+  border: 4px solid #9b0c0c;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+.object-label.object-label-top-right {
+  top: 24px;
+  bottom: auto;
+  left: auto;
+  right: 0;
+  margin-top: auto;
+  margin-bottom: 8px;
+  -webkit-border-radius: 2px 2px 0 2px;
+  -moz-border-radius: 2px 2px 0 2px;
+  border-radius: 2px 2px 0 2px;
+  -webkit-box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-top-right:before {
+  left: auto;
+  right: 0;
+  border: 4px solid #9b0c0c;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+.object-label.object-label-bottom-left {
+  top: auto;
+  bottom: 24px;
+  left: 0;
+  right: auto;
+  margin-top: 8px;
+  margin-bottom: auto;
+  -webkit-border-radius: 0px 2px 2px 2px;
+  -moz-border-radius: 0px 2px 2px 2px;
+  border-radius: 0px 2px 2px 2px;
+  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-bottom-left:before {
+  top: -8px;
+  bottom: auto;
+  left: 0;
+  right: auto;
+  border: 4px solid #9b0c0c;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.object-label.object-label-bottom-right {
+  top: auto;
+  bottom: 24px;
+  left: auto;
+  right: 0;
+  margin-top: 8px;
+  margin-bottom: auto;
+  -webkit-border-radius: 2px 0px 2px 2px;
+  -moz-border-radius: 2px 0px 2px 2px;
+  border-radius: 2px 0px 2px 2px;
+  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-bottom-right:before {
+  top: -8px;
+  bottom: auto;
+  left: auto;
+  right: 0;
+  border: 4px solid #9b0c0c;
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+.object-label.object-label-red {
+  background: #e42e2e;
+}
+.object-label.object-label-red.object-label-top-left {
+  top: 24px;
+  bottom: auto;
+  left: 0;
+  right: auto;
+  margin-top: auto;
+  margin-bottom: 8px;
+  -webkit-border-radius: 2px 2px 2px 0;
+  -moz-border-radius: 2px 2px 2px 0;
+  border-radius: 2px 2px 2px 0;
+  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-red.object-label-top-left:before {
+  left: 0;
+  right: auto;
+  border: 4px solid #af1717;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+.object-label.object-label-red.object-label-top-right {
+  top: 24px;
+  bottom: auto;
+  left: auto;
+  right: 0;
+  margin-top: auto;
+  margin-bottom: 8px;
+  -webkit-border-radius: 2px 2px 0 2px;
+  -moz-border-radius: 2px 2px 0 2px;
+  border-radius: 2px 2px 0 2px;
+  -webkit-box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-red.object-label-top-right:before {
+  left: auto;
+  right: 0;
+  border: 4px solid #af1717;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+.object-label.object-label-red.object-label-bottom-left {
+  top: auto;
+  bottom: 24px;
+  left: 0;
+  right: auto;
+  margin-top: 8px;
+  margin-bottom: auto;
+  -webkit-border-radius: 0px 2px 2px 2px;
+  -moz-border-radius: 0px 2px 2px 2px;
+  border-radius: 0px 2px 2px 2px;
+  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-red.object-label-bottom-left:before {
+  top: -8px;
+  bottom: auto;
+  left: 0;
+  right: auto;
+  border: 4px solid #af1717;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.object-label.object-label-red.object-label-bottom-right {
+  top: auto;
+  bottom: 24px;
+  left: auto;
+  right: 0;
+  margin-top: 8px;
+  margin-bottom: auto;
+  -webkit-border-radius: 2px 0px 2px 2px;
+  -moz-border-radius: 2px 0px 2px 2px;
+  border-radius: 2px 0px 2px 2px;
+  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-red.object-label-bottom-right:before {
+  top: -8px;
+  bottom: auto;
+  left: auto;
+  right: 0;
+  border: 4px solid #af1717;
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+.object-label.object-label-blue {
+  background: #4747e8;
+}
+.object-label.object-label-blue.object-label-top-left {
+  top: 24px;
+  bottom: auto;
+  left: 0;
+  right: auto;
+  margin-top: auto;
+  margin-bottom: 8px;
+  -webkit-border-radius: 2px 2px 2px 0;
+  -moz-border-radius: 2px 2px 2px 0;
+  border-radius: 2px 2px 2px 0;
+  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-blue.object-label-top-left:before {
+  left: 0;
+  right: auto;
+  border: 4px solid #1919c9;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+.object-label.object-label-blue.object-label-top-right {
+  top: 24px;
+  bottom: auto;
+  left: auto;
+  right: 0;
+  margin-top: auto;
+  margin-bottom: 8px;
+  -webkit-border-radius: 2px 2px 0 2px;
+  -moz-border-radius: 2px 2px 0 2px;
+  border-radius: 2px 2px 0 2px;
+  -webkit-box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-blue.object-label-top-right:before {
+  left: auto;
+  right: 0;
+  border: 4px solid #1919c9;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+.object-label.object-label-blue.object-label-bottom-left {
+  top: auto;
+  bottom: 24px;
+  left: 0;
+  right: auto;
+  margin-top: 8px;
+  margin-bottom: auto;
+  -webkit-border-radius: 0px 2px 2px 2px;
+  -moz-border-radius: 0px 2px 2px 2px;
+  border-radius: 0px 2px 2px 2px;
+  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-blue.object-label-bottom-left:before {
+  top: -8px;
+  bottom: auto;
+  left: 0;
+  right: auto;
+  border: 4px solid #1919c9;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.object-label.object-label-blue.object-label-bottom-right {
+  top: auto;
+  bottom: 24px;
+  left: auto;
+  right: 0;
+  margin-top: 8px;
+  margin-bottom: auto;
+  -webkit-border-radius: 2px 0px 2px 2px;
+  -moz-border-radius: 2px 0px 2px 2px;
+  border-radius: 2px 0px 2px 2px;
+  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-blue.object-label-bottom-right:before {
+  top: -8px;
+  bottom: auto;
+  left: auto;
+  right: 0;
+  border: 4px solid #1919c9;
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+.object-label.object-label-black {
+  background: #000;
+}
+.object-label.object-label-black.object-label-top-left {
+  top: 24px;
+  bottom: auto;
+  left: 0;
+  right: auto;
+  margin-top: auto;
+  margin-bottom: 8px;
+  -webkit-border-radius: 2px 2px 2px 0;
+  -moz-border-radius: 2px 2px 2px 0;
+  border-radius: 2px 2px 2px 0;
+  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-black.object-label-top-left:before {
+  left: 0;
+  right: auto;
+  border: 4px solid #000000;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+.object-label.object-label-black.object-label-top-right {
+  top: 24px;
+  bottom: auto;
+  left: auto;
+  right: 0;
+  margin-top: auto;
+  margin-bottom: 8px;
+  -webkit-border-radius: 2px 2px 0 2px;
+  -moz-border-radius: 2px 2px 0 2px;
+  border-radius: 2px 2px 0 2px;
+  -webkit-box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-black.object-label-top-right:before {
+  left: auto;
+  right: 0;
+  border: 4px solid #000000;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+.object-label.object-label-black.object-label-bottom-left {
+  top: auto;
+  bottom: 24px;
+  left: 0;
+  right: auto;
+  margin-top: 8px;
+  margin-bottom: auto;
+  -webkit-border-radius: 0px 2px 2px 2px;
+  -moz-border-radius: 0px 2px 2px 2px;
+  border-radius: 0px 2px 2px 2px;
+  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-black.object-label-bottom-left:before {
+  top: -8px;
+  bottom: auto;
+  left: 0;
+  right: auto;
+  border: 4px solid #000000;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.object-label.object-label-black.object-label-bottom-right {
+  top: auto;
+  bottom: 24px;
+  left: auto;
+  right: 0;
+  margin-top: 8px;
+  margin-bottom: auto;
+  -webkit-border-radius: 2px 0px 2px 2px;
+  -moz-border-radius: 2px 0px 2px 2px;
+  border-radius: 2px 0px 2px 2px;
+  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-black.object-label-bottom-right:before {
+  top: -8px;
+  bottom: auto;
+  left: auto;
+  right: 0;
+  border: 4px solid #000000;
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+.object-label.object-label-green {
+  background: #11a111;
+}
+.object-label.object-label-green.object-label-top-left {
+  top: 24px;
+  bottom: auto;
+  left: 0;
+  right: auto;
+  margin-top: auto;
+  margin-bottom: 8px;
+  -webkit-border-radius: 2px 2px 2px 0;
+  -moz-border-radius: 2px 2px 2px 0;
+  border-radius: 2px 2px 2px 0;
+  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-green.object-label-top-left:before {
+  left: 0;
+  right: auto;
+  border: 4px solid #0a5c0a;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+.object-label.object-label-green.object-label-top-right {
+  top: 24px;
+  bottom: auto;
+  left: auto;
+  right: 0;
+  margin-top: auto;
+  margin-bottom: 8px;
+  -webkit-border-radius: 2px 2px 0 2px;
+  -moz-border-radius: 2px 2px 0 2px;
+  border-radius: 2px 2px 0 2px;
+  -webkit-box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-green.object-label-top-right:before {
+  left: auto;
+  right: 0;
+  border: 4px solid #0a5c0a;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+.object-label.object-label-green.object-label-bottom-left {
+  top: auto;
+  bottom: 24px;
+  left: 0;
+  right: auto;
+  margin-top: 8px;
+  margin-bottom: auto;
+  -webkit-border-radius: 0px 2px 2px 2px;
+  -moz-border-radius: 0px 2px 2px 2px;
+  border-radius: 0px 2px 2px 2px;
+  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-green.object-label-bottom-left:before {
+  top: -8px;
+  bottom: auto;
+  left: 0;
+  right: auto;
+  border: 4px solid #0a5c0a;
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.object-label.object-label-green.object-label-bottom-right {
+  top: auto;
+  bottom: 24px;
+  left: auto;
+  right: 0;
+  margin-top: 8px;
+  margin-bottom: auto;
+  -webkit-border-radius: 2px 0px 2px 2px;
+  -moz-border-radius: 2px 0px 2px 2px;
+  border-radius: 2px 0px 2px 2px;
+  -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  -o-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.object-label.object-label-green.object-label-bottom-right:before {
+  top: -8px;
+  bottom: auto;
+  left: auto;
+  right: 0;
+  border: 4px solid #0a5c0a;
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+.dataobject-sm .object-label {
+  width: 66px;
+  line-height: 22px;
+  font-size: 10px !important;
+}
+.dataobject-sm .object-label .object-label.object-label-top-left {
+  left: -4px;
+}
+.dataobject-sm .object-label .object-label.object-label-top-right {
+  right: -4px;
+}
+.dataobject-sm .object-label .object-label.object-label-bottom-left {
+  left: -4px;
+}
+.dataobject-sm .object-label .object-label.object-label-bottom-right {
+  right: -4px;
+}
+.dataobject-xs .object-label {
+  width: 60px;
+  height: 20px;
+  line-height: 20px;
+}
+.dataobject-xs .object-label.object-label-top-left {
+  top: 14px;
+  left: -6px;
+  right: auto;
+}
+.dataobject-xs .object-label.object-label-top-right {
+  top: 14px;
+  left: auto;
+  right: -6px;
+}
+.dataobject-xs .object-label.object-label-bottom-left {
+  bottom: 14px;
+  left: -6px;
+  right: auto;
+}
+.dataobject-xs .object-label.object-label-bottom-right {
+  bottom: 14px;
+  right: -6px;
+}
+/* Meduim (Portrait tablet to landscape and desktop) */
+@media (min-width: 768px) and (max-width: 979px) {
+  .object-label.object-label-top-left {
+    left: -3px;
+  }
+  .object-label.object-label-top-right {
+    right: -3px;
+  }
+  .object-label.object-label-bottom-left {
+    left: -3px;
+  }
+  .object-label.object-label-bottom-right {
+    right: -3px;
+  }
+}
+/* Small (Landscape phone to portrait tablet) */
+@media (max-width: 767px) {
+  .object-label {
+    width: 66px;
+    line-height: 22px;
+    font-size: 10px;
+  }
+  .object-label .object-label.object-label-top-left {
+    left: -4px;
+  }
+  .object-label .object-label.object-label-top-right {
+    right: -4px;
+  }
+  .object-label .object-label.object-label-bottom-left {
+    left: -4px;
+  }
+  .object-label .object-label.object-label-bottom-right {
+    right: -4px;
+  }
+}
+/* X-Small (Landscape phones and down) */
+@media (max-width: 480px) {
+  .object-label {
+    width: 60px;
+    height: 20px;
+    line-height: 20px;
+  }
+  .object-label.object-label-top-left {
+    top: 14px;
+    left: -6px;
+  }
+  .object-label.object-label-top-right {
+    top: 14px;
+    right: -6px;
+  }
+  .object-label.object-label-bottom-left {
+    bottom: 14px;
+    left: -6px;
+  }
+  .object-label.object-label-bottom-right {
+    bottom: 14px;
+    right: -6px;
+  }
+}
+/*# sourceMappingURL=dataobject-label.css.map */

@@ -95,49 +95,6 @@
   float: right;
   margin: 0 0 0 5px;
 }
-.dataobject-page .object-label:before {
-  left: 0;
-  right: auto;
-  border: 4px solid #9b0c0c;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
-}
-.dataobject-page .object-label.object-label-red:before {
-  border: 4px solid #af1717;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
-}
-.dataobject-page .object-label.object-label-blue:before {
-  border: 4px solid #1919c9;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
-}
-.dataobject-page .object-label.object-label-black:before {
-  border: 4px solid #000000;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
-}
-.dataobject-page .object-label.object-label-green:before {
-  border: 4px solid #0a5c0a;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
-}
-.dataobject-page .object-label.object-label-top-left {
-  left: auto;
-  right: -2px;
-}
-.dataobject-page .object-label.object-label-top-right {
-  left: -2px;
-  right: auto;
-}
-.dataobject-page .object-label.object-label-bottom-left {
-  left: auto;
-  right: -2px;
-}
-.dataobject-page .object-label.object-label-bottom-right {
-  left: -2px;
-  right: auto;
-}
 /* Small (Landscape phone to portrait tablet) */
 @media (max-width: 767px) {
   .dataobject-page .dataobject-item > div .content {

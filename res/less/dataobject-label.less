@@ -1,0 +1,206 @@
+@import "mixins/all-mixins";
+@import "variables.less";
+
+@default-label-color: #e21111;
+
+.object-label {
+    position: absolute;
+    width: @object-label-width;
+    height: @object-label-height;
+    line-height: @object-label-height;
+    background: @default-label-color;
+
+    color: @color-white;
+
+    text-align: center;
+    vertical-align: middle;
+    cursor: default;
+    text-transform: none;
+    z-index: 10;
+
+    &:before {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: -(@object-label-margin);
+        width: 0;
+        height: 0;
+        /*z-index: 0;*/
+        white-space: normal;
+    }
+
+    .triangle(top, left, @default-label-color);
+    .triangle(top, right, @default-label-color);
+    .triangle(bottom, left, @default-label-color);
+    .triangle(bottom, right, @default-label-color);
+
+    &.object-label-red {
+        background: @color-red;
+
+        .triangle(top, left, @color-red);
+        .triangle(top, right, @color-red);
+        .triangle(bottom, left, @color-red);
+        .triangle(bottom, right, @color-red);
+    }
+
+    &.object-label-blue {
+        background: @color-blue;
+
+        .triangle(top, left, @color-blue);
+        .triangle(top, right, @color-blue);
+        .triangle(bottom, left, @color-blue);
+        .triangle(bottom, right, @color-blue);
+    }
+
+    &.object-label-black {
+        background: @color-black;
+
+        .triangle(top, left, @color-black);
+        .triangle(top, right, @color-black);
+        .triangle(bottom, left, @color-black);
+        .triangle(bottom, right, @color-black);
+    }
+
+    &.object-label-green {
+        background: @color-green;
+
+        .triangle(top, left, @color-green);
+        .triangle(top, right, @color-green);
+        .triangle(bottom, left, @color-green);
+        .triangle(bottom, right, @color-green);
+    }
+}
+
+.dataobject-sm {
+    .object-label {
+        width: @object-label-width-sm;
+        line-height: @object-label-height-sm;
+        font-size: 10px !important;
+
+        .object-label {
+            &.object-label-top-left {
+                left: (@object-padding-hor-sm - @object-label-margin);
+            }
+
+            &.object-label-top-right {
+                right: (@object-padding-hor-sm - @object-label-margin);
+            }
+
+            &.object-label-bottom-left {
+                left: (@object-padding-hor-sm - @object-label-margin);
+            }
+
+            &.object-label-bottom-right {
+                right: (@object-padding-hor-sm - @object-label-margin);
+            }
+        }
+    }
+}
+
+.dataobject-xs {
+    .object-label {
+        width: @object-label-width-xs;
+        height: @object-label-height-xs;
+        line-height: @object-label-height-xs;
+
+        &.object-label-top-left {
+            top: 14px;
+            left: (@object-padding-hor-xs - @object-label-margin);
+            right: auto;
+        }
+
+        &.object-label-top-right {
+            top: 14px;
+            left: auto;
+            right: (@object-padding-hor-xs - @object-label-margin);
+        }
+
+        &.object-label-bottom-left {
+            bottom: 14px;
+            left: (@object-padding-hor-xs - @object-label-margin);
+            right: auto;
+        }
+
+        &.object-label-bottom-right {
+            bottom: 14px;
+            right: (@object-padding-hor-xs - @object-label-margin);
+        }
+    }
+}
+
+/* Meduim (Portrait tablet to landscape and desktop) */
+@media (min-width: 768px) and (max-width: 979px) {
+    .object-label {
+        &.object-label-top-left {
+            left: (@object-padding-hor-md - @object-label-margin);
+        }
+
+        &.object-label-top-right {
+            right: (@object-padding-hor-md - @object-label-margin);
+        }
+
+        &.object-label-bottom-left {
+            left: (@object-padding-hor-md - @object-label-margin);
+        }
+
+        &.object-label-bottom-right {
+            right: (@object-padding-hor-md - @object-label-margin);
+        }
+    }
+}
+
+/* Small (Landscape phone to portrait tablet) */
+@media (max-width: 767px) {
+    .object-label {
+        width: @object-label-width-sm;
+        line-height: @object-label-height-sm;
+        font-size: 10px;
+
+        .object-label {
+            &.object-label-top-left {
+                left: (@object-padding-hor-sm - @object-label-margin);
+            }
+
+            &.object-label-top-right {
+                right: (@object-padding-hor-sm - @object-label-margin);
+            }
+
+            &.object-label-bottom-left {
+                left: (@object-padding-hor-sm - @object-label-margin);
+            }
+
+            &.object-label-bottom-right {
+                right: (@object-padding-hor-sm - @object-label-margin);
+            }
+        }
+    }
+}
+
+/* X-Small (Landscape phones and down) */
+@media (max-width: 480px) {
+    .object-label {
+        width: @object-label-width-xs;
+        height: @object-label-height-xs;
+        line-height: @object-label-height-xs;
+
+        &.object-label-top-left {
+            top: 14px;
+            left: (@object-padding-hor-xs - @object-label-margin);
+        }
+
+        &.object-label-top-right {
+            top: 14px;
+            right: (@object-padding-hor-xs - @object-label-margin);
+        }
+
+        &.object-label-bottom-left {
+            bottom: 14px;
+            left: (@object-padding-hor-xs - @object-label-margin);
+        }
+
+        &.object-label-bottom-right {
+            bottom: 14px;
+            right: (@object-padding-hor-xs - @object-label-margin);
+        }
+    }
+}

@@ -1152,7 +1152,7 @@
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
-  padding: 0 10px;
+  padding: 10px;
 }
 .dataobject-page .dataobject-hlist .dataobject-item {
   position: relative;

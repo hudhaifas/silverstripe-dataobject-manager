@@ -317,9 +317,11 @@ class DataObjectPageController
         $data = $this->request->getVars();
 
         $form = Form::create(
-                        $this, 'ObjectSearchForm', FieldList::create(
+                        $this, 'ObjectSearchForm',
+                        FieldList::create(
                                 TextField::create('q')
-                        ), FieldList::create(
+                        ),
+                        FieldList::create(
                                 FormAction::create('doObjectSearch')
                         )
         );
@@ -405,7 +407,8 @@ class DataObjectPageController
         $fields->push(HiddenField::create('ObjectID', 'ObjectID', $single->ID));
 
         // Upload Field
-        $field = FrontendImageField::create($single->getObjectEditableImageName(), '', $single->getObjectImage());
+        $field = FrontendImageField::create($single->getObjectEditableImageName(), '',
+                        $single->getObjectImage());
         $fields->push($field);
 
         // Create action
@@ -505,7 +508,7 @@ class DataObjectPageController
         }
 
         $dbFields = $record->config()->get('db');
-        $restrictFields = $record->config()->restrict_fields;
+        $restrictFields = array_merge(['Version'], $record->config()->restrict_fields);
 
         // iterate database fields
         foreach ($dbFields as $fieldName => $fieldType) {

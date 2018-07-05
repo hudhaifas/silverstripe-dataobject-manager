@@ -227,7 +227,7 @@ class DataObject_PrivicyExtension
             return self::cache_permission_check('edit', $member, $this->owner->ID, true);
         }
 
-        if ($member && $this->owner->hasMethod('CreatedBy') && $member == $this->owner->CreatedBy()) {
+        if ($member && $this->hasMethod('CreatedBy') && $this->CreatedBy() && $member->ID == $this->CreatedBy()->ID) {
             return self::cache_permission_check('edit', $member, $this->owner->ID, true);
         }
 

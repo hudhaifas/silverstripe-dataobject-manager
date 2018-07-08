@@ -2,6 +2,7 @@
 
 use HudhaifaS\DOM\Model\SearchableDataObject;
 use HudhaifaS\Forms\FrontendImageField;
+use HudhaifaS\Forms\FrontendRichTextField;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Convert;
@@ -10,6 +11,7 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextField;
 use SilverStripe\i18n\i18n;
@@ -523,14 +525,15 @@ class DataObjectPageController
                 continue;
             }
 
-            $fieldObject->setTitle($record->fieldLabel($fieldName));
-            $fieldObject->setValue($record->$fieldName);
-
-            if ($fieldObject instanceof HtmlEditorField) {
-                
+            if ($fieldObject instanceof HTMLEditorField) {
+                $fieldObject = FrontendRichTextField::create($fieldName);
             } else if ($fieldObject instanceof DateField) {
                 
             }
+
+            $fieldObject->setTitle($record->fieldLabel($fieldName));
+            $fieldObject->setValue($record->$fieldName);
+
             $fields->push($fieldObject);
         }
     }

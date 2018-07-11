@@ -1,6 +1,7 @@
 <?php
 
 use HudhaifaS\DOM\Model\SearchableDataObject;
+use HudhaifaS\Forms\FrontendFileField;
 use HudhaifaS\Forms\FrontendImageField;
 use HudhaifaS\Forms\FrontendRichTextField;
 use SilverStripe\Control\Director;
@@ -59,7 +60,7 @@ class DataObjectPageController
     public function init() {
         parent::init();
 
-        FrontendImageField::init_scripts();
+        FrontendFileField::init_scripts();
 
         Requirements::css("https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css");
         Requirements::css("hudhaifas/silverstripe-dataobject-manager: res/css/dataobject.css");

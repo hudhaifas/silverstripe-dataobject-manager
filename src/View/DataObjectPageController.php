@@ -544,7 +544,7 @@ class DataObjectPageController
         return '';
     }
 
-    public function ExtraTags() {
+    public function ExtraMetaTags() {
         return $this->renderWith('Includes\Page_ExtraTags');
     }
 

@@ -574,6 +574,14 @@ class DataObjectPageController
         }
     }
 
+    public function SocialDescription() {
+        $single = $this->getSingle();
+
+        if ($single && $single instanceof SociableDataObject) {
+            return $single->getSocialDescription();
+        }
+    }
+
     public function FullURL($url) {
         return Director::absoluteURL($url);
     }

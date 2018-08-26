@@ -540,12 +540,12 @@ class DataObjectPageController
     }
 
     /// Utilities
-    public function ExtraTags() {
-        return $this->renderWith('Includes\Page_ExtraTags');
-    }
-
     public function ExtraClasses() {
         return '';
+    }
+
+    public function ExtraTags() {
+        return $this->renderWith('Includes\Page_ExtraTags');
     }
 
     public function RichSnippets() {

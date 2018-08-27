@@ -582,6 +582,16 @@ class DataObjectPageController
         }
     }
 
+    public function Canonical() {
+        $single = $this->getSingle();
+
+        if ($single) {
+            return $single->getObjectLink();
+        } else {
+            return $this->Link();
+        }
+    }
+
     public function FullURL($url) {
         return Director::absoluteURL($url);
     }

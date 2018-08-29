@@ -553,7 +553,6 @@ class DataObjectPageController
             $schema = $single->getObjectRichSnippets();
             $schema['@context'] = "http://schema.org";
 
-//        return json_encode($schema, JSON_UNESCAPED_UNICODE);
             return Convert::array2json($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         }
     }

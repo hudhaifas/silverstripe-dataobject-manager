@@ -1,6 +1,7 @@
 <?php
 
 use HudhaifaS\DOM\Model\SearchableDataObject;
+use HudhaifaS\DOM\Model\SociableDataObject;
 use HudhaifaS\Forms\FrontendFileField;
 use HudhaifaS\Forms\FrontendImageField;
 use HudhaifaS\Forms\FrontendRichTextField;
@@ -320,11 +321,9 @@ class DataObjectPageController
         $data = $this->request->getVars();
 
         $form = Form::create(
-                        $this, 'ObjectSearchForm',
-                        FieldList::create(
+                        $this, 'ObjectSearchForm', FieldList::create(
                                 TextField::create('q')
-                        ),
-                        FieldList::create(
+                        ), FieldList::create(
                                 FormAction::create('doObjectSearch')
                         )
         );
@@ -410,8 +409,7 @@ class DataObjectPageController
         $fields->push(HiddenField::create('ObjectID', 'ObjectID', $single->ID));
 
         // Upload Field
-        $field = FrontendImageField::create($single->getObjectEditableImageName(), '',
-                        $single->getObjectImage());
+        $field = FrontendImageField::create($single->getObjectEditableImageName(), '', $single->getObjectImage());
         $fields->push($field);
 
         // Create action
@@ -556,7 +554,7 @@ class DataObjectPageController
             $schema['@context'] = "http://schema.org";
 
 //        return json_encode($schema, JSON_UNESCAPED_UNICODE);
-            return Convert::array2json($schema);
+            return Convert::array2json($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         }
     }
 

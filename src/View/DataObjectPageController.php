@@ -151,7 +151,7 @@ class DataObjectPageController
                         ->renderWith(['DataObjectPage_Edit', 'DataObjectPage', 'Page']);
     }
 
-    protected function getObjectsList() {
+    public function getObjectsList() {
         return DataObject::get('Page');
     }
 
@@ -176,7 +176,7 @@ class DataObjectPageController
                 ])->first();
     }
 
-    protected function searchObjects($list, $keywords) {
+    public function searchObjects($list, $keywords) {
         if (!$list) {
             return null;
         }

@@ -18,6 +18,7 @@ use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextField;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\Security\Security;
 use SilverStripe\View\Requirements;
@@ -560,7 +561,8 @@ class DataObjectPageController
             $schema = $single->getObjectRichSnippets();
             $schema['@context'] = "http://schema.org";
 
-            return Convert::array2json($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            $text = Convert::array2json($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            return DBField::create_field('HTMLText', $text);
         }
     }
 

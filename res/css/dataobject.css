@@ -136,7 +136,7 @@
   padding-right: 3px;
 }
 .dataobject-xs .ellipsis {
-  height: 30.8px;
+  height: 36.4px;
   line-height: 14px;
   font-size: 9px;
 }
@@ -152,11 +152,11 @@
   height: 14px;
 }
 .dataobject-xs .ellipsis.ellipsis-2 {
-  height: 28px;
+  height: 39.2px;
   line-height: 14px;
 }
 .dataobject-xs .ellipsis.ellipsis-2:before {
-  height: 28px;
+  height: 39.2px;
 }
 .dataobject-xs .ellipsis.ellipsis-3 {
   height: 54.6px;

@@ -95,6 +95,13 @@
   float: right;
   margin: 0 0 0 5px;
 }
+.modal {
+  text-align: right;
+}
+.modal a.close-modal {
+  left: 8px;
+  right: auto;
+}
 /* Small (Landscape phone to portrait tablet) */
 @media (max-width: 767px) {
   .dataobject-page .dataobject-item > div .content {
@@ -148,6 +155,9 @@
   .dataobject-page .object-label.object-label-bottom-right {
     left: -6px;
     right: auto;
+  }
+  .blocker .modal .card-header {
+    padding: 8px 8px 8px 20px;
   }
 }
 /*# sourceMappingURL=dataobject-rtl.css.map */

@@ -128,6 +128,15 @@
     }
 }
 
+.modal {
+    text-align: right;
+
+    a.close-modal {
+        left: 8px;
+        right: auto;
+    }
+}
+
 /* Small (Landscape phone to portrait tablet) */
 @media (max-width: 767px) {
     .dataobject-page {
@@ -217,6 +226,18 @@
             &.object-label-bottom-right {
                 left: (@object-padding-hor-xs - @object-label-margin);
                 right: auto;
+            }
+        }
+    }
+
+    .blocker {
+
+        .modal {
+            .card-header {
+                padding: 8px 8px 8px 20px;
+            }
+
+            .card-body {
             }
         }
     }

@@ -1514,19 +1514,15 @@
   padding: 0;
   cursor: auto;
   box-shadow: 0 0 9px rgba(0, 0, 0, 0.16);
+  -webkit-transition: all 0.4s ease, top 1ms, left 1ms, bottom 1ms, right 1ms;
+  -moz-transition: all 0.4s ease, top 1ms, left 1ms, bottom 1ms, right 1ms;
+  -ms-transition: all 0.4s ease, top 1ms, left 1ms, bottom 1ms, right 1ms;
+  -o-transition: all 0.4s ease, top 1ms, left 1ms, bottom 1ms, right 1ms;
+  transition: all 0.4s ease, top 1ms, left 1ms, bottom 1ms, right 1ms;
 }
 .modal > .card-header {
   background: transparent;
   border: 0;
-}
-.modal > .card-body .family-members-title {
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 0;
-}
-.modal > .card-body .family-members-list {
-  font-size: 13px;
-  font-weight: normal;
 }
 .modal a.close-modal {
   top: 8px;
@@ -1555,6 +1551,19 @@
   .dataobject-page .dataobject-item:hover .card .caption h4,
   .dataobject-page .dataobject-item:hover .card .caption .h4 {
     font-size: 16px;
+  }
+  .blocker {
+    padding: 10px;
+  }
+  .blocker .modal {
+    width: auto;
+    max-width: none;
+  }
+  .blocker .modal .card-header {
+    padding: 8px 20px 8px 8px;
+  }
+  .blocker .modal .card-body {
+    padding: 8px;
   }
 }
 /* Small (Landscape phone to portrait tablet) */
@@ -1625,6 +1634,19 @@
     font-size: 14px;
     margin-bottom: 2px;
     text-align: left;
+  }
+  .blocker {
+    padding: 10px;
+  }
+  .blocker .modal {
+    width: auto;
+    max-width: none;
+  }
+  .blocker .modal .card-header {
+    padding: 8px 20px 8px 8px;
+  }
+  .blocker .modal .card-body {
+    padding: 8px;
   }
 }
 /* X-Small (Landscape phones and down) */

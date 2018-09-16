@@ -1,6 +1,6 @@
 <?php
 
-use HudhaifaS\DOM\Model\SearchableDataObject;
+use HudhaifaS\DOM\Model\DiscoverableDataObject;
 use HudhaifaS\DOM\Model\SociableDataObject;
 use HudhaifaS\Forms\FrontendFileField;
 use HudhaifaS\Forms\FrontendImageField;
@@ -557,8 +557,8 @@ class DataObjectPageController
     public function RichSnippets() {
         $single = $this->getSingle();
 
-        if ($single && $single instanceof SearchableDataObject) {
-            $schema = $single->getObjectRichSnippets();
+        if ($single && $single instanceof DiscoverableDataObject) {
+            $schema = $single->getObjectMarkup();
             $schema['@context'] = "http://schema.org";
 
             $text = Convert::array2json($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
@@ -584,7 +584,7 @@ class DataObjectPageController
         $single = $this->getSingle();
 
         if ($single && $single instanceof SociableDataObject) {
-            return $single->getSocialDescription();
+            return $single->getObjectDescription();
         }
     }
 

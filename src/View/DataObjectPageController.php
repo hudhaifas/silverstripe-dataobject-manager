@@ -80,20 +80,26 @@ class DataObjectPageController
     public function index(HTTPRequest $request) {
         $start = microtime(true); // time in Microseconds
 
-        $results = $this->getObjectsList();
-
+        $results = null;
+        
         if ($query = $request->getVar('q')) {
             $results = $this->searchObjects($results, $query);
+        } else {
+            $results = $this->getObjectsList();
         }
 
         if (!$results) {
             return [];
         }
 
-        $paginated = PaginatedList::create(
-                        $results, $request
-                )->setPageLength($this->PageLength)
-                ->setPaginationGetVar('s');
+        if ($results instanceof PaginatedList) {
+            $paginated = $results;
+        } else {
+            $paginated = PaginatedList::create(
+                            $results, $request
+                    )->setPageLength($this->PageLength)
+                    ->setPaginationGetVar('s');
+        }
 
         $end = microtime(true); // time in Microseconds
 

@@ -80,12 +80,12 @@ class DataObjectPageController
     public function index(HTTPRequest $request) {
         $start = microtime(true); // time in Microseconds
 
-        $results = null;
-        
         if ($query = $request->getVar('q')) {
-            $results = $this->searchObjects($results, $query);
+            $results = $this->searchObjects($this->getObjectsList(), $query);
         } else {
-            $results = $this->getObjectsList();
+            $results = $this->getObjectsList()
+                    ->sort('RAND()')
+                    ->limit($this->PageLength);
         }
 
         if (!$results) {
@@ -94,17 +94,20 @@ class DataObjectPageController
 
         if ($results instanceof PaginatedList) {
             $paginated = $results;
+            $count = $results->getTotalItems();
         } else {
             $paginated = PaginatedList::create(
                             $results, $request
                     )->setPageLength($this->PageLength)
-                    ->setPaginationGetVar('s');
+                    ->setPaginationGetVar('start');
+            $count = $results->Count();
         }
 
         $end = microtime(true); // time in Microseconds
 
         $data = [
             'Results' => $paginated,
+            'Count' => $count,
             'Seconds' => ($end - $start) / 1000
         ];
 

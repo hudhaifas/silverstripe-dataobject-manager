@@ -1,4 +1,4 @@
-<% with ObjectTabs %>
+<% with ObjectTabs.Sort('Rank DESC') %>
     <div class="clearfix">
         <ul class="nav nav-pills justify-content-center nav-loaded">
             <% loop $Me %>

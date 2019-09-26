@@ -5,6 +5,10 @@
                 <% include Single_Image_PlaceHolder %>
             </div>
 
+            <div class="dataobject-brief">
+                <h1 class="dataobject-title">$Single.ObjectTitle</h1>
+            </div>
+
             <div class="dataobject-brief place-holder" data-url="{$SummaryLink($Single.ID)}">
                 <% include Single_Summary_PlaceHolder %>
             </div>

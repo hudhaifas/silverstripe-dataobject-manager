@@ -38,11 +38,20 @@ class DataObjectPage
 
         $fields->removeFieldFromTab("Root.Main", "Content");
 
-        $fields->addFieldToTab('Root.Main', NumericField::create('PageLength', _t('DataObjectPage.PAGE_LENGTH', 'Page Length'), $this->PageLength));
-        $fields->addFieldToTab('Root.Main', TextField::create('FbAppId', _t('DataObjectPage.FB_APP_ID', 'Facebook App ID'), $this->FbAppId));
-        $fields->addFieldToTab('Root.Main', TextField::create('TwitterSite', _t('DataObjectPage.TWITTER_SITE', 'Twitter Site'), $this->TwitterSite));
-        $fields->addFieldToTab('Root.Main', TextareaField::create('DefaultSocialDesc', _t('DataObjectPage.DEFAULT_SOCIAL_DESC', 'Default Social Description'), $this->DefaultSocialDesc));
-        $fields->addFieldToTab('Root.Main', $uploadField = UploadField::create(
+        $fields->addFieldToTab('Root.Main',
+                NumericField::create('PageLength', _t('DataObjectPage.PAGE_LENGTH', 'Page Length'),
+                        $this->PageLength));
+        $fields->addFieldToTab('Root.OpenGraph',
+                TextField::create('FbAppId', _t('DataObjectPage.FB_APP_ID', 'Facebook App ID'), $this->FbAppId));
+        $fields->addFieldToTab('Root.OpenGraph',
+                TextField::create('TwitterSite', _t('DataObjectPage.TWITTER_SITE', 'Twitter Site'),
+                        $this->TwitterSite));
+        $fields->addFieldToTab('Root.OpenGraph',
+                TextareaField::create('DefaultSocialDesc',
+                        _t('DataObjectPage.DEFAULT_SOCIAL_DESC', 'Default Social Description'),
+                        $this->DefaultSocialDesc));
+        $fields->addFieldToTab('Root.OpenGraph',
+                $uploadField = UploadField::create(
                         'DefaultSocialImage', //
                         _t('DataObjectPage.DEFAULT_SOCIAL_IMAGE', 'Default Social Image')
         ));

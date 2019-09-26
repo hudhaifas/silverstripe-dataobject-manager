@@ -18,8 +18,8 @@
         "silverstripe/framework": "^4",
         "silverstripe/cms": "^4",
         "silverstripe/vendor-plugin": "^1.0",
-        "hudhaifas/silverstripe-frontend-fields": "dev-master",
-        "hudhaifas/silverstripe-data-progress": "dev-master"
+        "hudhaifas/silverstripe-frontend-fields": "4.*",
+        "hudhaifas/silverstripe-data-progress": "4.*"
     },
     "extra": {
         "installer-name": "dataobject-manager",

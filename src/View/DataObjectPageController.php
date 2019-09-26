@@ -1,7 +1,10 @@
 <?php
 
-use HudhaifaS\DOM\Model\SearchableDataObject;
+use HudhaifaS\DOM\Model\DiscoverableDataObject;
+use HudhaifaS\DOM\Model\SociableDataObject;
+use HudhaifaS\Forms\FrontendFileField;
 use HudhaifaS\Forms\FrontendImageField;
+use HudhaifaS\Forms\FrontendRichTextField;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Convert;
@@ -10,10 +13,12 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextField;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\Security\Security;
 use SilverStripe\View\Requirements;
@@ -57,7 +62,7 @@ class DataObjectPageController
     public function init() {
         parent::init();
 
-        FrontendImageField::init_scripts();
+        FrontendFileField::init_scripts();
 
         Requirements::css("https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css");
         Requirements::css("hudhaifas/silverstripe-dataobject-manager: res/css/dataobject.css");
@@ -75,20 +80,26 @@ class DataObjectPageController
     public function index(HTTPRequest $request) {
         $start = microtime(true); // time in Microseconds
 
-        $results = $this->getObjectsList();
-
+        $results = null;
+        
         if ($query = $request->getVar('q')) {
             $results = $this->searchObjects($results, $query);
+        } else {
+            $results = $this->getObjectsList();
         }
 
         if (!$results) {
             return [];
         }
 
-        $paginated = PaginatedList::create(
-                        $results, $request
-                )->setPageLength($this->PageLength)
-                ->setPaginationGetVar('s');
+        if ($results instanceof PaginatedList) {
+            $paginated = $results;
+        } else {
+            $paginated = PaginatedList::create(
+                            $results, $request
+                    )->setPageLength($this->PageLength)
+                    ->setPaginationGetVar('s');
+        }
 
         $end = microtime(true); // time in Microseconds
 
@@ -147,7 +158,7 @@ class DataObjectPageController
                         ->renderWith(['DataObjectPage_Edit', 'DataObjectPage', 'Page']);
     }
 
-    protected function getObjectsList() {
+    public function getObjectsList() {
         return DataObject::get('Page');
     }
 
@@ -172,7 +183,7 @@ class DataObjectPageController
                 ])->first();
     }
 
-    protected function searchObjects($list, $keywords) {
+    public function searchObjects($list, $keywords) {
         if (!$list) {
             return null;
         }
@@ -180,6 +191,10 @@ class DataObjectPageController
         return $list->filter([
                     'Title:PartialMatch' => $keywords
         ]);
+    }
+
+    public function isSearchable() {
+        return true;
     }
 
     protected function IsVerticalList() {
@@ -506,6 +521,11 @@ class DataObjectPageController
 
         $dbFields = $record->config()->get('db');
         $restrictFields = $record->config()->restrict_fields;
+        if ($restrictFields) {
+            $restrictFields = array_merge(['Version'], $restrictFields);
+        } else {
+            $restrictFields = ['Version'];
+        }
 
         // iterate database fields
         foreach ($dbFields as $fieldName => $fieldType) {
@@ -520,36 +540,37 @@ class DataObjectPageController
                 continue;
             }
 
-            $fieldObject->setTitle($record->fieldLabel($fieldName));
-            $fieldObject->setValue($record->$fieldName);
-
-            if ($fieldObject instanceof HtmlEditorField) {
-                
+            if ($fieldObject instanceof HTMLEditorField) {
+                $fieldObject = FrontendRichTextField::create($fieldName);
             } else if ($fieldObject instanceof DateField) {
                 
             }
+
+            $fieldObject->setTitle($record->fieldLabel($fieldName));
+            $fieldObject->setValue($record->$fieldName);
+
             $fields->push($fieldObject);
         }
     }
 
     /// Utilities
-    public function ExtraTags() {
-        return $this->renderWith('Includes\Page_ExtraTags');
-    }
-
     public function ExtraClasses() {
         return '';
+    }
+
+    public function ExtraMetaTags() {
+        return $this->renderWith('Includes\Page_ExtraTags');
     }
 
     public function RichSnippets() {
         $single = $this->getSingle();
 
-        if ($single && $single instanceof SearchableDataObject) {
-            $schema = $single->getObjectRichSnippets();
+        if ($single && $single instanceof DiscoverableDataObject) {
+            $schema = $single->getObjectMarkup();
             $schema['@context'] = "http://schema.org";
 
-//        return json_encode($schema, JSON_UNESCAPED_UNICODE);
-            return Convert::array2json($schema);
+            $text = Convert::array2json($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            return DBField::create_field('HTMLText', $text);
         }
     }
 
@@ -564,6 +585,24 @@ class DataObjectPageController
                             ->renderWith('Includes\Single_OpenGraph');
         } else {
             return $this->renderWith('Includes\Page_OpenGraph');
+        }
+    }
+
+    public function SocialDescription() {
+        $single = $this->getSingle();
+
+        if ($single && $single instanceof SociableDataObject) {
+            return $single->getObjectDescription();
+        }
+    }
+
+    public function Canonical() {
+        $single = $this->getSingle();
+
+        if ($single) {
+            return $single->getObjectLink();
+        } else {
+            return $this->Link();
         }
     }
 

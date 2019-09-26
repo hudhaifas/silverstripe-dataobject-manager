@@ -136,54 +136,54 @@
   padding-right: 3px;
 }
 .dataobject-xs .ellipsis {
-  height: 26.4px;
-  line-height: 12px;
+  height: 36.4px;
+  line-height: 14px;
   font-size: 9px;
 }
 .dataobject-xs .ellipsis:before {
   width: 3px;
-  height: 26.4px;
+  height: 30.8px;
 }
 .dataobject-xs .ellipsis.ellipsis-1 {
-  height: 12px;
-  line-height: 12px;
+  height: 14px;
+  line-height: 14px;
 }
 .dataobject-xs .ellipsis.ellipsis-1:before {
-  height: 12px;
+  height: 14px;
 }
 .dataobject-xs .ellipsis.ellipsis-2 {
-  height: 24px;
-  line-height: 12px;
+  height: 39.2px;
+  line-height: 14px;
 }
 .dataobject-xs .ellipsis.ellipsis-2:before {
-  height: 24px;
+  height: 39.2px;
 }
 .dataobject-xs .ellipsis.ellipsis-3 {
-  height: 39.6px;
-  line-height: 12px;
+  height: 54.6px;
+  line-height: 14px;
 }
 .dataobject-xs .ellipsis.ellipsis-3:before {
-  height: 39.6px;
+  height: 46.2px;
 }
 .dataobject-xs .ellipsis.ellipsis-4 {
-  height: 52.8px;
-  line-height: 12px;
+  height: 61.6px;
+  line-height: 14px;
 }
 .dataobject-xs .ellipsis.ellipsis-4:before {
-  height: 52.8px;
+  height: 61.6px;
 }
 .dataobject-xs .ellipsis.ellipsis-5 {
-  height: 66px;
-  line-height: 12px;
+  height: 77px;
+  line-height: 14px;
 }
 .dataobject-xs .ellipsis.ellipsis-5:before {
-  height: 66px;
+  height: 77px;
 }
 .dataobject-xs .ellipsis > *:first-child {
   margin-left: -3px;
 }
 .dataobject-xs .ellipsis:after {
-  top: -12px;
+  top: -14px;
   padding-right: 3px;
 }
 /* Meduim (Portrait tablet to landscape and desktop) */
@@ -283,54 +283,54 @@
 /* X-Small (Landscape phones and down) */
 @media (max-width: 480px) {
   .ellipsis {
-    height: 26.4px;
-    line-height: 12px;
+    height: 30.8px;
+    line-height: 14px;
     font-size: 9px;
   }
   .ellipsis:before {
     width: 3px;
-    height: 26.4px;
+    height: 30.8px;
   }
   .ellipsis.ellipsis-1 {
-    height: 12px;
-    line-height: 12px;
+    height: 14px;
+    line-height: 14px;
   }
   .ellipsis.ellipsis-1:before {
-    height: 12px;
+    height: 14px;
   }
   .ellipsis.ellipsis-2 {
-    height: 24px;
-    line-height: 12px;
+    height: 28px;
+    line-height: 14px;
   }
   .ellipsis.ellipsis-2:before {
-    height: 24px;
+    height: 28px;
   }
   .ellipsis.ellipsis-3 {
-    height: 39.6px;
-    line-height: 12px;
+    height: 46.2px;
+    line-height: 14px;
   }
   .ellipsis.ellipsis-3:before {
-    height: 39.6px;
+    height: 46.2px;
   }
   .ellipsis.ellipsis-4 {
-    height: 52.8px;
-    line-height: 12px;
+    height: 61.6px;
+    line-height: 14px;
   }
   .ellipsis.ellipsis-4:before {
-    height: 52.8px;
+    height: 61.6px;
   }
   .ellipsis.ellipsis-5 {
-    height: 66px;
-    line-height: 12px;
+    height: 77px;
+    line-height: 14px;
   }
   .ellipsis.ellipsis-5:before {
-    height: 66px;
+    height: 77px;
   }
   .ellipsis > *:first-child {
     margin-left: -3px;
   }
   .ellipsis:after {
-    top: -12px;
+    top: -14px;
     padding-right: 3px;
   }
 }
@@ -1514,19 +1514,15 @@
   padding: 0;
   cursor: auto;
   box-shadow: 0 0 9px rgba(0, 0, 0, 0.16);
+  -webkit-transition: all 0.4s ease, top 1ms, left 1ms, bottom 1ms, right 1ms;
+  -moz-transition: all 0.4s ease, top 1ms, left 1ms, bottom 1ms, right 1ms;
+  -ms-transition: all 0.4s ease, top 1ms, left 1ms, bottom 1ms, right 1ms;
+  -o-transition: all 0.4s ease, top 1ms, left 1ms, bottom 1ms, right 1ms;
+  transition: all 0.4s ease, top 1ms, left 1ms, bottom 1ms, right 1ms;
 }
 .modal > .card-header {
   background: transparent;
   border: 0;
-}
-.modal > .card-body .family-members-title {
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 0;
-}
-.modal > .card-body .family-members-list {
-  font-size: 13px;
-  font-weight: normal;
 }
 .modal a.close-modal {
   top: 8px;
@@ -1555,6 +1551,19 @@
   .dataobject-page .dataobject-item:hover .card .caption h4,
   .dataobject-page .dataobject-item:hover .card .caption .h4 {
     font-size: 16px;
+  }
+  .blocker {
+    padding: 10px;
+  }
+  .blocker .modal {
+    width: auto;
+    max-width: none;
+  }
+  .blocker .modal .card-header {
+    padding: 8px 20px 8px 8px;
+  }
+  .blocker .modal .card-body {
+    padding: 8px;
   }
 }
 /* Small (Landscape phone to portrait tablet) */
@@ -1625,6 +1634,19 @@
     font-size: 14px;
     margin-bottom: 2px;
     text-align: left;
+  }
+  .blocker {
+    padding: 10px;
+  }
+  .blocker .modal {
+    width: auto;
+    max-width: none;
+  }
+  .blocker .modal .card-header {
+    padding: 8px 20px 8px 8px;
+  }
+  .blocker .modal .card-body {
+    padding: 8px;
   }
 }
 /* X-Small (Landscape phones and down) */

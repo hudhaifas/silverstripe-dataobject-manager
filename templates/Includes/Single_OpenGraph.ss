@@ -14,7 +14,7 @@
     <% end_if %>    
 
     <% if $SocialDescription %>
-        <meta property="og:description" content="{$SocialDescription.Summary(300)}" />
+        <meta property="og:description" content="{$SocialDescription}" />
     <% else %>
         <meta property="og:description" content="{$Top.DefaultSocialDesc}" />
     <% end_if %>
@@ -23,7 +23,7 @@
     <meta property="twitter:site" content="{$Top.TwitterSite}" />
     <meta property="twitter:title" content="$SiteConfig.Title | $ObjectTitle" />
     <% if $SocialDescription %>
-        <meta property="twitter:description" content="{$SocialDescription.Summary(300)}" />
+        <meta property="twitter:description" content="{$SocialDescription}" />
     <% else %>
         <meta property="twitter:description" content="{$Top.DefaultSocialDesc}" />
     <% end_if %>

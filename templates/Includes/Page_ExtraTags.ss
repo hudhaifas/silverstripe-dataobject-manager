@@ -1,5 +1,5 @@
 $OpenGraph
 
 <script type="application/ld+json">
-    $RichSnippets
+    $RichSnippets.RAW
 </script>

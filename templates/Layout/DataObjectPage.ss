@@ -6,7 +6,7 @@
             </div>
 
             <div class="col-md-12">
-                <sub><%t DataObjectPage.SEARCH_RESULTS_COUNT 'About {value} results' value=$Results.Count%></sub>
+                <sub><%t DataObjectPage.SEARCH_RESULTS_COUNT 'About {value} results' value=$Count%></sub>
             </div>
         </div>
     </div>

@@ -22,6 +22,7 @@ use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\Security\Security;
 use SilverStripe\View\Requirements;
+use SilverStripe\View\ThemeResourceLoader;
 
 /**
  *
@@ -205,7 +206,7 @@ class DataObjectPageController
     }
 
     /**
-     * 
+     *
      * $lists = [
      *     [
      *         'Title' => 'Categories',
@@ -217,7 +218,7 @@ class DataObjectPageController
      *     ]
      * ];
      * return new ArrayList($lists);
-     * 
+     *
      * @return type
      */
     protected function getFiltersList() {
@@ -229,11 +230,11 @@ class DataObjectPageController
     }
 
     protected function preRenderList() {
-        
+
     }
 
     protected function preRenderSingle($single) {
-        
+
     }
 
     /// Actions
@@ -326,7 +327,7 @@ class DataObjectPageController
         return $this->Link("related/$id");
     }
 
-    /// Forms    
+    /// Forms
     public function ObjectSearchForm() {
         if ($this->hasMethod('getGoogleSiteSearchForm')) {
             return $this->getGoogleSiteSearchForm()->setTemplate('Form_GoogleSearch');
@@ -368,7 +369,7 @@ class DataObjectPageController
             Security::permissionFailure($this);
         }
 
-        // Create fields          
+        // Create fields
         $fields = new FieldList();
         $fields->push(HiddenField::create('ObjectID', 'ObjectID', $single->ID));
         $this->getRecordFields($single, $fields);
@@ -418,7 +419,7 @@ class DataObjectPageController
             return null;
         }
 
-        // Create fields          
+        // Create fields
         $fields = new FieldList();
         $fields->push(HiddenField::create('ObjectID', 'ObjectID', $single->ID));
 
@@ -546,7 +547,7 @@ class DataObjectPageController
             if ($fieldObject instanceof HTMLEditorField) {
                 $fieldObject = FrontendRichTextField::create($fieldName);
             } else if ($fieldObject instanceof DateField) {
-                
+
             }
 
             $fieldObject->setTitle($record->fieldLabel($fieldName));
@@ -572,7 +573,7 @@ class DataObjectPageController
             $schema = $single->getObjectMarkup();
             $schema['@context'] = "http://schema.org";
 
-            $text = Convert::array2json($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            $text = json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
             return DBField::create_field('HTMLText', $text);
         }
     }
@@ -611,10 +612,6 @@ class DataObjectPageController
 
     public function FullURL($url) {
         return Director::absoluteURL($url);
-    }
-
-    public function ThemedURL($url) {
-        return Director::absoluteURL($this->ThemeDir() . $url);
     }
 
     public function Align() {

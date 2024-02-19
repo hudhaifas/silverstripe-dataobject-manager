@@ -11,6 +11,7 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\Security\Group;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Permission;
+use SilverStripe\Security\Security;
 
 /**
  *
@@ -119,7 +120,7 @@ class DataObject_PrivicyExtension
         }
 
         if (!$member) {
-            $member = Member::currentUserID();
+            $member = Security::getCurrentUser()?->ID;
         }
 
         if ($member && is_numeric($member)) {
@@ -145,7 +146,7 @@ class DataObject_PrivicyExtension
 
     public function canView($member) {
         if (!$member) {
-            $member = Member::currentUserID();
+            $member = Security::getCurrentUser()?->ID;
         }
 
         if ($member && is_numeric($member)) {
@@ -185,7 +186,7 @@ class DataObject_PrivicyExtension
 
     public function canDelete($member) {
         if (!$member) {
-            $member = Member::currentUserID();
+            $member = Security::getCurrentUser()?->ID;
         }
 
         if ($member && is_numeric($member)) {
@@ -211,7 +212,7 @@ class DataObject_PrivicyExtension
 
     public function canEdit($member) {
         if (!$member) {
-            $member = Member::currentUserID();
+            $member = Security::getCurrentUser()?->ID;
         }
 
         if ($member && is_numeric($member)) {
@@ -255,7 +256,7 @@ class DataObject_PrivicyExtension
 
     public static function cache_permission_check($typeField, $member, $personID, $result = null) {
         if (!$member) {
-            $member = Member::currentUserID();
+            $member = Security::getCurrentUser()?->ID;
         }
 
         if ($member && is_numeric($member)) {

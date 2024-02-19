@@ -5,6 +5,7 @@ namespace HudhaifaS\DOM\Extension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Security\Member;
+use SilverStripe\Security\Security;
 
 /**
  *
@@ -39,12 +40,12 @@ class DataObject_MemberExtension
     }
 
     public function onBeforeWrite() {
-        if (Member::currentUserID()) {
+        if (Security::getCurrentUser()?->ID) {
             if (!$this->owner->CreatedByID) {
-                $this->owner->CreatedByID = Member::currentUserID();
+                $this->owner->CreatedByID = Security::getCurrentUser()?->ID;
             }
 
-            $this->owner->EditedByID = Member::currentUserID();
+            $this->owner->EditedByID = Security::getCurrentUser()?->ID;
         }
     }
 

@@ -84,9 +84,7 @@ class DataObjectPageController
         if ($query = $request->getVar('q')) {
             $results = $this->searchObjects($this->getObjectsList(), $query);
         } else {
-            $results = $this->getObjectsList()
-                    ->shuffle()
-                    ->limit($this->PageLength);
+            $results = $this->getObjectsList();
         }
 
         if (!$results) {

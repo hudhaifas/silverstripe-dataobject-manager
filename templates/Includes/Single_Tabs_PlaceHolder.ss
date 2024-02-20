@@ -5,13 +5,13 @@
 
     <div class="container">
         <div class="tab-content">
-            <div id="tab1" class="row tab-pane fade <% if First %>in active<% end_if %>">
+            <div id="tab1" class="row tab-pane fade <% if $IsFirst %>in active<% end_if %>">
                 <div class="col-md-12">
                     &nbsp;
                 </div>
             </div>
 
-            <div id="tab2" class="row tab-pane fade <% if First %>in active<% end_if %>">
+            <div id="tab2" class="row tab-pane fade <% if $IsFirst %>in active<% end_if %>">
                 <div class="col-md-12">
                     &nbsp;
                 </div>

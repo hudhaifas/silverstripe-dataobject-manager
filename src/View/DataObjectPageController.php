@@ -85,7 +85,7 @@ class DataObjectPageController
             $results = $this->searchObjects($this->getObjectsList(), $query);
         } else {
             $results = $this->getObjectsList()
-                    ->sort('RAND()')
+                    ->shuffle()
                     ->limit($this->PageLength);
         }
 

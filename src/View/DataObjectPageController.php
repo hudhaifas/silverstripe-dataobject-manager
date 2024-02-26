@@ -423,6 +423,10 @@ class DataObjectPageController
 
         // Upload Field
         $field = FrontendImageField::create($single->getObjectEditableImageName(), '', $single->getObjectImage());
+        $field->getValidator()->setAllowedExtensions(['jpg', 'jpeg', 'png', 'gif']);
+        if ($single->hasMethod('getFolderName')) {
+            $field->setFolderName($single->getFolderName());
+        }
         $fields->push($field);
 
         // Create action

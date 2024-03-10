@@ -2,13 +2,13 @@
 <% with Single %>
     <% if ObjectImage %>
     <a href="$ObjectImage.URL" data-lightbox="dataobject-gallery" data-title="{$Title}">
-        <img src="$ObjectImage.Pad(256,256).URL" alt="{$Title}" class="img-fluid" />
+        <img src="$ObjectImage.Pad(256,256).URL" loading="lazy" alt="{$Title}" class="img-fluid" />
     </a>
     <% else %>
     <% if ObjectDefaultImage %>
-    <img src= "$ObjectDefaultImage" alt="{$Title}" class="img-fluid" />
+    <img src="$ObjectDefaultImage" loading="lazy" alt="{$Title}" class="img-fluid" />
     <% else %>
-    <img src= "$resourceURL(hudhaifas/silverstripe-dataobject-manager: res/images/default-image.jpg)" alt="{$Title}" class="img-fluid" />
+    <img src="$resourceURL(hudhaifas/silverstripe-dataobject-manager: res/images/default-image.jpg)" loading="lazy" alt="{$Title}" class="img-fluid" />
     <% end_if %>
 
     <div class="caption" style="">

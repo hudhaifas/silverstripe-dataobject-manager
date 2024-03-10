@@ -4,12 +4,12 @@
             <div class="card-head pt-3 px-5">
                 <div class="px-4">
                     <% if ObjectImage %>
-                        <img src="$ObjectImage.Pad(256,256).URL" alt="{$Title}" class="card-img-top img-fluid rounded-circle img-thumbnail" />
+                        <img src="$ObjectImage.Pad(256,256).URL" loading="lazy" alt="{$Title}" class="card-img-top img-fluid rounded-circle img-thumbnail" />
                     <% else %>
                         <% if ObjectDefaultImage %>
-                           <img src= "$ObjectDefaultImage" alt="{$Title}" class="card-img-top img-fluid rounded-circle img-thumbnail" />
+                           <img src="$ObjectDefaultImage" loading="lazy" alt="{$Title}" class="card-img-top img-fluid rounded-circle img-thumbnail" />
                         <% else %>
-                            <img src= "$resourceURL(hudhaifas/silverstripe-dataobject-manager: res/images/default-image.jpg)" alt="{$Title}" class="card-img-top img-fluid rounded-circle img-thumbnail" />
+                            <img src="$resourceURL(hudhaifas/silverstripe-dataobject-manager: res/images/default-image.jpg)" loading="lazy" alt="{$Title}" class="card-img-top img-fluid rounded-circle img-thumbnail" />
                         <% end_if %>
                     <% end_if %>
                 </div>

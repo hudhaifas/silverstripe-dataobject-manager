@@ -31,5 +31,14 @@ interface ManageableDataObject {
 
     public function getObjectTabs();
 
+    /**
+     * Return the HTML content of a specific tab.
+     *
+     * @param string $tabKey
+     * @param int $page (optional) — for paginated tabs
+     * @return string HTML content
+     */
+    public function getObjectTabContent($tabKey, $page = 1);
+
     public function canPublicView();
 }

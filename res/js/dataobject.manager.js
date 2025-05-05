@@ -1,5 +1,5 @@
 /*
- * 11-27-2017
+ * 11-27-2017 (updated 05-03-2025 for tab lazy loading + IntersectionObserver)
  */
 
 jQuery(document).ready(function () {
@@ -19,8 +19,7 @@ var onPictureLoaded = function (callback) {
 
 var updatePicture = function () {
     var $pictureHolder = $('.dataobject-picture.place-holder');
-
-    if ($pictureHolder.length) {
+    observeAndLoad($pictureHolder, function () {
         var url = getURL($pictureHolder);
         if (!url) {
             return;
@@ -38,7 +37,7 @@ var updatePicture = function () {
                 callback();
             });
         });
-    }
+    });
 };
 
 /* Summary */
@@ -51,8 +50,7 @@ var onSummaryLoaded = function (callback) {
 
 var updateSummary = function () {
     var $summaryHolder = $('.dataobject-brief.place-holder');
-
-    if ($summaryHolder.length) {
+    observeAndLoad($summaryHolder, function () {
         var url = getURL($summaryHolder);
         if (!url) {
             return;
@@ -65,7 +63,7 @@ var updateSummary = function () {
                 callback();
             });
         });
-    }
+    });
 };
 
 /* Tabs */
@@ -78,8 +76,7 @@ var onTabsLoaded = function (callback) {
 
 var updateTabs = function () {
     var $tabsHolder = $('.dataobject-tabs.place-holder');
-
-    if ($tabsHolder.length) {
+    observeAndLoad($tabsHolder, function () {
         var url = getURL($tabsHolder);
         if (!url) {
             return;
@@ -97,8 +94,10 @@ var updateTabs = function () {
             tabsCallbacks.forEach(function (callback) {
                 callback();
             });
+
+            initTabLoading();
         });
-    }
+    });
 };
 
 /* Related */
@@ -111,8 +110,7 @@ var onRelatedLoaded = function (callback) {
 
 var updateRelated = function () {
     var $relatedHolder = $('.dataobject-related.place-holder');
-
-    if ($relatedHolder.length) {
+    observeAndLoad($relatedHolder, function () {
         var url = getURL($relatedHolder);
         if (!url) {
             return;
@@ -125,7 +123,7 @@ var updateRelated = function () {
                 callback();
             });
         });
-    }
+    });
 };
 
 var getURL = function ($element) {
@@ -146,4 +144,58 @@ var loadModal = function (url) {
 
         initFileinput();
     });
+};
+
+var initTabLoading = function () {
+    $('.tab-link').on('click', function (e) {
+        e.preventDefault();
+
+        var $tab = $(this);
+        var tabKey = $tab.data('tab');
+        var objectId = $tab.data('object-id');
+        var objectClass = $tab.data('object-class');
+        var $contentContainer = $('#' + tabKey + '-content');
+
+        if ($contentContainer.data('loaded')) {
+            return;
+        }
+
+        $contentContainer.html('<span class="loader"></span>');
+
+        $contentContainer.load($tab.data('url'), function () {
+            $contentContainer.data('loaded', true);
+
+            tabsCallbacks.forEach(function (callback) {
+                callback();
+            });
+        });
+    });
+
+    $('.tab-link.active').trigger('click');
+};
+
+var observeAndLoad = function ($element, loadCallback) {
+    if (!$element.length) {
+        return;
+    }
+
+    if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries, obs) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    loadCallback();
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, {
+            rootMargin: '200px',
+            threshold: 0.1
+        });
+
+        $element.each(function () {
+            observer.observe(this);
+        });
+    } else {
+        loadCallback(); // fallback for older browsers
+    }
 };

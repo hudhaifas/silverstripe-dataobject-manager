@@ -17,6 +17,7 @@ use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextField;
 use SilverStripe\i18n\i18n;
+use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\PaginatedList;
@@ -37,6 +38,7 @@ class DataObjectPageController
         'show',
         'edit',
         'tabs',
+        'tabcontent',
         'summary',
         'picture',
         'upload',
@@ -54,6 +56,7 @@ class DataObjectPageController
         'show/$ID' => 'show',
         'edit/$ID' => 'edit',
         'tabs/$ID' => 'tabs',
+        'tabcontent/$ID/$Key' => 'tabcontent',
         'summary/$ID' => 'summary',
         'picture/$ID' => 'picture',
         'upload/$ID' => 'upload',
@@ -251,11 +254,44 @@ class DataObjectPageController
     public function tabs() {
         $single = $this->getSingle();
 
+        $tabs = $single->getObjectTabs();
+
+        // Validate unique TabKeys
+        $seenKeys = [];
+        foreach ($tabs as $tab) {
+            if (!isset($tab['Key']) || !$tab['Key']) {
+                throw new \LogicException('Tab is missing required TabKey');
+            }
+            $tabKey = $tab['Key'];
+            if (isset($seenKeys[$tabKey])) {
+                throw new \LogicException("Duplicate tab Key detected: {$tabKey}");
+            }
+            $seenKeys[$tabKey] = true;
+        }
+
         return $this
                         ->customise([
-                            'ObjectTabs' => $single->getObjectTabs()
+                            'ObjectTabs' => new ArrayList($tabs)
                         ])
                         ->renderWith('Includes\Single_Tabs');
+    }
+
+    public function tabcontent() {
+        $single = $this->getSingle();
+        $request = $this->getRequest();
+        $tab = $request->param('Key');
+        $page = $request->getVar('page') ?? 1;
+
+        if ($tab) {
+            $content = $single->getObjectTabContent($tab, $page);
+
+            return $this
+                            ->customise([
+                                'Content' => $content
+                            ])
+                            ->renderWith('Includes/Single_TabContent');
+        }
+        return $this->httpError(400, 'Invalid tab content request');
     }
 
     public function summary() {
@@ -307,6 +343,10 @@ class DataObjectPageController
     /// Links
     public function TabsLink($id) {
         return $this->Link("tabs/$id");
+    }
+
+    public function TabContentLink($id, $key) {
+        return $this->Link("tabcontent/$id/$key");
     }
 
     public function SummaryLink($id) {

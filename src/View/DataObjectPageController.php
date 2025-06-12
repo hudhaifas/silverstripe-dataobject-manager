@@ -5,6 +5,8 @@ use HudhaifaS\DOM\Model\SociableDataObject;
 use HudhaifaS\Forms\FrontendFileField;
 use HudhaifaS\Forms\FrontendImageField;
 use HudhaifaS\Forms\FrontendRichTextField;
+
+use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Convert;
@@ -22,6 +24,7 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\Security\Security;
+use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\ThemeResourceLoader;
 
@@ -664,8 +667,62 @@ class DataObjectPageController
         return i18n::get_script_direction(i18n::get_locale()) == 'rtl';
     }
 
+    /**
+     * Generates a list of alternate locales and localized links for the current DataObject view.
+     *
+     * This function is intended to be used in multilingual websites that utilize the
+     * TractorCow Fluent module. It builds an `ArrayList` of available locales, each containing:
+     * - The locale code (e.g., 'en_US', 'fr_FR')
+     * - The locale title (e.g., 'English (US)', 'French (France)')
+     * - A localized URL to the current action and parameters (e.g., 'show/123')
+     * - A `LinkingMode` to indicate whether the locale is the current one
+     * - The hreflang value for SEO (`HrefLang`)
+     *
+     * This method dynamically appends the current request's action path (e.g., `show/123`)
+     * to the localized page's base link, ensuring that cross-locale navigation maintains context.
+     *
+     * @return \SilverStripe\ORM\ArrayList|null List of locales and their corresponding links,
+     *                                          or null if Fluent is not installed or not active
+     */
+    public function Locales(): ?ArrayList
+    {
+
+        if (!class_exists(\TractorCow\Fluent\State\FluentState::class) || !class_exists(TractorCow\Fluent\Model\Locale::class)) {
+            return null;
+        }
+
+        if (!TractorCow\Fluent\State\FluentState::singleton()->getLocale()) {
+            return null;
+        }
+
+        $locales = TractorCow\Fluent\Model\Locale::getCached();
+
+        $list = ArrayList::create();
+
+        foreach ($locales as $locale) {
+            // Reload localised page in the correct locale
+            $page = TractorCow\Fluent\State\FluentState::singleton()->withState(function (TractorCow\Fluent\State\FluentState $state) use ($locale) {
+                $state->setLocale($locale->getLocale());
+                return $this->dataRecord->get()->byID($this->dataRecord->ID);
+            });
+
+            $action = $this->getRequest()->param('Action');
+            $id = $this->getRequest()->param('ID');
+            $otherId = $this->getRequest()->param('OtherID');
+
+            $list->push(ArrayData::create([
+                'Locale' => $locale->getLocale(),
+                'Title' => $locale->getTitle(),
+                'Link' => Controller::join_links($page->Link(), $action, $id, $otherId),
+                'LinkingMode' => $locale->getLocale() === TractorCow\Fluent\State\FluentState::singleton()->getLocale() ? 'current' : 'link',
+                'HrefLang' => $locale->getLocale(),
+            ]));
+        }
+
+        return $list;
+    }
+
     public function Strip($html) {
         return strip_tags($html);
     }
-
 }

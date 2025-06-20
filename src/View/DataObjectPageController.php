@@ -715,7 +715,7 @@ class DataObjectPageController
                 'Title' => $locale->getTitle(),
                 'Link' => Controller::join_links($page->Link(), $action, $id, $otherId),
                 'LinkingMode' => $locale->getLocale() === TractorCow\Fluent\State\FluentState::singleton()->getLocale() ? 'current' : 'link',
-                'HrefLang' => $locale->getLocale(),
+                'HrefLang' => $locale->getHrefLang(),
             ]));
         }
 

@@ -610,9 +610,9 @@ class DataObjectPageController
         $single = $this->getSingle();
 
         if ($single) {
-            return $single->getObjectLink();
+            return $this->FullURL($single->getObjectLink());
         } else {
-            return $this->Link();
+            return $this->FullURL($this->Link());
         }
     }
 

@@ -85,40 +85,38 @@ class DataObjectPageController
     }
 
     public function index(HTTPRequest $request) {
-        $start = microtime(true); // time in Microseconds
+        $start = microtime(true); // Start timing for performance measurement
 
+        // Step 1: Get the full list
+        $list = $this->getObjectsList();
+
+        // Step 2: If search query exists, filter the list using it
         if ($query = $request->getVar('q')) {
-            $results = $this->searchObjects($this->getObjectsList(), $query);
-        } else {
-            $results = $this->getObjectsList();
+            $list = $this->searchObjects($list, $query);
         }
 
-        if (!$results) {
-            return [];
-        }
+        // Step 3: Explicitly filter the list by permission
+        $filteredList = $list->filterByCallback(function ($item) {
+            return $this->canViewSingle($item);
+        });
 
-        if ($results instanceof PaginatedList) {
-            $paginated = $results;
-            $count = $results->getTotalItems();
-        } else {
-            $paginated = PaginatedList::create(
-                            $results, $request
-                    )->setPageLength($this->PageLength)
-                    ->setPaginationGetVar('start');
-            $count = $results->Count();
-        }
+        // Step 4: Paginate the filtered list
+        $paginated = PaginatedList::create($filteredList, $request)
+            ->setPageLength($this->PageLength)
+            ->setPaginationGetVar('start');
 
-        $end = microtime(true); // time in Microseconds
+        $end = microtime(true); // End timing
 
+        // Step 5: Prepare data for rendering
         $data = [
             'Results' => $paginated,
-            'Count' => $count,
-            'Seconds' => ($end - $start) / 1000
+            'Count' => $filteredList->count(),
+            'Seconds' => ($end - $start) / 1000,
         ];
 
+        // Step 6: Handle AJAX vs full page request
         if ($request->isAjax()) {
-            return $this->customise($data)
-                            ->renderWith('Includes\ObjectsList');
+            return $this->customise($data)->renderWith('Includes\ObjectsList');
         }
 
         return $data;
@@ -129,7 +127,7 @@ class DataObjectPageController
             return $this->httpError(404, 'That object could not be found!');
         }
 
-        if (!$single->canPublicView()) {
+        if (!$this->canViewSingle($single)) {
             return Security::permissionFailure($this);
         }
 
@@ -239,6 +237,18 @@ class DataObjectPageController
 
     protected function preRenderSingle($single) {
 
+    }
+
+    public function canViewSingle($single) {
+        if(!$single) {
+            return false;
+        }
+
+        if ($single->hasMethod('canPublicView')) {
+            return $single->canPublicView();
+        }
+
+        return $single->canView();
     }
 
     /// Actions
@@ -406,7 +416,7 @@ class DataObjectPageController
             $this->httpError(404, 'That object could not be found!');
         }
 
-        if ($single && !$single->canPublicView()) {
+        if (!$this->canViewSingle($single)) {
             Security::permissionFailure($this);
         }
 

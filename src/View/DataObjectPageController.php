@@ -719,11 +719,13 @@ class DataObjectPageController
             $action = $this->getRequest()->param('Action');
             $id = $this->getRequest()->param('ID');
             $otherId = $this->getRequest()->param('OtherID');
+            $link = Controller::join_links($page->Link(), $action, $id, $otherId);
 
             $list->push(ArrayData::create([
                 'Locale' => $locale->getLocale(),
                 'Title' => $locale->getTitle(),
-                'Link' => Controller::join_links($page->Link(), $action, $id, $otherId),
+                'Link' => $link,
+                'AbsoluteLink' => $link ? Director::absoluteURL($link) : null,
                 'LinkingMode' => $locale->getLocale() === TractorCow\Fluent\State\FluentState::singleton()->getLocale() ? 'current' : 'link',
                 'HrefLang' => $locale->getHrefLang(),
             ]));

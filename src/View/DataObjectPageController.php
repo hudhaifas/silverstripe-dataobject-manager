@@ -662,6 +662,8 @@ class DataObjectPageController
             $text = preg_replace('/\s*\)\s*/', ') ', $text); // Clean spaces before ')'
             return trim($text);
         }
+
+        return $this->MetaDescription;
     }
 
     public function Canonical() {

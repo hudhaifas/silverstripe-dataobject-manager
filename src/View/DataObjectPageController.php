@@ -650,8 +650,12 @@ class DataObjectPageController
     public function SocialDescription() {
         $single = $this->getSingle();
 
-        if ($single && $single instanceof SociableDataObject) {
-            return $single->getObjectDescription();
+        if ($single && $single->hasMethod('getObjectDescription')) {
+            $text = strip_tags($single->getObjectDescription());
+            $text = preg_replace('/\s+/', ' ', $text); // Normalize all whitespace
+            $text = preg_replace('/\s*\(\s*/', ' (', $text); // Clean spaces after '('
+            $text = preg_replace('/\s*\)\s*/', ') ', $text); // Clean spaces before ')'
+            return trim($text);
         }
     }
 

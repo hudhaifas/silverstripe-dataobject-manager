@@ -629,7 +629,12 @@ class DataObjectPageController
             $schema['@context'] = "http://schema.org";
 
             $text = json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-            return DBField::create_field('HTMLText', $text);
+
+            // Remove all \n and excessive whitespace
+            $text = preg_replace('/\s*\n\s*/u', ' ', $text);
+            $text = preg_replace('/\s{2,}/u', ' ', $text); // Optional: collapse multiple spaces
+
+            return DBField::create_field('HTMLText', trim($text));
         }
     }
 

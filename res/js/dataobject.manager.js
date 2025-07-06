@@ -168,6 +168,15 @@ var initTabLoading = function () {
             tabsCallbacks.forEach(function (callback) {
                 callback();
             });
+
+            // Track virtual pageview
+            if (typeof window.trackVirtualPageView === 'function') {
+                const rawLabel = $tab.text().trim();
+                const cleanedLabel = rawLabel.replace(/\s*\(.*?\)\s*/g, '');
+                const tabPath = $tab.data('url');
+                const tabTitle = `${cleanedLabel} - ${document.title}`;
+                window.trackVirtualPageView(tabPath, tabTitle);
+            }
         });
     });
 

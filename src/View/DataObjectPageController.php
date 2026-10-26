@@ -251,6 +251,15 @@ class DataObjectPageController
         return $single->canView();
     }
 
+    /**
+     * The record an edit form works on, only when the current member can edit it
+     */
+    protected function getEditableSingle($singleID) {
+        $single = $this->getSingle($singleID);
+
+        return $single && $single->canEdit() ? $single : null;
+    }
+
     /// Actions
     public function show() {
         $single = $this->getSingle();
@@ -410,14 +419,10 @@ class DataObjectPageController
         } else {
             $id = $singleID;
         }
-        $single = $this->getSingle($id);
-
+        // No form for someone who can't edit the record
+        $single = $this->getEditableSingle($id);
         if (!$single) {
-            $this->httpError(404, 'That object could not be found!');
-        }
-
-        if (!$this->canViewSingle($single)) {
-            Security::permissionFailure($this);
+            return null;
         }
 
         // Create fields
@@ -438,14 +443,13 @@ class DataObjectPageController
     }
 
     public function doObjectEdit($data, $form) {
-        $objectID = $data['ObjectID'];
-
-        $single = $this->getSingle($objectID);
-
-        foreach ($data as $key => $value) {
-            $single->$key = $value;
+        $single = $this->getEditableSingle($data['ObjectID'] ?? 0);
+        if (!$single) {
+            return Security::permissionFailure($this);
         }
 
+        // Only the form's fields are saved, not whatever was posted
+        $form->saveInto($single);
         $single->write();
         return $this->owner->redirectBack();
     }
@@ -456,17 +460,9 @@ class DataObjectPageController
         } else {
             $id = $singleID;
         }
-        $single = $this->getSingle($id);
-
-        if (!$single) {
-            $this->httpError(404, 'That object could not be found!');
-        }
-
-        if ($single && !$single->canEdit()) {
-            Security::permissionFailure($this);
-        }
-
-        if ($single && !$single->getObjectEditableImageName()) {
+        // No form for someone who can't edit the record
+        $single = $this->getEditableSingle($id);
+        if (!$single || !$single->getObjectEditableImageName()) {
             return null;
         }
 
@@ -498,8 +494,10 @@ class DataObjectPageController
     }
 
     public function doImageEdit($data, $form) {
-        $objectID = $data['ObjectID'];
-        $single = $this->getSingle($objectID);
+        $single = $this->getEditableSingle($data['ObjectID'] ?? 0);
+        if (!$single) {
+            return Security::permissionFailure($this);
+        }
 
         $form->saveInto($single);
         $single->write();
@@ -516,17 +514,9 @@ class DataObjectPageController
         } else {
             $id = $singleID;
         }
-        $single = $this->getSingle($id);
-
-        if (!$single) {
-            $this->httpError(404, 'That object could not be found!');
-        }
-
-        if ($single && !$single->canEdit()) {
-            Security::permissionFailure($this);
-        }
-
-        if ($single && !$single->getImportantItems()) {
+        // No form for someone who can't edit the record
+        $single = $this->getEditableSingle($id);
+        if (!$single || !$single->getImportantItems()) {
             return null;
         }
 
@@ -549,8 +539,10 @@ class DataObjectPageController
     }
 
     public function doImportantEdit($data, $form) {
-        $objectID = $data['ObjectID'];
-        $single = $this->getSingle($objectID);
+        $single = $this->getEditableSingle($data['ObjectID'] ?? 0);
+        if (!$single) {
+            return Security::permissionFailure($this);
+        }
 
         $form->saveInto($single);
         $single->write();
@@ -628,7 +620,8 @@ class DataObjectPageController
             $schema = $single->getObjectMarkup();
             $schema['@context'] = "http://schema.org";
 
-            $text = json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            // The JSON goes inside a <script> tag raw, so <, > and & are escaped: a name holding "</script>" can't end it
+            $text = json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP);
 
             // Remove all \n and excessive whitespace
             $text = preg_replace('/\s*\n\s*/u', ' ', $text);

@@ -2,6 +2,7 @@
 
 use HudhaifaS\DOM\Model\DiscoverableDataObject;
 use HudhaifaS\DOM\Model\SociableDataObject;
+use HudhaifaS\DOM\ORM\CachedPaginatedList;
 use HudhaifaS\Forms\FrontendFileField;
 use HudhaifaS\Forms\FrontendImageField;
 use HudhaifaS\Forms\FrontendRichTextField;
@@ -23,7 +24,6 @@ use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBField;
-use SilverStripe\ORM\PaginatedList;
 use SilverStripe\Security\Security;
 use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
@@ -137,6 +137,9 @@ class DataObjectPageController
             $paginated = $this->paginate($filteredList, $request);
         }
 
+        // Let the controller load in bulk what the template will ask each object on the page for
+        $this->prefetchResults($paginated);
+
         $end = microtime(true); // End timing
 
         // Step 5: Prepare data for rendering
@@ -154,8 +157,16 @@ class DataObjectPageController
         return $data;
     }
 
+    /**
+     * Called by index() with the page of results it is about to render. A derived controller can override it to load in
+     * a few queries what the template would otherwise look up once per object, such as a has_one of every object on the
+     * page. Looping $results here costs no extra query: the page is loaded once and the template reuses it.
+     */
+    protected function prefetchResults($results) {
+    }
+
     private function paginate($list, HTTPRequest $request) {
-        return PaginatedList::create($this->breakSortTies($list), $request)
+        return CachedPaginatedList::create($this->breakSortTies($list), $request)
             ->setPageLength($this->PageLength)
             ->setPaginationGetVar('start');
     }

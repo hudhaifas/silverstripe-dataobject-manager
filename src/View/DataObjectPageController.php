@@ -20,6 +20,7 @@ use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextField;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\ORM\PaginatedList;
@@ -66,6 +67,20 @@ class DataObjectPageController
         'related/$ID' => 'related'
     ];
 
+    /**
+     * getSingle() results for this request, by ID
+     *
+     * @var array
+     */
+    private $singles = [];
+
+    /**
+     * Locales() for this request, false until it's built
+     *
+     * @var ArrayList|null|false
+     */
+    private $locales = false;
+
     public function init() {
         parent::init();
 
@@ -95,22 +110,39 @@ class DataObjectPageController
             $list = $this->searchObjects($list, $query);
         }
 
-        // Step 3: Explicitly filter the list by permission
-        $filteredList = $list->filterByCallback(function ($item) {
-            return $this->canViewSingle($item);
-        });
-
-        // Step 4: Paginate the filtered list
-        $paginated = PaginatedList::create($filteredList, $request)
-            ->setPageLength($this->PageLength)
-            ->setPaginationGetVar('start');
+        // Steps 3 and 4: Filter the list by permission and paginate it, in SQL when possible
+        $filteredList = $this->filterViewable($list);
+        if ($filteredList !== null) {
+            // Narrowed in SQL: the database pages and counts it
+            $count = $filteredList->count();
+            $paginated = $this->paginate($filteredList, $request)->setTotalItems($count);
+        } else if ($list instanceof DataList && $this->PageLength > 0) {
+            // The database pages and counts the whole list, and only the page is checked: the count includes the
+            // objects the visitor can't view, and a page with hidden objects on it is short
+            $page = $this->paginate($list, $request);
+            $count = $page->getTotalItems();
+            $viewable = ArrayList::create();
+            foreach ($page as $item) {
+                if ($this->canViewSingle($item)) {
+                    $viewable->push($item);
+                }
+            }
+            $paginated = $this->paginate($viewable, $request)->setLimitItems(false)->setTotalItems($count);
+        } else {
+            // An in-memory list (or no paging): check every object
+            $filteredList = $list->filterByCallback(function ($item) {
+                return $this->canViewSingle($item);
+            });
+            $count = $filteredList->count();
+            $paginated = $this->paginate($filteredList, $request);
+        }
 
         $end = microtime(true); // End timing
 
         // Step 5: Prepare data for rendering
         $data = [
             'Results' => $paginated,
-            'Count' => $filteredList->count(),
+            'Count' => $count,
             'Seconds' => ($end - $start) / 1000,
         ];
 
@@ -120,6 +152,47 @@ class DataObjectPageController
         }
 
         return $data;
+    }
+
+    private function paginate($list, HTTPRequest $request) {
+        return PaginatedList::create($this->breakSortTies($list), $request)
+            ->setPageLength($this->PageLength)
+            ->setPaginationGetVar('start');
+    }
+
+    /**
+     * Sort a DataList by its ID after its own sort columns, so the database pages it in one fixed order: rows that tie
+     * on every sort column could otherwise come back in a different order for each LIMIT, and repeat or go missing
+     * across pages. A list that already sorts by ID keeps its order.
+     */
+    private function breakSortTies($list) {
+        if (!$list instanceof DataList) {
+            return $list;
+        }
+
+        return $list->alterDataQuery(function ($query) {
+            $table = DataObject::getSchema()->baseDataTable($query->dataClass());
+            foreach (array_keys($query->query()->getOrderBy()) as $column) {
+                if (in_array(str_replace(['"', '`', ' '], '', $column), ['ID', "$table.ID"])) {
+                    return;
+                }
+            }
+
+            $query->sort("\"$table\".\"ID\"", 'ASC', false);
+        });
+    }
+
+    /**
+     * Return $list narrowed in SQL to the objects the current member can view (or $list itself when every object in
+     * it is viewable), so the index paginates and counts in the database and checks nothing in PHP.
+     *
+     * Subclasses override this for the DataObject they list, returning exactly the objects canViewSingle() would keep.
+     * The default, null, means there is no such filter: a DataList is then paged in SQL and only the page is checked.
+     *
+     * @return \SilverStripe\ORM\SS_List|null
+     */
+    protected function filterViewable($list) {
+        return null;
     }
 
     protected function showSingle($single) {
@@ -175,18 +248,41 @@ class DataObjectPageController
             $id = $singleID;
         }
 
+        if (!$id) {
+            $id = $this->getRequest()->param('ID');
+        }
+
+        // No ID, e.g. on the list page: nothing to look up
+        if (!$id) {
+            return null;
+        }
+
         $list = $this->getObjectsList();
         if (!$list) {
             return null;
         }
 
+        return $list->filter([
+                    'ID' => $id
+                ])->first();
+    }
+
+    /**
+     * getSingle() once per ID per request. A show page asks for its object from the action, RichSnippets, OpenGraph,
+     * SocialDescription and Canonical; this makes them one lookup.
+     */
+    protected function getCachedSingle($singleID = null) {
+        $id = $singleID instanceof HTTPRequest ? $singleID->postVar('ObjectID') : $singleID;
         if (!$id) {
             $id = $this->getRequest()->param('ID');
         }
 
-        return $list->filter([
-                    'ID' => $id
-                ])->first();
+        $key = (string) $id;
+        if (!array_key_exists($key, $this->singles)) {
+            $this->singles[$key] = $this->getSingle($singleID);
+        }
+
+        return $this->singles[$key];
     }
 
     public function searchObjects($list, $keywords) {
@@ -255,26 +351,26 @@ class DataObjectPageController
      * The record an edit form works on, only when the current member can edit it
      */
     protected function getEditableSingle($singleID) {
-        $single = $this->getSingle($singleID);
+        $single = $this->getCachedSingle($singleID);
 
         return $single && $single->canEdit() ? $single : null;
     }
 
     /// Actions
     public function show() {
-        $single = $this->getSingle();
+        $single = $this->getCachedSingle();
 
         return $this->showSingle($single);
     }
 
     public function edit() {
-        $single = $this->getSingle();
+        $single = $this->getCachedSingle();
 
         return $this->editSingle($single);
     }
 
     public function tabs() {
-        $single = $this->getSingle();
+        $single = $this->getCachedSingle();
 
         $tabs = $single->getObjectTabs();
 
@@ -299,13 +395,12 @@ class DataObjectPageController
     }
 
     public function tabcontent() {
-        $single = $this->getSingle();
         $request = $this->getRequest();
         $tab = $request->param('Key');
         $page = $request->getVar('page') ?? 1;
 
         if ($tab) {
-            $content = $single->getObjectTabContent($tab, $page);
+            $content = $this->getCachedSingle()->getObjectTabContent($tab, $page);
 
             return $this
                             ->customise([
@@ -317,7 +412,7 @@ class DataObjectPageController
     }
 
     public function summary() {
-        $single = $this->getSingle();
+        $single = $this->getCachedSingle();
 
         return $this
                         ->customise([
@@ -327,7 +422,7 @@ class DataObjectPageController
     }
 
     public function picture() {
-        $single = $this->getSingle();
+        $single = $this->getCachedSingle();
 
         return $this
                         ->customise([
@@ -340,7 +435,7 @@ class DataObjectPageController
     }
 
     public function upload() {
-        $single = $this->getSingle();
+        $single = $this->getCachedSingle();
 
         return $this
                         ->customise([
@@ -353,7 +448,7 @@ class DataObjectPageController
     }
 
     public function related() {
-        $single = $this->getSingle();
+        $single = $this->getCachedSingle();
 
         return $this
                         ->customise([
@@ -462,7 +557,8 @@ class DataObjectPageController
         }
         // No form for someone who can't edit the record
         $single = $this->getEditableSingle($id);
-        if (!$single || !$single->getObjectEditableImageName()) {
+        $imageName = $single ? $single->getObjectEditableImageName() : null;
+        if (!$imageName) {
             return null;
         }
 
@@ -471,7 +567,7 @@ class DataObjectPageController
         $fields->push(HiddenField::create('ObjectID', 'ObjectID', $single->ID));
 
         // Upload Field
-        $field = FrontendImageField::create($single->getObjectEditableImageName(), '', $single->getObjectImage());
+        $field = FrontendImageField::create($imageName, '', $single->getObjectImage());
         $field->getValidator()->setAllowedExtensions(['jpg', 'jpeg', 'png', 'gif']);
         if ($single->hasMethod('getFolderName')) {
             $field->setFolderName($single->getFolderName());
@@ -516,11 +612,11 @@ class DataObjectPageController
         }
         // No form for someone who can't edit the record
         $single = $this->getEditableSingle($id);
-        if (!$single || !$single->getImportantItems()) {
+        $items = $single ? $single->getImportantItems() : null;
+        if (!$items) {
             return null;
         }
 
-        $items = $single->getImportantItems();
         $items[] = HiddenField::create('ObjectID', 'ObjectID', $single->ID);
 
         // Create fields
@@ -570,17 +666,31 @@ class DataObjectPageController
             return;
         }
 
-        $dbFields = $record->config()->get('db');
-        $restrictFields = $record->config()->restrict_fields;
+        $config = $record->config();
+        $dbFields = $config->get('db');
+        $restrictFields = $config->restrict_fields;
         if ($restrictFields) {
             $restrictFields = array_merge(['Version'], $restrictFields);
         } else {
             $restrictFields = ['Version'];
         }
 
+        // Names are looked up in a set rather than with in_array() on every field. in_array() compares loosely, which
+        // only differs from an exact match for values that aren't non-numeric strings, so those are still compared
+        // with in_array()
+        $restricted = [];
+        $looselyRestricted = [];
+        foreach ($restrictFields as $restrictField) {
+            if (is_string($restrictField) && !is_numeric($restrictField)) {
+                $restricted[$restrictField] = true;
+            } else {
+                $looselyRestricted[] = $restrictField;
+            }
+        }
+
         // iterate database fields
         foreach ($dbFields as $fieldName => $fieldType) {
-            if ($restrictFields && in_array($fieldName, $restrictFields)) {
+            if (isset($restricted[$fieldName]) || ($looselyRestricted && in_array($fieldName, $looselyRestricted))) {
                 continue;
             }
 
@@ -614,7 +724,7 @@ class DataObjectPageController
     }
 
     public function RichSnippets() {
-        $single = $this->getSingle();
+        $single = $this->getCachedSingle();
 
         if ($single && $single instanceof DiscoverableDataObject) {
             $schema = $single->getObjectMarkup();
@@ -623,16 +733,15 @@ class DataObjectPageController
             // The JSON goes inside a <script> tag raw, so <, > and & are escaped: a name holding "</script>" can't end it
             $text = json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP);
 
-            // Remove all \n and excessive whitespace
-            $text = preg_replace('/\s*\n\s*/u', ' ', $text);
-            $text = preg_replace('/\s{2,}/u', ' ', $text); // Optional: collapse multiple spaces
+            // Collapse excessive whitespace. There are no line breaks to remove: json_encode() escapes them
+            $text = preg_replace('/\s{2,}/u', ' ', $text);
 
             return DBField::create_field('HTMLText', trim($text));
         }
     }
 
     public function OpenGraph() {
-        $single = $this->getSingle();
+        $single = $this->getCachedSingle();
 
         if ($single) {
             return $this
@@ -646,7 +755,7 @@ class DataObjectPageController
     }
 
     public function SocialDescription() {
-        $single = $this->getSingle();
+        $single = $this->getCachedSingle();
 
         if ($single && $single->hasMethod('getObjectDescription')) {
             $text = strip_tags($single->getObjectDescription());
@@ -660,7 +769,7 @@ class DataObjectPageController
     }
 
     public function Canonical() {
-        $single = $this->getSingle();
+        $single = $this->getCachedSingle();
 
         if ($single) {
             return $this->FullURL($single->getObjectLink());
@@ -700,29 +809,36 @@ class DataObjectPageController
      */
     public function Locales(): ?ArrayList
     {
-
-        if (!class_exists(\TractorCow\Fluent\State\FluentState::class) || !class_exists(TractorCow\Fluent\Model\Locale::class)) {
-            return null;
+        if ($this->locales !== false) {
+            return $this->locales;
         }
 
-        if (!TractorCow\Fluent\State\FluentState::singleton()->getLocale()) {
-            return null;
+        if (!class_exists(\TractorCow\Fluent\State\FluentState::class) || !class_exists(TractorCow\Fluent\Model\Locale::class)) {
+            return $this->locales = null;
+        }
+
+        $fluent = TractorCow\Fluent\State\FluentState::singleton();
+        $current = $fluent->getLocale();
+        if (!$current) {
+            return $this->locales = null;
         }
 
         $locales = TractorCow\Fluent\Model\Locale::getCached();
+
+        $request = $this->getRequest();
+        $action = $request->param('Action');
+        $id = $request->param('ID');
+        $otherId = $request->param('OtherID');
 
         $list = ArrayList::create();
 
         foreach ($locales as $locale) {
             // Reload localised page in the correct locale
-            $page = TractorCow\Fluent\State\FluentState::singleton()->withState(function (TractorCow\Fluent\State\FluentState $state) use ($locale) {
+            $page = $fluent->withState(function (TractorCow\Fluent\State\FluentState $state) use ($locale) {
                 $state->setLocale($locale->getLocale());
                 return $this->dataRecord->get()->byID($this->dataRecord->ID);
             });
 
-            $action = $this->getRequest()->param('Action');
-            $id = $this->getRequest()->param('ID');
-            $otherId = $this->getRequest()->param('OtherID');
             $link = Controller::join_links($page->Link(), $action, $id, $otherId);
 
             $list->push(ArrayData::create([
@@ -730,12 +846,12 @@ class DataObjectPageController
                 'Title' => $locale->getTitle(),
                 'Link' => $link,
                 'AbsoluteLink' => $link ? Director::absoluteURL($link) : null,
-                'LinkingMode' => $locale->getLocale() === TractorCow\Fluent\State\FluentState::singleton()->getLocale() ? 'current' : 'link',
+                'LinkingMode' => $locale->getLocale() === $current ? 'current' : 'link',
                 'HrefLang' => $locale->getHrefLang(),
             ]));
         }
 
-        return $list;
+        return $this->locales = $list;
     }
 
     public function Strip($html) {
